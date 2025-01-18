@@ -7,6 +7,168 @@
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="favicon.ico">
     <script defer src="script.js"></script>
+    <style>
+        /* General Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: #282c34;
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        header h1 {
+            font-size: 1.5rem;
+        }
+
+        nav {
+            display: flex;
+            gap: 1rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            padding: 0.5rem 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: #444b54;
+            border-radius: 5px;
+        }
+
+        #theme-toggle {
+            background-color: #444b54;
+            border: none;
+            padding: 0.5rem 1rem;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        #theme-toggle:hover {
+            background-color: #5a626e;
+        }
+
+        main {
+            padding: 2rem;
+            text-align: center;
+            flex-grow: 1;
+        }
+
+        main h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 1rem;
+        }
+
+        article {
+            background: #f4f4f4;
+            border-radius: 8px;
+            padding: 1rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        article:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        article img {
+            width: 100%;
+            border-radius: 8px;
+            object-fit: cover;
+            max-height: 200px;
+        }
+
+        article h3 {
+            font-size: 1.25rem;
+            margin: 0.5rem 0;
+        }
+
+        article p {
+            font-size: 0.9rem;
+            margin: 0.5rem 0 1rem 0;
+            text-align: justify;
+        }
+
+        article a {
+            text-decoration: none;
+            color: #0066cc;
+            font-weight: bold;
+            transition: color 0.2s ease;
+        }
+
+        article a:hover {
+            color: #004b99;
+        }
+
+        footer {
+            background-color: #282c34;
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: auto;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav a {
+                padding: 0.5rem;
+                width: 100%;
+                text-align: center;
+            }
+
+            main h2 {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.2rem;
+            }
+
+            main h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -28,15 +190,14 @@
                 <a href="https://arxiv.org/abs/2408.00406">View Project</a>
             </article>
             <article>
-                <h3>Simulations to detect polarization of GRBs using MEGAlib</h3>
+                <h3>Simulations to Detect Polarization of GRBs</h3>
                 <img src="images/project0.png" alt="Project 2 Thumbnail">
-                <p>I used MEGAlib to calculate the minimum dectectable polarization (MDP) for CubeSat missions designed by our group at NTHU.</p>
-<!--                 <a href="https://github.com/your-repo/project2">View Project</a> -->
+                <p>I used MEGAlib to calculate the minimum detectable polarization (MDP) for CubeSat missions designed by our group at NTHU.</p>
             </article>
             <article>
                 <h3>Project 3: COSI</h3>
                 <img src="images/project3.jpg" alt="Project 3 Thumbnail">
-                <p>The Compton Spectrometer and Imager is a soft gamma-ray survey telescope (0.2-5 MeV) designed to probe the origins of Galactic positrons, uncover the sites of nucleosynthesis in the Galaxy, perform pioneering studies of gamma-ray polarization, and find counterparts to multi-messenger sources. COSI’s compact Compton telescope combines improvements in sensitivity, spectral resolution, angular resolution, and sky coverage to facilitate groundbreaking science. </p>
+                <p>The Compton Spectrometer and Imager is a soft gamma-ray survey telescope (0.2-5 MeV) designed to probe Galactic positrons, nucleosynthesis sites, gamma-ray polarization, and multi-messenger source counterparts.</p>
                 <a href="https://cosi.ssl.berkeley.edu/">View Project</a>
             </article>
         </section>
