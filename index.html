@@ -7,6 +7,30 @@
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="favicon.ico">
     <style>
+        /* Light Theme (Default) */
+        :root {
+            --background-color: white;
+            --text-color: black;
+            --header-bg: #f5f5f5;
+            --button-bg: #0066cc;
+            --button-text: white;
+            --button-hover-bg: #004b99;
+            --footer-bg: #282c34;
+            --footer-text: white;
+        }
+
+        /* Dark Theme */
+        [data-theme="dark"] {
+            --background-color: #121212;
+            --text-color: white;
+            --header-bg: #1e1e1e;
+            --button-bg: #444b54;
+            --button-text: white;
+            --button-hover-bg: #5a626e;
+            --footer-bg: #121212;
+            --footer-text: #f5f5f5;
+        }
+
         /* General Styles */
         * {
             margin: 0;
@@ -16,6 +40,8 @@
         }
 
         body {
+            background-color: var(--background-color);
+            color: var(--text-color);
             line-height: 1.6;
             display: flex;
             flex-direction: column;
@@ -23,8 +49,8 @@
         }
 
         header {
-            background-color: #282c34;
-            color: white;
+            background-color: var(--header-bg);
+            color: var(--text-color);
             padding: 1rem 2rem;
             display: flex;
             justify-content: space-between;
@@ -43,28 +69,28 @@
 
         nav a {
             text-decoration: none;
-            color: white;
+            color: var(--text-color);
             padding: 0.5rem 1rem;
             transition: background-color 0.3s ease;
         }
 
         nav a:hover {
-            background-color: #444b54;
+            background-color: var(--button-hover-bg);
             border-radius: 5px;
         }
 
         .theme-toggle {
-            background-color: #444b54;
+            background-color: var(--button-bg);
             border: none;
             padding: 0.5rem 1rem;
-            color: white;
+            color: var(--button-text);
             cursor: pointer;
             border-radius: 5px;
             transition: background-color 0.3s ease;
         }
 
         .theme-toggle:hover {
-            background-color: #5a626e;
+            background-color: var(--button-hover-bg);
         }
 
         main {
@@ -95,8 +121,8 @@
         }
 
         footer {
-            background-color: #282c34;
-            color: white;
+            background-color: var(--footer-bg);
+            color: var(--footer-text);
             text-align: center;
             padding: 1rem 0;
             margin-top: auto;
@@ -150,7 +176,7 @@
             <a href="projects.html">Projects</a>
             <a href="cv.html">Curriculum Vitae</a>
         </nav>
-        <button class="theme-toggle">Toggle Theme</button>
+        <button class="theme-toggle" id="theme-toggle">Toggle Theme</button>
     </header>
     <main>
         <h2>Welcome to My Academic Portfolio</h2>
@@ -162,5 +188,23 @@
     <footer>
         &copy; 2025 Abhi. All rights reserved.
     </footer>
+    <script>
+        const themeToggleButton = document.getElementById('theme-toggle');
+        const body = document.body;
+
+        // Check for saved theme preference in localStorage
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            body.setAttribute('data-theme', savedTheme);
+        }
+
+        // Toggle theme and save preference
+        themeToggleButton.addEventListener('click', () => {
+            const currentTheme = body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            body.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        });
+    </script>
 </body>
 </html>
