@@ -6,7 +6,141 @@
     <title>Abhi's Portfolio</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="favicon.ico">
-    <button id="theme-toggle">Toggle Theme</button>
+    <style>
+        /* General Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: #282c34;
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        header h1 {
+            font-size: 1.5rem;
+        }
+
+        nav {
+            display: flex;
+            gap: 1rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            padding: 0.5rem 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: #444b54;
+            border-radius: 5px;
+        }
+
+        .theme-toggle {
+            background-color: #444b54;
+            border: none;
+            padding: 0.5rem 1rem;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            background-color: #5a626e;
+        }
+
+        main {
+            padding: 2rem;
+            text-align: center;
+            flex-grow: 1;
+        }
+
+        main h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        main img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin-bottom: 1rem;
+            object-fit: cover;
+            float: left;
+            margin-right: 1rem;
+        }
+
+        main p {
+            text-align: left;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        footer {
+            background-color: #282c34;
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: auto;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav a {
+                padding: 0.5rem;
+                width: 100%;
+                text-align: center;
+            }
+
+            main img {
+                float: none;
+                margin: 1rem auto;
+                display: block;
+            }
+
+            main p {
+                text-align: justify;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.2rem;
+            }
+
+            main h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -21,7 +155,9 @@
     <main>
         <h2>Welcome to My Academic Portfolio</h2>
         <img src="images/profile.jpg" alt="Profile Picture">
-        <p>I am doing a PhD in Astronomy from National Tsing Hua University (NTHU), Hsinchu, Taiwan. My advisor is Prof. Hsiang-Kuang Chang. I'm did a long term study of The Crab using Swift-BAT and found an anti-correlation between spectral Photon Index and Flux in Hard X-ray band. I've worked on the simulation of minimum detectable polarization, of custom made CubeSats models by our group, using MEGAlib. Currently, I focus on developing tools for COSI.</p>
+        <p>
+            I am doing a PhD in Astronomy from National Tsing Hua University (NTHU), Hsinchu, Taiwan. My advisor is Prof. Hsiang-Kuang Chang. I did a long-term study of The Crab using Swift-BAT and found an anti-correlation between spectral Photon Index and Flux in the Hard X-ray band. I've worked on the simulation of minimum detectable polarization of custom-made CubeSat models by our group, using MEGAlib. Currently, I focus on developing tools for COSI.
+        </p>
     </main>
     <footer>
         &copy; 2025 Abhi. All rights reserved.
