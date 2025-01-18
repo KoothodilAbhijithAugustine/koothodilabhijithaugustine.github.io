@@ -207,3 +207,16 @@ section p {
     background-color: white;
     margin: 6px 0;
 }
+
+/* Default theme (light) */
+body {
+  background-color: white;
+  color: black;
+}
+
+/* Dark theme */
+body[data-theme="dark"] {
+  background-color: black;
+  color: white;
+}
+
