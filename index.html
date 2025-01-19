@@ -3,269 +3,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abhi's Website...</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="assets/favicon.ico">
+    <title>Koothodi L Abhijith Augustine</title>
     <style>
-        /* Light Theme */
-        :root {
-            --background-color: white;
-            --text-color: black;
-            --header-bg: #f5f5f5;
-            --button-bg: #0066cc;
-            --button-text: white;
-            --button-hover-bg: #004b99;
-            --footer-bg: #282c34;
-            --footer-text: white;
-        }
-
-        /* Dark Theme (Default) */
-        [data-theme="dark"], :root {
-            --background-color: #121212;
-            --text-color: white;
-            --header-bg: #1e1e1e;
-            --button-bg: #444b54;
-            --button-text: white;
-            --button-hover-bg: #5a626e;
-            --footer-bg: #121212;
-            --footer-text: #f5f5f5;
-        }
-
-        /* General Styles */
+        /* General Reset */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: Arial, sans-serif;
+        }
+
+        /* Root styles */
+        :root {
+            --primary-color: #005f73;
+            --secondary-color: #0a9396;
+            --accent-color: #94d2bd;
+            --background-color: #e9d8a6;
+            --text-color: #001219;
+            --font-family: 'Arial', sans-serif;
         }
 
         body {
+            font-family: var(--font-family);
             background-color: var(--background-color);
             color: var(--text-color);
             line-height: 1.6;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
         }
 
         header {
-            background-color: var(--header-bg);
-            color: var(--text-color);
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2rem;
         }
 
         nav {
             display: flex;
-            gap: 1rem;
+            justify-content: center;
+            background-color: var(--secondary-color);
+            padding: 0.5rem 0;
         }
 
         nav a {
+            color: white;
             text-decoration: none;
-            color: var(--text-color);
-            padding: 0.5rem 1rem; /* Reduced padding to remove blue space */
-            transition: background-color 0.3s ease; /* Removed padding on hover */
+            margin: 0 1rem;
+            font-weight: bold;
+            transition: color 0.3s;
         }
 
         nav a:hover {
-            background-color: transparent; /* Removed hover effect color */
-            border-radius: 5px;
-        }
-
-        .theme-icon {
-            font-size: 1.5rem;
-            color: var(--text-color);
-            cursor: pointer;
-            transition: color 0.3s ease;
-        }
-
-        .theme-icon:hover {
-            color: var(--button-hover-bg);
+            color: var(--accent-color);
         }
 
         main {
             padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            flex-grow: 1;
-        }
-
-        main h2 {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-        }
-
-        main img {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 1rem;
-            margin-right: 1rem;
-        }
-
-        main p {
-            text-align: justify;
             max-width: 800px;
             margin: 0 auto;
+            text-align: center;
+        }
+
+        section {
+            margin-bottom: 2rem;
+        }
+
+        section h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
         }
 
         footer {
-            background-color: var(--footer-bg);
-            color: var(--footer-text);
             text-align: center;
-            padding: 1rem 0;
-            margin-top: auto;
+            padding: 1rem;
+            background-color: var(--primary-color);
+            color: white;
+            margin-top: 2rem;
         }
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            nav {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            nav a {
-                padding: 0.5rem;
-                width: 100%;
-                text-align: center;
-            }
-
-            main img {
-                margin: 1rem auto;
-                display: block;
-            }
-
-            main p {
-                text-align: justify;
-            }
-        }
-
-        @media (max-width: 480px) {
-            header h1 {
-                font-size: 1.2rem;
-            }
-
-            main h2 {
-                font-size: 1.5rem;
-            }
-        }
-        nav {
-            display: flex;
-            gap: 1rem;
-        }
-        
-        nav span {
-            cursor: pointer;
-            padding: 0.5rem 1rem;
-            transition: background-color 0.3s ease, color 0.3s ease;
-            border-radius: 5px;
-            color: var(--text-color);
-        }
-        
-        nav span:hover {
-            background-color: var(--button-hover-bg);
-            color: var(--button-text);
-        }
-        /* Position the theme switch icon in the top-right corner */
-        .theme-icon {
-            position: fixed;
-            top: 1rem;
-            right: 1rem;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--text-color);
-            transition: color 0.3s ease;
-            z-index: 1000;
-        }
-        
-        .theme-icon:hover {
-            color: var(--button-hover-bg);
-        }
-        
-        header {
-            background-color: var(--header-bg);
-            color: var(--text-color);
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: center; /* Center the content horizontally */
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        nav {
-            display: flex;
-            gap: 2rem; /* Adjust the spacing between items */
-        }
-
-        nav span {
-            cursor: pointer;
-            padding: 0.5rem 1rem;
-            transition: background-color 0.3s ease, color 0.3s ease;
-            border-radius: 5px;
-            color: var(--text-color);
-        }
-
-        nav span:hover {
-            background-color: var(--button-hover-bg);
-            color: var(--button-text);
+        footer a {
+            color: var(--accent-color);
+            text-decoration: none;
         }
     </style>
 </head>
-<body data-theme="dark">
-<header>
+<body>
+    <header>
+        <h1>Koothodil Abhijith Augustine</h1>
+        <p>Welcome to my personal website</p>
+    </header>
+
     <nav>
-        <a href="index"><span>Home</span></a>
-        <a href="projects"><span>Projects</span></a>
-        <a href="cv"><span>Curriculum Vitae</span></a>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="projects.html">Projects</a>
     </nav>
-    <span class="theme-icon" id="theme-icon">&#9728;</span>
-</header>       
+
     <main>
-        <h2>Welcome to Koothodil Abhijith "Abhi" Augustine's homepage!</h2>
-        <div style="display: flex; align-items: center; max-width: 800px; margin: 0 auto;">
-            <img src="images/profile.jpg" alt="Profile Picture">
-            <p>
-                I am doing a PhD in Astronomy from National Tsing Hua University (NTHU), Hsinchu, Taiwan.
-                My advisor is Prof. Hsiang-Kuang Chang. I did a long-term study of The Crab using Swift-BAT
-                and found an anti-correlation between spectral Photon Index and Flux in the Hard X-ray band. 
-                I've worked on the simulation of minimum detectable polarization of custom-made CubeSat
-                models made by our group at NTHU, using MEGAlib. Currently, I focus on developing tools for COSI.
-            </p>
-        </div>
+        <section>
+            <h2>About Me</h2>
+            <p>Hello! I'm Abhi, a passionate Astronomy PhD student aiming to become a researcher in high-energy astrophysics. This site showcases my work, projects, and interests.</p>
+        </section>
+
+        <section>
+            <h2>Current Projects</h2>
+            <p>I am working on several exciting research projects, including phase-resolved spectroscopy, X-ray analysis, and CubeSat simulations. Check out my <a href="projects.html">projects page</a> to learn more.</p>
+        </section>
     </main>
+
     <footer>
-        &copy; 2025 Abhi. All rights reserved.
+        <p>&copy; 2025 Koothodil Abhijith Augustine | <a href="https://github.com/koothodilabhijithaugustine">GitHub</a></p>
     </footer>
-    <script>
-        const themeIcon = document.getElementById('theme-icon');
-        const body = document.body;
-
-        // Check for saved theme preference in localStorage
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme) {
-            body.setAttribute('data-theme', savedTheme);
-            themeIcon.innerHTML = savedTheme === 'dark' ? '&#9728;' : '&#9790;';
-        }
-
-        // Toggle theme and save preference
-        themeIcon.addEventListener('click', () => {
-            const currentTheme = body.getAttribute('data-theme') || 'dark'; // Default to dark
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            body.setAttribute('data-theme', newTheme);
-            themeIcon.innerHTML = newTheme === 'dark' ? '&#9728;' : '&#9790;'; // Update icon
-            localStorage.setItem('theme', newTheme); // Save preference
-        });
-    </script>
 </body>
 </html>
