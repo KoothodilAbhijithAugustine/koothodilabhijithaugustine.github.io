@@ -66,12 +66,12 @@
         nav a {
             text-decoration: none;
             color: var(--text-color);
-            padding: 0.5rem 1rem;
-            transition: background-color 0.3s ease;
+            padding: 0.5rem 1rem; /* Reduced padding to remove blue space */
+            transition: background-color 0.3s ease; /* Removed padding on hover */
         }
 
         nav a:hover {
-            background-color: var(--button-hover-bg);
+            background-color: transparent; /* Removed hover effect color */
             border-radius: 5px;
         }
 
@@ -178,7 +178,6 @@
             color: var(--button-text);
         }
         /* Position the theme switch icon in the top-right corner */
-        /* Position the theme switch icon in the top-right corner */
         .theme-icon {
             position: fixed;
             top: 1rem;
@@ -193,56 +192,34 @@
         .theme-icon:hover {
             color: var(--button-hover-bg);
         }
+        
         header {
-    background-color: var(--header-bg);
-    color: var(--text-color);
-    padding: 1rem 2rem;
-    display: flex;
-    justify-content: center; /* Center the content horizontally */
-    align-items: center;
-    flex-wrap: wrap;
-    }
+            background-color: var(--header-bg);
+            color: var(--text-color);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: center; /* Center the content horizontally */
+            align-items: center;
+            flex-wrap: wrap;
+        }
 
-    nav {
-    display: flex;
-    gap: 2rem; /* Adjust the spacing between items */
-    }
+        nav {
+            display: flex;
+            gap: 2rem; /* Adjust the spacing between items */
+        }
 
-    nav span {
-    cursor: pointer;
-    padding: 0.5rem 1rem;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    border-radius: 5px;
-    color: var(--text-color);
-    }
+        nav span {
+            cursor: pointer;
+            padding: 0.5rem 1rem;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            border-radius: 5px;
+            color: var(--text-color);
+        }
 
-    nav span:hover {
-    background-color: var(--button-hover-bg);
-    color: var(--button-text);
-    }
-nav {
-    display: flex;
-    gap: 2rem;
-}
-
-nav a {
-    text-decoration: none; /* Remove underline from links */
-    color: var(--text-color); /* Make sure the text color is correct */
-}
-
-nav span {
-    cursor: pointer;
-    padding: 0.5rem 1rem;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    border-radius: 5px;
-}
-
-nav a:hover, nav span:hover {
-    background-color: var(--button-hover-bg);
-    color: var(--button-text);
-}
-
-
+        nav span:hover {
+            background-color: var(--button-hover-bg);
+            color: var(--button-text);
+        }
     </style>
 </head>
 <body data-theme="dark">
