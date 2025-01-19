@@ -214,22 +214,27 @@
         &copy; 2025 Abhi. All rights reserved.
     </footer>
     <script>
-        const themeToggleButton = document.getElementById('theme-toggle');
-        const body = document.body;
+    const themeToggleButton = document.getElementById('theme-toggle');
+    const body = document.body;
 
-        // Check for saved theme preference in localStorage
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme) {
-            body.setAttribute('data-theme', savedTheme);
-        }
+    // Check for saved theme preference in localStorage
+    const savedTheme = localStorage.getItem('theme');
 
-        // Toggle theme and save preference
-        themeToggleButton.addEventListener('click', () => {
-            const currentTheme = body.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            body.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-        });
+    // Set the theme to the saved preference or default to dark
+    if (savedTheme) {
+        body.setAttribute('data-theme', savedTheme);
+    } else {
+        body.setAttribute('data-theme', 'dark'); // Default to dark theme
+        localStorage.setItem('theme', 'dark');
+    }
+
+    // Toggle theme and save preference
+    themeToggleButton.addEventListener('click', () => {
+        const currentTheme = body.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        body.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+    });
     </script>
 </body>
 </html>
