@@ -12,9 +12,6 @@
             --background-color: white;
             --text-color: black;
             --header-bg: #f5f5f5;
-            --button-bg: #0066cc;
-            --button-text: white;
-            --button-hover-bg: #004b99;
             --footer-bg: #282c34;
             --footer-text: white;
         }
@@ -24,9 +21,6 @@
             --background-color: #121212;
             --text-color: white;
             --header-bg: #1e1e1e;
-            --button-bg: #444b54;
-            --button-text: white;
-            --button-hover-bg: #5a626e;
             --footer-bg: #121212;
             --footer-text: #f5f5f5;
         }
@@ -50,44 +44,19 @@
 
         header {
             background-color: var(--header-bg);
-            color: var(--text-color);
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        header h1 {
-            font-size: 1.5rem;
+            padding: 1rem;
+            text-align: center;
         }
 
         nav {
             display: flex;
+            justify-content: center;
             gap: 1rem;
         }
 
         nav a {
             text-decoration: none;
             color: var(--text-color);
-            padding: 0.5rem 1rem;
-            transition: background-color 0.3s ease;
-        }
-
-        nav a:hover {
-            background-color: var(--button-hover-bg);
-            border-radius: 5px;
-        }
-
-        .theme-icon {
-            font-size: 1.5rem;
-            color: var(--text-color);
-            cursor: pointer;
-            transition: color 0.3s ease;
-        }
-
-        .theme-icon:hover {
-            color: var(--button-hover-bg);
         }
 
         main {
@@ -110,7 +79,6 @@
             border-radius: 50%;
             object-fit: cover;
             margin-bottom: 1rem;
-            margin-right: 1rem;
         }
 
         main p {
@@ -124,44 +92,12 @@
             color: var(--footer-text);
             text-align: center;
             padding: 1rem 0;
-            margin-top: auto;
         }
 
         /* Responsive Design */
         @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            nav {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            nav a {
-                padding: 0.5rem;
-                width: 100%;
-                text-align: center;
-            }
-
-            main img {
-                margin: 1rem auto;
-                display: block;
-            }
-
             main p {
                 text-align: justify;
-            }
-        }
-
-        @media (max-width: 480px) {
-            header h1 {
-                font-size: 1.2rem;
-            }
-
-            main h2 {
-                font-size: 1.5rem;
             }
         }
     </style>
@@ -173,7 +109,6 @@
             <a href="projects">Projects</a>
             <a href="cv">Curriculum Vitae</a>
         </nav>
-        <span class="theme-icon" id="theme-icon">&#9728;</span>
     </header>
     <main>
         <h2>Welcome to My Academic Portfolio</h2>
@@ -199,15 +134,11 @@
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme) {
             body.setAttribute('data-theme', savedTheme);
-            themeIcon.innerHTML = savedTheme === 'dark' ? '&#9728;' : '&#9790;';
         }
 
         // Toggle theme and save preference
-        themeIcon.addEventListener('click', () => {
-            const currentTheme = body.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            body.setAttribute('data-theme', newTheme);
-            themeIcon.innerHTML = newTheme === 'dark' ? '&#9728;' : '&#9790;';
+        document.addEventListener('DOMContentLoaded', () => {
+            const newTheme = body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
             localStorage.setItem('theme', newTheme);
         });
     </script>
