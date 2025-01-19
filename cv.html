@@ -3,237 +3,175 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Curriculum Vitae - Abhi's Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="favicon.ico">
+    <meta name="description" content="Curriculum Vitae of Koothodi L Abhijith Augustine">
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+    <title>CV - Koothodi L Abhijith Augustine</title>
     <style>
-        /* Light Theme (Default) */
-        :root {
-            --background-color: white;
-            --text-color: black;
-            --header-bg: #f5f5f5;
-            --button-bg: #0066cc;
-            --button-text: white;
-            --button-hover-bg: #004b99;
-            --footer-bg: #282c34;
-            --footer-text: white;
-        }
-
-        /* Dark Theme */
-        [data-theme="dark"] {
-            --background-color: #121212;
-            --text-color: white;
-            --header-bg: #1e1e1e;
-            --button-bg: #444b54;
-            --button-text: white;
-            --button-hover-bg: #5a626e;
-            --footer-bg: #121212;
-            --footer-text: #f5f5f5;
-        }
-
-        /* General Styles */
+        /* General Reset */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: Arial, sans-serif;
+        }
+
+        /* Root styles */
+        :root {
+            --primary-color: #005f73;
+            --secondary-color: #0a9396;
+            --accent-color: #94d2bd;
+            --background-color: #e9d8a6;
+            --text-color: #001219;
+            --font-family: 'Arial', sans-serif;
         }
 
         body {
+            font-family: var(--font-family);
             background-color: var(--background-color);
             color: var(--text-color);
             line-height: 1.6;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
         }
 
         header {
-            background-color: var(--header-bg);
-            color: var(--text-color);
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
         }
 
         header h1 {
-            font-size: 1.5rem;
+            font-size: 2rem;
         }
 
         nav {
             display: flex;
-            gap: 1rem;
+            justify-content: center;
+            background-color: var(--secondary-color);
+            padding: 0.5rem 0;
         }
 
         nav a {
+            color: white;
             text-decoration: none;
-            color: var(--text-color);
-            padding: 0.5rem 1rem;
-            transition: background-color 0.3s ease;
+            margin: 0 1rem;
+            font-weight: bold;
+            transition: color 0.3s;
         }
 
         nav a:hover {
-            background-color: var(--button-hover-bg);
-            border-radius: 5px;
-        }
-
-        .theme-toggle {
-            background-color: var(--button-bg);
-            border: none;
-            padding: 0.5rem 1rem;
-            color: var(--button-text);
-            cursor: pointer;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
-
-        .theme-toggle:hover {
-            background-color: var(--button-hover-bg);
+            color: var(--accent-color);
         }
 
         main {
             padding: 2rem;
-            text-align: center;
-            flex-grow: 1;
-        }
-
-        main h2 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
+            max-width: 800px;
+            margin: 0 auto;
         }
 
         section {
             margin-bottom: 2rem;
         }
 
-        section h3 {
-            font-size: 1.5rem;
+        section h2 {
+            color: var(--primary-color);
             margin-bottom: 1rem;
         }
 
-        section p {
-            font-size: 1rem;
+        .cv-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .cv-item h3 {
+            color: var(--secondary-color);
             margin-bottom: 0.5rem;
-            text-align: left;
-            line-height: 1.8;
         }
 
-        .cv-button {
-            display: inline-block;
-            background-color: var(--button-bg);
-            color: var(--button-text);
-            text-decoration: none;
-            padding: 0.7rem 1.5rem;
-            border-radius: 5px;
-            font-size: 1rem;
-            font-weight: bold;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-        }
-
-        .cv-button:hover {
-            background-color: var(--button-hover-bg);
-            transform: translateY(-2px);
+        .cv-item p {
+            margin-bottom: 0.5rem;
         }
 
         footer {
-            background-color: var(--footer-bg);
-            color: var(--footer-text);
             text-align: center;
-            padding: 1rem 0;
-            margin-top: auto;
+            padding: 1rem;
+            background-color: var(--primary-color);
+            color: white;
+            margin-top: 2rem;
         }
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            nav {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            nav a {
-                padding: 0.5rem;
-                width: 100%;
-                text-align: center;
-            }
-
-            main h2 {
-                font-size: 1.8rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            header h1 {
-                font-size: 1.2rem;
-            }
-
-            main h2 {
-                font-size: 1.5rem;
-            }
-
-            section p {
-                font-size: 0.9rem;
-            }
-
-            .cv-button {
-                font-size: 0.9rem;
-                padding: 0.6rem 1.2rem;
-            }
+        footer a {
+            color: var(--accent-color);
+            text-decoration: none;
         }
     </style>
 </head>
 <body>
     <header>
-        <nav>
-            <a href="index">Home</a>
-            <a href="projects">Projects</a>
-            <a href="cv">Curriculum Vitae</a>
-        </nav>
-        <button class="theme-toggle" id="theme-toggle">Toggle Theme</button>
+        <h1>Curriculum Vitae</h1>
+        <p>Koothodi L Abhijith Augustine</p>
     </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="projects.html">Projects</a>
+        <a href="cv.html">CV</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
     <main>
-        <h2>Curriculum Vitae</h2>
         <section>
-            <h3>Education</h3>
-            <p><strong>Undergraduate:</strong> Bachelor’s Degree in Physics, University of Kerala, India</p>
-            <p><strong>Postgraduate:</strong> Master’s Degree in Physics, Sant Longowal Institute of Engineering and Technology, Punjab, India</p>
-            <p><strong>PhD:</strong> Ongoing PhD in Astronomy at National Tsing Hua University, Hsinchu, Taiwan.</p>
+            <h2>Education</h2>
+            <div class="cv-item">
+                <h3>PhD in Astronomy</h3>
+                <p>National Tsing Hua University, Taiwan (2023 - Present)</p>
+                <p>Research focus: High-energy astrophysics of pulsars and X-ray analysis.</p>
+            </div>
+            <div class="cv-item">
+                <h3>Master of Science in Physics</h3>
+                <p>University of Kerala, India (2021 - 2023)</p>
+                <p>Thesis: Investigation of X-ray sources in the hard X-ray regime.</p>
+            </div>
         </section>
+
         <section>
-            <a href="assets/CV.pdf" target="_blank" class="cv-button">Full CV (PDF)</a>
+            <h2>Experience</h2>
+            <div class="cv-item">
+                <h3>Research Assistant</h3>
+                <p>Space Sciences Laboratory, UC Berkeley (2024)</p>
+                <p>Contributions to the COSI telescope team, focusing on polarimetry and pulsar detection simulations.</p>
+            </div>
+            <div class="cv-item">
+                <h3>Graduate Teaching Assistant</h3>
+                <p>National Tsing Hua University, Taiwan (2023 - Present)</p>
+                <p>Assisted with undergraduate courses in observational astronomy and physics.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Skills</h2>
+            <ul>
+                <li>Data analysis using Python (Astropy, NumPy, Matplotlib, MEGAlib)</li>
+                <li>Spectral fitting and phase-resolved spectroscopy</li>
+                <li>Linux shell scripting and automation</li>
+                <li>Simulation of high-energy astrophysical systems</li>
+                <li>Technical writing and scientific communication</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Publications</h2>
+            <div class="cv-item">
+                <h3>Anti-correlation between Flux and Photon Index of Hard X-ray Emission from The Crab</h3>
+                <p>The Astrophysical Journal (In preparation)</p>
+            </div>
+            <div class="cv-item">
+                <h3>Photometric Observation of White Dwarfs BR Cam and V0409</h3>
+                <p>Manuscript in progress.</p>
+            </div>
         </section>
     </main>
+
     <footer>
-        &copy; 2025 Abhi. All rights reserved.
+        <p>&copy; 2025 Koothodi L Abhijith Augustine | <a href="https://github.com/koothodilabhijithaugustine">GitHub</a></p>
     </footer>
-    <script>
-    const themeToggleButton = document.getElementById('theme-toggle');
-    const body = document.body;
-
-    // Check for saved theme preference in localStorage
-    const savedTheme = localStorage.getItem('theme');
-
-    // Set the theme to the saved preference or default to dark
-    if (savedTheme) {
-        body.setAttribute('data-theme', savedTheme);
-    } else {
-        body.setAttribute('data-theme', 'dark'); // Default to dark theme
-        localStorage.setItem('theme', 'dark');
-    }
-
-    // Toggle theme and save preference
-    themeToggleButton.addEventListener('click', () => {
-        const currentTheme = body.getAttribute('data-theme');
-        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-        body.setAttribute('data-theme', newTheme);
-        localStorage.setItem('theme', newTheme);
-    });
-    </script>
 </body>
 </html>
