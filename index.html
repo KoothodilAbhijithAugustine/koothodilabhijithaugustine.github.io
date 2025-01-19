@@ -220,20 +220,40 @@
     background-color: var(--button-hover-bg);
     color: var(--button-text);
     }
+nav {
+    display: flex;
+    gap: 2rem;
+}
+
+nav a {
+    text-decoration: none; /* Remove underline from links */
+    color: var(--text-color); /* Make sure the text color is correct */
+}
+
+nav span {
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border-radius: 5px;
+}
+
+nav a:hover, nav span:hover {
+    background-color: var(--button-hover-bg);
+    color: var(--button-text);
+}
 
 
     </style>
 </head>
 <body data-theme="dark">
-    <header>
-        <nav>
-            <span>Home</span>
-            <span>Projects</span>
-            <span>Curriculum Vitae</span>
-        </nav>
-        <span class="theme-icon" id="theme-icon">&#9728;</span>
-    </header>
-       
+<header>
+    <nav>
+        <a href="index"><span>Home</span></a>
+        <a href="projects"><span>Projects</span></a>
+        <a href="cv"><span>Curriculum Vitae</span></a>
+    </nav>
+    <span class="theme-icon" id="theme-icon">&#9728;</span>
+</header>       
     <main>
         <h2>Welcome to Koothodil Abhijith "Abhi" Augustine's homepage!</h2>
         <div style="display: flex; align-items: center; max-width: 800px; margin: 0 auto;">
