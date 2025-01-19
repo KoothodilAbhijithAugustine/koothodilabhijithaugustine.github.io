@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abhi's Website</title>
+    <title>Abhi's Website...</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="assets/favicon.ico">
     <style>
@@ -58,10 +58,6 @@
             flex-wrap: wrap;
         }
 
-        header h1 {
-            font-size: 1.5rem;
-        }
-
         nav {
             display: flex;
             gap: 1rem;
@@ -70,7 +66,7 @@
         nav a {
             text-decoration: none;
             color: var(--text-color);
-            font-size: 24px;
+            padding: 0.5rem 1rem;
             transition: background-color 0.3s ease;
         }
 
@@ -79,19 +75,11 @@
             border-radius: 5px;
         }
 
-        /* Fix for no padding in navigation links */
-        nav a {
-            padding: 0;
-        }
-
         .theme-icon {
             font-size: 1.5rem;
             color: var(--text-color);
             cursor: pointer;
             transition: color 0.3s ease;
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
         }
 
         .theme-icon:hover {
@@ -172,19 +160,82 @@
                 font-size: 1.5rem;
             }
         }
+        nav {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        nav span {
+            cursor: pointer;
+            padding: 0.5rem 1rem;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            border-radius: 5px;
+            color: var(--text-color);
+        }
+        
+        nav span:hover {
+            background-color: var(--button-hover-bg);
+            color: var(--button-text);
+        }
+        /* Position the theme switch icon in the top-right corner */
+        /* Position the theme switch icon in the top-right corner */
+        .theme-icon {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-color);
+            transition: color 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .theme-icon:hover {
+            color: var(--button-hover-bg);
+        }
+        header {
+    background-color: var(--header-bg);
+    color: var(--text-color);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: center; /* Center the content horizontally */
+    align-items: center;
+    flex-wrap: wrap;
+    }
+
+    nav {
+    display: flex;
+    gap: 2rem; /* Adjust the spacing between items */
+    }
+
+    nav span {
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border-radius: 5px;
+    color: var(--text-color);
+    }
+
+    nav span:hover {
+    background-color: var(--button-hover-bg);
+    color: var(--button-text);
+    }
+
+
     </style>
 </head>
 <body data-theme="dark">
     <header>
         <nav>
-            <a href="index">Home</a>
-            <a href="projects">Projects</a>
-            <a href="cv">Curriculum Vitae</a>
+            <span>Home</span>
+            <span>Projects</span>
+            <span>Curriculum Vitae</span>
         </nav>
         <span class="theme-icon" id="theme-icon">&#9728;</span>
     </header>
+       
     <main>
-        <h2>Welcome to My Academic Portfolio</h2>
+        <h2>Welcome to Koothodil Abhijith "Abhi" Augustine's homepage!</h2>
         <div style="display: flex; align-items: center; max-width: 800px; margin: 0 auto;">
             <img src="images/profile.jpg" alt="Profile Picture">
             <p>
@@ -212,11 +263,11 @@
 
         // Toggle theme and save preference
         themeIcon.addEventListener('click', () => {
-            const currentTheme = body.getAttribute('data-theme');
+            const currentTheme = body.getAttribute('data-theme') || 'dark'; // Default to dark
             const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
             body.setAttribute('data-theme', newTheme);
-            themeIcon.innerHTML = newTheme === 'dark' ? '&#9728;' : '&#9790;';
-            localStorage.setItem('theme', newTheme);
+            themeIcon.innerHTML = newTheme === 'dark' ? '&#9728;' : '&#9790;'; // Update icon
+            localStorage.setItem('theme', newTheme); // Save preference
         });
     </script>
 </body>
