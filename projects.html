@@ -3,208 +3,174 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projects - Abhi's Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="favicon.ico">
-    <script defer src="script.js"></script>
+    <title>Projects - Koothodil Abhijith Augustine</title>
     <style>
-        /* General Styles */
+        /* General Reset */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: Arial, sans-serif;
+        }
+
+        /* Root styles */
+        :root {
+            --primary-color: #005f73;
+            --secondary-color: #0a9396;
+            --accent-color: #94d2bd;
+            --background-color: #e9d8a6;
+            --text-color: #001219;
+            --font-family: 'Arial', sans-serif;
         }
 
         body {
+            font-family: var(--font-family);
+            background-color: var(--background-color);
+            color: var(--text-color);
             line-height: 1.6;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
         }
 
         header {
-            background-color: #282c34;
+            background-color: var(--primary-color);
             color: white;
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
+            padding: 1rem 0;
+            text-align: center;
         }
 
         header h1 {
-            font-size: 1.5rem;
+            font-size: 2rem;
         }
 
         nav {
             display: flex;
-            gap: 1rem;
+            justify-content: center;
+            background-color: var(--secondary-color);
+            padding: 0.5rem 0;
         }
 
         nav a {
-            text-decoration: none;
             color: white;
-            padding: 0.5rem 1rem;
-            transition: background-color 0.3s ease;
+            text-decoration: none;
+            margin: 0 1rem;
+            font-weight: bold;
+            transition: color 0.3s;
         }
 
         nav a:hover {
-            background-color: #444b54;
-            border-radius: 5px;
-        }
-
-        #theme-toggle {
-            background-color: #444b54;
-            border: none;
-            padding: 0.5rem 1rem;
-            color: white;
-            cursor: pointer;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
-
-        #theme-toggle:hover {
-            background-color: #5a626e;
+            color: var(--accent-color);
         }
 
         main {
             padding: 2rem;
-            text-align: center;
-            flex-grow: 1;
-        }
-
-        main h2 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: left;
         }
 
         section {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        section h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .project {
+            margin-bottom: 1.5rem;
             padding: 1rem;
+            background-color: var(--accent-color);
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
-        article {
-            background: #f4f4f4;
-            border-radius: 8px;
-            padding: 1rem;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        .project h3 {
+            color: var(--text-color);
+            margin-bottom: 0.5rem;
         }
 
-        article:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        .project p {
+            margin-bottom: 0.5rem;
         }
 
-        article img {
-            width: 100%;
-            border-radius: 8px;
-            object-fit: cover;
-            max-height: 200px;
-        }
-
-        article h3 {
-            font-size: 1.25rem;
-            margin: 0.5rem 0;
-        }
-
-        article p {
-            font-size: 0.9rem;
-            margin: 0.5rem 0 1rem 0;
-            text-align: justify;
-        }
-
-        article a {
+        .project a {
+            color: var(--primary-color);
             text-decoration: none;
-            color: #0066cc;
             font-weight: bold;
-            transition: color 0.2s ease;
         }
 
-        article a:hover {
-            color: #004b99;
+        .project a:hover {
+            text-decoration: underline;
         }
 
         footer {
-            background-color: #282c34;
-            color: white;
             text-align: center;
-            padding: 1rem 0;
-            margin-top: auto;
+            padding: 1rem;
+            background-color: var(--primary-color);
+            color: white;
+            margin-top: 2rem;
         }
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            nav {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            nav a {
-                padding: 0.5rem;
-                width: 100%;
-                text-align: center;
-            }
-
-            main h2 {
-                font-size: 1.8rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            header h1 {
-                font-size: 1.2rem;
-            }
-
-            main h2 {
-                font-size: 1.5rem;
-            }
+        footer a {
+            color: var(--accent-color);
+            text-decoration: none;
         }
     </style>
 </head>
 <body>
-        <nav>
-            <a href="index">Home</a>
-            <a href="projects">Projects</a>
-            <a href="cv">Curriculum Vitae</a>
-        </nav>
-        <button id="theme-toggle">Toggle Theme</button>
+    <header>
+        <h1>Projects</h1>
+        <p>Explore my work and research endeavors</p>
     </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="projects.html">Projects</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
     <main>
-        <h2>Projects</h2>
         <section>
-            <article>
-                <h3>Anti-correlation in the Crab</h3>
-                <img src="images/project1.png" alt="Project 1 Thumbnail">
-                <p>Anti-correlation between Flux and Photon Index of Hard X-ray Emission from The Crab</p>
-                <a href="https://arxiv.org/abs/2408.00406">arxiv link</a>
-            </article>
-            <article>
-                <h3>Simulations to Detect Polarization of GRBs</h3>
-                <img src="images/project0.png" alt="Project 2 Thumbnail">
-                <p>I used MEGAlib to calculate the minimum detectable polarization (MDP) for CubeSat
-                    designed by our group at NTHU.</p>
-            </article>
-            <article>
-                <h3>COSI</h3>
-                <img src="images/project3.jpg" alt="Project 3 Thumbnail">
-                <p>The Compton Spectrometer and Imager is a soft gamma-ray survey telescope (0.2-5 MeV)
-                    designed to probe Galactic positrons, nucleosynthesis sites, gamma-ray polarization,
-                    and multi-messenger source counterparts.</p>
-                <a href="https://cosi.ssl.berkeley.edu/">COSI website</a>
-            </article>
+            <h2>Research Projects</h2>
+
+            <div class="project">
+                <h3>Phase-Resolved Spectroscopy of the Crab Pulsar</h3>
+                <p>Analyzing X-ray data to study phase-dependent variations in emission properties of the Crab pulsar using RXTE and Swift data.</p>
+                <a href="#">Learn more</a>
+            </div>
+
+            <div class="project">
+                <h3>Polarization Studies with COSI</h3>
+                <p>Simulating CubeSat missions to determine the minimum detectable polarization of gamma-ray sources using MEGAlib.</p>
+                <a href="#">Learn more</a>
+            </div>
+
+            <div class="project">
+                <h3>Optically-Thin Thermal Bremsstrahlung in Bright X-ray Sources</h3>
+                <p>Investigating Gaussian-like features in XRT data for potential thermal bremsstrahlung signatures in the Crab Nebula.</p>
+                <a href="#">Learn more</a>
+            </div>
+        </section>
+
+        <section>
+            <h2>Software and Tools</h2>
+
+            <div class="project">
+                <h3>Custom Bash Scripts for Barycentric Corrections</h3>
+                <p>Developed automation scripts to apply barycentric corrections to large datasets in astrophysics research.</p>
+                <a href="#">Learn more</a>
+            </div>
+
+            <div class="project">
+                <h3>Cosipy-Intro Repository Contributions</h3>
+                <p>Enhanced tools for COSI Data Challenge 2, focused on simulation and data analysis.</p>
+                <a href="#">Learn more</a>
+            </div>
         </section>
     </main>
+
     <footer>
-        &copy; 2025 Abhi. All rights reserved.
+        <p>&copy; 2025 Koothodil Abhijith Augustine | <a href="https://github.com/koothodilabhijithaugustine">GitHub</a></p>
     </footer>
 </body>
 </html>
