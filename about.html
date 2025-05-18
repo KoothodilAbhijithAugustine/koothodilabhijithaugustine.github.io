@@ -6,6 +6,7 @@
     <meta name="description" content="Curriculum Vitae of Koothodi L Abhijith Augustine">
     <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
     <title>CV - Koothodil Abhijith Augustine</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         /* General Reset */
         * {
@@ -16,93 +17,242 @@
 
         /* Root styles */
         :root {
-            --primary-color: #005f73;
-            --secondary-color: #0a9396;
-            --accent-color: #94d2bd;
-            --background-color: #e9d8a6;
-            --text-color: #001219;
-            --font-family: 'Arial', sans-serif;
+            --primary-color: #008080;
+            --secondary-color: #4a5568;
+            --accent-color: #f6e05e;
+            --background-color: #f7fafc;
+            --text-color: #2d3748;
+            --font-family: 'Inter', sans-serif;
+            --transition-duration: 0.3s;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --border-radius: 0.5rem;
+        }
+
+        /* Dark theme variables */
+        :root.dark-theme {
+            --primary-color: #48bb78;
+            --secondary-color: #a0aec0;
+            --accent-color: #f6e05e;
+            --background-color: #1a202c;
+            --text-color: #f5f5f5;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
         }
 
         body {
             font-family: var(--font-family);
             background-color: var(--background-color);
             color: var(--text-color);
-            line-height: 1.6;
+            line-height: 1.7;
+            transition: background-color var(--transition-duration), color var(--transition-duration);
         }
 
         header {
             background-color: var(--primary-color);
             color: white;
-            padding: 1rem 0;
+            padding: 2rem 0;
             text-align: center;
+            box-shadow: var(--box-shadow);
+            border-radius: 0;
         }
 
         header h1 {
-            font-size: 2rem;
+            font-size: 2.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1rem;
+            font-weight: 400;
         }
 
         nav {
             display: flex;
             justify-content: center;
             background-color: var(--secondary-color);
-            padding: 0.5rem 0;
+            padding: 1rem 0;
+            border-radius: 0;
+            flex-wrap: wrap;
         }
 
         nav a {
             color: white;
             text-decoration: none;
-            margin: 0 1rem;
-            font-weight: bold;
-            transition: color 0.3s;
+            margin: 0.75rem 1.5rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: color var(--transition-duration);
+            padding: 0.5rem 0;
         }
 
-        nav a:hover {
+        nav a:hover,
+        nav a.active {
             color: var(--accent-color);
         }
 
         main {
             padding: 2rem;
-            max-width: 800px;
+            max-width: 1000px;
             margin: 0 auto;
+            text-align: left;
         }
 
         section {
-            margin-bottom: 2rem;
+            margin-bottom: 3rem;
         }
 
         section h2 {
             color: var(--primary-color);
-            margin-bottom: 1rem;
-        }
-
-        .cv-item {
             margin-bottom: 1.5rem;
+            font-size: 1.85rem;
+            font-weight: 700;
+            text-align: left;
         }
 
-        .cv-item h3 {
-            color: var(--secondary-color);
-            margin-bottom: 0.5rem;
-        }
-
-        .cv-item p {
-            margin-bottom: 0.5rem;
+        section p {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--text-color);
+            text-align: left;
         }
 
         footer {
             text-align: center;
-            padding: 1rem;
-            background-color: var(--primary-color);
+            padding: 2rem;
+            background-color: var(--secondary-color);
             color: white;
-            margin-top: 2rem;
+            margin-top: 3rem;
+            border-top: 1px solid #e0e0e0;
+            border-radius: 0;
         }
 
         footer a {
             color: var(--accent-color);
             text-decoration: none;
+            font-weight: 600;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .cv-item {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            transition: transform var(--transition-duration), box-shadow var(--transition-duration);
+        }
+
+        .cv-item:hover {
+            transform: translateY(-0.5rem);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .cv-item h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+        }
+
+        .cv-item p {
+            margin-bottom: 1rem;
+            color: var(--text-color);
+            font-size: 1rem;
+        }
+
+        .cv-item a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color var(--transition-duration);
+        }
+
+        .cv-item a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .skills-section {
+            margin-top: 2rem;
+        }
+
+        .skills-section ul {
+            list-style: none;
+            padding-left: 0;
+            margin-left: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .skills-section li {
+            background-color: var(--accent-color);
+            color: var(--text-color);
+            padding: 0.5rem 1rem;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            nav a {
+                margin: 0.5rem 1rem;
+            }
+
+            main {
+                padding: 2rem;
+            }
+
+            section h2 {
+                font-size: 1.6rem;
+            }
+
+            .cv-item {
+                padding: 1rem;
+            }
+             .skills-section li{
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.75rem;
+            }
+
+            nav {
+                flex-direction: column;
+            }
+
+            nav a {
+                margin: 0.5rem;
+                text-align: center;
+            }
+
+            main {
+                padding: 1.5rem;
+            }
+
+            section h2 {
+                font-size: 1.4rem;
+            }
+            .cv-item {
+                padding: 1rem;
+            }
+            .skills-section li{
+                font-size: 0.8rem;
+            }
         }
     </style>
 </head>
+
 <body>
     <header>
         <h1>Curriculum Vitae</h1>
@@ -112,6 +262,7 @@
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
         <a href="projects.html">Projects</a>
+        <a href="publications.html">Publications</a>
     </nav>
 
     <main>
@@ -122,7 +273,7 @@
             <div class="cv-item">
                 <h3>PhD in Astronomy</h3>
                 <p>National Tsing Hua University, Taiwan (2023 - Present)</p>
-                <p>Research focus: High-energy astrophysical observsational study of pulsars and PWN.</p>
+                <p>Research focus: High-energy astrophysical observational study of pulsars and PWN.</p>
             </div>
             <div class="cv-item">
                 <h3>Master of Science in Physics</h3>
@@ -144,28 +295,60 @@
             </div>
         </section>
 
-        <section>
+        <section class = "skills-section">
             <h2>Skills</h2>
             <ul>
-                <li>Data analysis using Python (Astropy, NumPy, Matplotlib) and MEGAlib</li>
+                <li>Data analysis using Python (Astropy, NumPy, Matplotlib)</li>
+                <li>MEGAlib</li>
                 <li>Spectral fitting</li>
                 <li>Linux shell scripting and automation</li>
                 <li>Simulation of high-energy astrophysical systems</li>
                 <li>Technical writing and scientific communication</li>
+                <li>Xspec</li>
+                <li>Fermipy</li>
+                <li>Cosipy</li>
             </ul>
         </section>
-
-        <section>
-            <h2>Publications</h2>
-            <div class="cv-item">
-                <h3>Anti-correlation between Flux and Photon Index of Hard X-ray Emission from The Crab</h3>
-                <p>Published in The Astrophysical Journal </p><a href="https://iopscience.iop.org/article/10.3847/1538-4357/adb70e">Read it!</a>
-            </div>
-        </section>
     </main>
-
+    
     <footer>
-        <p>&copy; 2025 Koothodi L Abhijith Augustine | <a href="https://github.com/koothodilabhijithaugustine">GitHub</a></p>
+        <p>&copy; 2025 Koothodil Abhijith Augustine | <a href="https://github.com/koothodilabhijithaugustine">GitHub</a></p>
     </footer>
+
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const root = document.documentElement;
+
+        const DARK_MODE_ICON = "https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/moon.svg";
+        const LIGHT_MODE_ICON = "https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/sun.svg";
+
+        function toggleTheme() {
+            if (root.classList.contains('dark-theme')) {
+                root.classList.remove('dark-theme');
+                themeIcon.src = DARK_MODE_ICON;
+                themeIcon.alt = "Dark Mode";
+                localStorage.setItem('theme', 'light');
+            } else {
+                root.classList.add('dark-theme');
+                themeIcon.src = LIGHT_MODE_ICON;
+                themeIcon.alt = "Light Mode";
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        themeToggle.addEventListener('click', toggleTheme);
+
+        // Check local storage for saved theme
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            root.classList.add('dark-theme');
+            themeIcon.src = LIGHT_MODE_ICON;
+            themeIcon.alt = "Light Mode";
+        } else {
+            themeIcon.src = DARK_MODE_ICON;
+            themeIcon.alt = "Dark Mode";
+        }
+    </script>
 </body>
 </html>
