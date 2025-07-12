@@ -3,1535 +3,478 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Curriculum Vitae of Koothodi L Abhijith Augustine">
+    <meta name="description" content="Personal Portfolio of Koothodil Abhijith Augustine, Astronomy PhD Student">
+    <title>Koothodil Abhijith Augustine | High-Energy Astrophysics</title>
+    
+    <!-- Favicon -->
     <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
-    <title>CV - Koothodil Abhijith Augustine</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons (Lucide) -->
+    <script src="https://unpkg.com/lucide-react@0.294.0/dist/lucide-react.js"></script>
+
     <style>
-        /* General Reset */
-        * {
+        /* CSS Reset & Root Variables */
+        :root {
+            --primary-glow: #00aaff;
+            --secondary-glow: #ff00ff;
+            --background-start: #010409;
+            --background-end: #0a011a;
+            --glass-bg: rgba(10, 10, 20, 0.4);
+            --border-color: rgba(255, 255, 255, 0.1);
+            --text-primary: #e6f1ff;
+            --text-secondary: #a8b2d1;
+            --font-family: 'Poppins', sans-serif;
+            --transition-speed: 0.3s;
+        }
+
+        *, *::before, *::after {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        /* Root styles */
-        :root {
-            --primary-color: #008080;
-            --secondary-color: #4a5568;
-            --accent-color: #f6e05e;
-            --background-color: #f7fafc;
-            --text-color: #2d3748;
-            --font-family: 'Inter', sans-serif;
-            --transition-duration: 0.3s;
-            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            --border-radius: 0.5rem;
-        }
-
-        /* Dark theme variables */
-        :root.dark-theme {
-            --primary-color: #48bb78;
-            --secondary-color: #a0aec0;
-            --accent-color: #f6e05e;
-            --background-color: #1a202c;
-            --text-color: #f5f5f5;
-            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
             font-family: var(--font-family);
-            background-color: var(--background-color);
-            color: var(--text-color);
-            line-height: 1.7;
-            transition: background-color var(--transition-duration), color var(--transition-duration);
+            background: linear-gradient(135deg, var(--background-start), var(--background-end));
+            color: var(--text-primary);
+            overflow-x: hidden;
+        }
+        
+        /* Particle.js Background Canvas */
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
         }
 
-        header {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 2rem 0;
+        /* Header & Navigation */
+        .site-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1rem 5%;
+            background: rgba(1, 4, 9, 0.5);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            margin-left: 2rem;
+            font-weight: 600;
+            transition: color var(--transition-speed);
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary-glow);
+            text-shadow: 0 0 10px var(--primary-glow);
+        }
+
+        /* Main Container & Sections */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section {
+            padding-top: 120px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
             text-align: center;
-            box-shadow: var(--box-shadow);
-            border-radius: 0;
+            margin-bottom: 3rem;
+            color: var(--text-primary);
+            text-shadow: 0 0 15px var(--secondary-glow);
+        }
+        
+        /* Hero Section */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+            flex-direction: column;
         }
 
-        header h1 {
-            font-size: 2.25rem;
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
             margin-bottom: 0.5rem;
         }
 
-        header p {
-            font-size: 1rem;
-            font-weight: 400;
-        }
-
-        nav {
-            display: flex;
-            justify-content: center;
-            background-color: var(--secondary-color);
-            padding: 1rem 0;
-            border-radius: 0;
-            flex-wrap: wrap;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0.75rem 1.5rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            transition: color var(--transition-duration);
-            padding: 0.5rem 0;
-        }
-
-        nav a:hover,
-        nav a.active {
-            color: var(--accent-color);
-        }
-
-        main {
-            padding: 2rem;
-            max-width: 1000px;
-            margin: 0 auto;
-            text-align: left;
-        }
-
-        section {
-            margin-bottom: 3rem;
-        }
-
-        section h2 {
-            color: var(--primary-color);
-            margin-bottom: 1.5rem;
-            font-size: 1.85rem;
-            font-weight: 700;
-            text-align: left;
-        }
-
-        section p {
-            font-size: 1rem;
-            line-height: 1.7;
-            color: var(--text-color);
-            text-align: left;
-        }
-
-        footer {
-            text-align: center;
-            padding: 2rem;
-            background-color: var(--secondary-color);
-            color: white;
-            margin-top: 3rem;
-            border-top: 1px solid #e0e0e0;
-            border-radius: 0;
-        }
-
-        footer a {
-            color: var(--accent-color);
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
-        }
-
-        .cv-item {
-            margin-bottom: 2rem;
-            padding: 1.5rem;
-            background-color: white;
-            border-radius: var(--border-radius);
-            box-shadow: var(--box-shadow);
-            transition: transform var(--transition-duration), box-shadow var(--transition-duration);
-        }
-
-        .cv-item:hover {
-            transform: translateY(-0.5rem);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-        }
-
-        .cv-item h3 {
-            color: var(--primary-color);
-            margin-bottom: 1rem;
+        .hero p {
             font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
         }
-
-        .cv-item p {
-            margin-bottom: 1rem;
-            color: var(--text-color);
-            font-size: 1rem;
+        
+        .social-links a {
+            color: var(--text-secondary);
+            margin: 0 1rem;
+            font-size: 1.5rem;
+            transition: color var(--transition-speed), text-shadow var(--transition-speed);
         }
-
-        .cv-item a {
-            color: var(--primary-color);
+        
+        .social-links a:hover {
+            color: var(--primary-glow);
+            text-shadow: 0 0 10px var(--primary-glow);
+        }
+        
+        .cv-button {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 1rem 2rem;
+            background: transparent;
+            border: 2px solid var(--primary-glow);
+            border-radius: 50px;
+            color: var(--text-primary);
             text-decoration: none;
             font-weight: 600;
-            transition: color var(--transition-duration);
+            transition: background var(--transition-speed), box-shadow var(--transition-speed);
         }
-
-        .cv-item a:hover {
-            text-decoration: underline;
-            color: #0056b3;
-        }
-
-        .skills-section {
-            margin-top: 2rem;
-        }
-
-        .skills-section ul {
-            list-style: none;
-            padding-left: 0;
-            margin-left: 0;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .skills-section li {
-            background-color: var(--accent-color);
-            color: var(--text-color);
-            padding: 0.5rem 1rem;
-            border-radius: var(--border-radius);
-            font-weight: 600;
-            font-size: 1rem;
+        
+        .cv-button:hover {
+            background: var(--primary-glow);
+            box-shadow: 0 0 20px var(--primary-glow);
+            color: var(--background-start);
         }
 
 
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 2rem;
-            }
-
-            nav a {
-                margin: 0.5rem 1rem;
-            }
-
-            main {
-                padding: 2rem;
-            }
-
-            section h2 {
-                font-size: 1.6rem;
-            }
-
-            .cv-item {
-                padding: 1rem;
-            }
-             .skills-section li{
-                font-size: 0.9rem;
-            }
+        /* Glass Card Style */
+        .card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--border-color);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 25px rgba(0, 170, 255, 0.3), 0 0 25px rgba(255, 0, 255, 0.3);
         }
 
-        @media (max-width: 480px) {
-            header h1 {
-                font-size: 1.75rem;
-            }
-
-            nav {
-                flex-direction: column;
-            }
-
-            nav a {
-                margin: 0.5rem;
-                text-align: center;
-            }
-
-            main {
-                padding: 1.5rem;
-            }
-
-            section h2 {
-                font-size: 1.4rem;
-            }
-            .cv-item {
-                padding: 1rem;
-            }
-            .skills-section li{
-                font-size: 0.8rem;
-            }
-        }
-    </style>
-</head>
-
-<body>
-        <button id="theme-toggle">
-        <img id="theme-icon" src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/moon.svg" alt="Dark Mode" class="icon">
-    </button>
-    <header>
-        <h1>Koothodil Abhijith Augustine</h1>
-        <p>Welcome to my personal website</p>
-    </header>
-    <header>
-        <h1>Curriculum Vitae</h1>
-        <p>Koothodil Abhijith Augustine</p>
-    </header>
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="projects.html">Projects</a>
-        <a href="publications.html">Publications</a>
-    </nav>
-
-    <main>
-        <section>
-        <a href="assets/CV.pdf">Full curriculum vitae</a>
-            
-            <h2>Education</h2>
-            <div class="cv-item">
-                <h3>PhD in Astronomy</h3>
-                <p>National Tsing Hua University, Taiwan (2023 - Present)</p>
-                <p>Research focus: High-energy astrophysical observational study of pulsars and PWN.</p>
-            </div>
-            <div class="cv-item">
-                <h3>Master of Science in Physics</h3>
-                <p>Sant Longowal Institute of Engineering and Technology, India (2021 - 2023)</p>
-                <p>Thesis: Exploring the JWST PRIMER Catalog: An Investigation of Infrared Galaxies.</p>
-            </div>
-            <div class="cv-item">
-                <h3>Bachelor of Science in Physics</h3>
-                <p>University College, University of Kerala, India(2018 - 2021)</p>
-                <p>Thesis: Effect of aerosol absorption coefficient on solar flux.</p>
-            </div>
-        </section>
-
-        <section>
-            <h2>Experience</h2>
-            <div class="cv-item">
-                <h3>Graduate Research Assistant</h3>
-                <p>National Tsing Hua University, Taiwan (2023 - Present)</p>
-            </div>
-        </section>
-
-        <section class = "skills-section">
-            <h2>Skills</h2>
-            <ul>
-                <li>Data analysis using Python (Astropy, NumPy, Matplotlib)</li>
-                <li>MEGAlib</li>
-                <li>Spectral fitting</li>
-                <li>Linux shell scripting and automation</li>
-                <li>Simulation of high-energy astrophysical systems</li>
-                <li>Technical writing and scientific communication</li>
-                <li>Xspec</li>
-                <li>Fermipy</li>
-                <li>Cosipy</li>
-            </ul>
-        </section>
-    </main>
-
-    <footer>
-        <p>&copy; 2025 Koothodil Abhijith Augustine | <a href="https://github.com/koothodilabhijithaugustine">GitHub</a></p>
-    </footer>
-
-    <script>
-        const themeToggle = document.getElementById('theme-toggle');
-        const themeIcon = document.getElementById('theme-icon');
-        const root = document.documentElement;
-
-        const DARK_MODE_ICON = "https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/moon.svg";
-        const LIGHT_MODE_ICON = "https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/sun.svg";
-
-        function toggleTheme() {
-            if (root.classList.contains('dark-theme')) {
-                root.classList.remove('dark-theme');
-                themeIcon.src = DARK_MODE_ICON;
-                themeIcon.alt = "Dark Mode";
-                localStorage.setItem('theme', 'light');
-            } else {
-                root.classList.add('dark-theme');
-                themeIcon.src = LIGHT_MODE_ICON;
-                themeIcon.alt = "Light Mode";
-                localStorage.setItem('theme', 'dark');
-            }
-        }
-
-        themeToggle.addEventListener('click', toggleTheme);
-
-        // Check local storage for saved theme
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme === 'dark') {
-            root.classList.add('dark-theme');
-            themeIcon.src = LIGHT_MODE_ICON;
-            themeIcon.alt = "Light Mode";
-        } else {
-            themeIcon.src = DARK_MODE_ICON;
-            themeIcon.alt = "Dark Mode";
-        }
-    </script>
-</body>
-</html>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
-    <title>Koothodil Abhijith Augustine</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <style>
-        /* General Reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        /* Root styles */
-        :root {
-            --primary-color: #008080;  /* Teal - more modern */
-            --secondary-color: #4a5568; /* Dark Gray - for better contrast */
-            --accent-color: #f6e05e;    /* Yellow - subtle accent */
-            --background-color: #f7fafc; /* Very light gray */
-            --text-color: #2d3748;       /* Dark gray for text */
-            --font-family: 'Inter', sans-serif;
-            --transition-duration: 0.3s;
-            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            --border-radius: 0.5rem;
-        }
-
-        /* Dark theme variables */
-        :root.dark-theme {
-            --primary-color: #48bb78; /* A lighter shade of teal for dark mode*/
-            --secondary-color: #a0aec0;
-            --accent-color: #f6e05e;
-            --background-color: #1a202c; /* Very dark gray */
-            --text-color: #f5f5f5;       /* Off-white for text in dark mode */
-            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
-        }
-
-        body {
-            font-family: var(--font-family);
-            background-color: var(--background-color);
-            color: var(--text-color);
-            line-height: 1.7;
-            transition: background-color var(--transition-duration), color var(--transition-duration);
-        }
-
-        header {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 2rem 0;
-            text-align: center;
-            box-shadow: var(--box-shadow);
-            border-radius: 0;
-        }
-
-        header h1 {
-            font-size: 2.25rem; /* Slightly smaller heading for better fit on mobile */
+        .card h3 {
+            font-size: 1.5rem;
+            color: var(--text-primary);
             margin-bottom: 0.5rem;
         }
 
-        header p {
+        .card .institution {
             font-size: 1rem;
-            font-weight: 400;
-        }
-
-        nav {
-            display: flex;
-            justify-content: center;
-            background-color: var(--secondary-color);
-            padding: 1rem 0;
-            border-radius: 0;
-            flex-wrap: wrap; /* Make navigation wrap on smaller screens */
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0.75rem 1.5rem; /* Adjusted margin for wrapping */
+            color: var(--primary-glow);
             font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            transition: color var(--transition-duration);
-            padding: 0.5rem 0;
+            margin-bottom: 1rem;
         }
-
-        nav a:hover,
-        nav a.active {
-            color: var(--accent-color);
+        
+        .card p {
+            color: var(--text-secondary);
+            line-height: 1.6;
         }
-
-        main {
-            padding: 2rem;
-            max-width: 1000px; /* Increased max-width for larger screens */
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        section {
-            margin-bottom: 3rem;
-        }
-
-        section h2 {
-            color: var(--primary-color);
-            margin-bottom: 1.5rem;
-            font-size: 1.85rem; /* Slightly smaller heading for mobile */
-            font-weight: 700;
-            text-align: center;
-        }
-
-        section p {
-            font-size: 1rem;
-            line-height: 1.7;
-            color: var(--text-color);
-            text-align: left; /* Aligned left for better readability on larger screens */
-        }
-
-        footer {
-            text-align: center;
-            padding: 2rem;
-            background-color: var(--secondary-color);
-            color: white;
-            margin-top: 3rem;
-            border-top: 1px solid #e0e0e0;
-            border-radius: 0;
-        }
-
-        footer a {
-            color: var(--accent-color);
+        
+        .card a {
+            color: var(--secondary-glow);
             text-decoration: none;
             font-weight: 600;
+            transition: text-shadow var(--transition-speed);
         }
 
-        footer a:hover {
+        .card a:hover {
             text-decoration: underline;
+            text-shadow: 0 0 8px var(--secondary-glow);
         }
 
-        .profile-image {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            margin: 0 auto 2rem;
-            display: block;
-            border: 5px solid var(--primary-color);
-            box-shadow: var(--box-shadow);
-            transition: transform var(--transition-duration);
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .skill-category h3 {
+             color: var(--primary-glow);
+             margin-bottom: 1rem;
+        }
+        
+        .skills-grid ul {
+            list-style: none;
+        }
+        
+        .skills-grid li {
+            padding: 0.5rem 0;
+            color: var(--text-secondary);
         }
 
-        .profile-image:hover {
-            transform: scale(1.05);
-        }
-
+        /* Projects */
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjusted minmax for responsiveness */
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
-            margin-top: 2rem;
         }
 
-        .project-card {
-            background-color: white;
-            padding: 2rem;
-            border-radius: var(--border-radius);
-            box-shadow: var(--box-shadow);
-            transition: transform var(--transition-duration), box-shadow var(--transition-duration);
-            text-align: left;
+        /* Footer */
+        .site-footer {
+            text-align: center;
+            padding: 4rem 2rem 2rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
         }
-
-        .project-card:hover {
-            transform: translateY(-0.5rem);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-        }
-
-        .project-card h3 {
-            margin-bottom: 1rem;
-            color: var(--primary-color);
-            font-size: 1.25rem; /* Slightly smaller heading for project cards */
-        }
-
-        .project-card p {
-            margin-bottom: 1rem;
-            color: var(--text-color);
-            font-size: 1rem;
-        }
-
-        .project-link {
-            display: inline-block;
-            padding: 0.75rem 1.5rem;
-            background-color: var(--primary-color);
-            color: white;
-            text-decoration: none;
-            border-radius: var(--border-radius);
-            font-weight: 600;
-            transition: background-color var(--transition-duration);
-            margin-top: 1rem;
-        }
-
-        .project-link:hover {
-            background-color: #0056b3;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.75rem 1.5rem;
-            background-color: var(--primary-color);
-            color: white;
-            text-decoration: none;
-            border-radius: var(--border-radius);
-            font-weight: 600;
-            transition: background-color var(--transition-duration);
-            margin-top: 1rem;
-            cursor: pointer;
-            border: none;
-            font-size: 1rem;
-        }
-
-        .btn:hover {
-            background-color: #0056b3;
-        }
-
-        #theme-toggle {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1000;
-            padding: 0.5rem;
-            background-color: transparent;
-            border: none;
-            cursor: pointer;
-            font-size: 1.5rem;
-            color: var(--text-color);
-            transition: color 0.3s;
-        }
-
-        #theme-toggle:hover {
-            color: var(--accent-color);
-        }
-
-        .icon {
-            width: 1.5rem;
-            height: 1.5rem;
-        }
-
-        .hidden {
-            display: none;
-        }
-
-        .skills-section {
-            text-align: left;
-        }
-
-        .skills-section ul {
-            list-style: none;
-            padding-left: 0;
-            margin-left: 0;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .skills-section li {
-            background-color: var(--accent-color);
-            color: var(--text-color);
-            padding: 0.5rem 1rem;
-            border-radius: var(--border-radius);
-            font-weight: 600;
-            font-size: 0.9rem; /* Adjusted font size for skills */
-        }
-
-        .publications-section {
-            text-align: left;
-        }
-
-        .publication {
-            margin-bottom: 1.5rem;
-        }
-
-        .publication-title {
-            font-size: 1.1rem; /* Adjusted font size for publications */
-            font-weight: bold;
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
-        }
-
-        .publication-authors {
-            font-size: 0.9rem; /* Adjusted font size for publications */
-            color: var(--secondary-color);
-            margin-bottom: 0.5rem;
-        }
-
-        .publication-journal {
-            font-size: 0.9rem; /* Adjusted font size for publications */
-            font-style: italic;
-            color: var(--text-color);
-        }
-
-        .text-primary {
-            color: var(--primary-color);
-        }
-
-        /* Media Queries for Responsiveness */
-
-        /* For tablets (smaller screens) */
+        
+        /* Responsive Design */
         @media (max-width: 768px) {
-            header h1 {
-                font-size: 2rem;
-            }
-
-            nav a {
-                margin: 0.5rem 1rem;
-            }
-
-            main {
-                padding: 2rem;
-            }
-
-            section h2 {
-                font-size: 1.6rem;
-            }
-
-            .profile-image {
-                width: 120px;
-                height: 120px;
-            }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
+            .nav-logo { font-size: 1.2rem; }
+            .nav-links { display: none; /* Add a hamburger menu for this in a future update if needed */ }
+            .hero h1 { font-size: 2.5rem; }
+            .section-title { font-size: 2rem; }
         }
 
-        /* For phones (even smaller screens) */
-        @media (max-width: 480px) {
-            header h1 {
-                font-size: 1.75rem;
-            }
-
-            nav {
-                flex-direction: column;
-            }
-
-            nav a {
-                margin: 0.5rem;
-                text-align: center;
-            }
-
-            main {
-                padding: 1.5rem;
-            }
-
-            section h2 {
-                font-size: 1.4rem;
-            }
-
-            .profile-image {
-                width: 100px;
-                height: 100px;
-            }
-              .skills-section li{
-                font-size: 0.8rem;
-            }
-        }
     </style>
 </head>
+
 <body>
-    <button id="theme-toggle">
-        <img id="theme-icon" src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/moon.svg" alt="Dark Mode" class="icon">
-    </button>
-    <header>
-        <h1>Koothodil Abhijith Augustine</h1>
-        <p>Welcome to my personal website</p>
+    <!-- The animated background will be rendered here -->
+    <div id="particles-js"></div>
+
+    <header class="site-header">
+        <a href="#home" class="nav-logo">K.A. Augustine</a>
+        <nav class="nav-links">
+            <a href="#about" class="active">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#education">Education</a>
+            <a href="#skills">Skills</a>
+            <a href="#publications">Publications</a>
+        </nav>
     </header>
 
-    <nav>
-        <a href="index.html" class="active">Home</a>
-        <a href="about.html">About</a>
-        <a href="projects.html">Projects</a>
-        <a href="publications.html">Publications</a>
-    </nav>
+    <main class="container">
 
-    <main>
-        <section>
-            <img src="images/profile.jpg" alt="Profile Picture" class="profile-image">
-            <h2>About Me</h2>
-            <p>Hello! I'm Abhi, an Astronomy PhD student aiming to become a researcher in high-energy astrophysics. This site showcases my work, projects, and interests. I work with <a href="http://www.phys.nthu.edu.tw/~hkchang/">Prof. Hsiang-Kuang Chang</a> at the National Tsing Hua University in Taiwan.</p>
+        <!-- Home/Hero Section -->
+        <section id="home" class="hero section">
+            <h1 style="color: white;">Koothodil Abhijith Augustine</h1>
+            <p>PhD Student in High-Energy Astrophysics</p>
+            <div class="social-links">
+                <!-- Replace with your actual links -->
+                <a href="https://github.com/koothodilabhijithaugustine" target="_blank" title="GitHub">GitHub</a>
+                <a href="#" target="_blank" title="LinkedIn">LinkedIn</a>
+                <a href="#" target="_blank" title="ORCID">ORCID</a>
+            </div>
+             <a href="assets/CV.pdf" class="cv-button" target="_blank">Download Full CV</a>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section">
+            <h2 class="section-title">About Me</h2>
+            <div class="card">
+                <p>Hello! I'm Abhi, an Astronomy PhD student with a passion for uncovering the secrets of the universe through high-energy astrophysics. My work focuses on the observational study of pulsars and pulsar wind nebulae, aiming to contribute to our understanding of the most extreme objects in the cosmos.
+                <br><br>
+                I am currently pursuing my research at National Tsing Hua University, working with the esteemed <a href="http://www.phys.nthu.edu.tw/~hkchang/" target="_blank">Prof. Hsiang-Kuang Chang</a>. This site serves as a portfolio of my academic journey, projects, and publications.
+                </p>
+            </div>
         </section>
         
-        <section>
-            <h2>Current Projects</h2>
-            <p>I am working on several exciting research projects, including phase-resolved spectroscopy and long term evoultion of the Crab pulsar using Fermi LAT. Data analysis using Xspec. Check out my <a href="projects.html">projects page</a> to read more.</p>
-        </section>
-    </main>
-
-    <footer>
-        <p>&copy; 2025 Koothodil Abhijith Augustine | <a href="https://github.com/koothodilabhijithaugustine">GitHub</a></p>
-    </footer>
-
-    <script>
-        const themeToggle = document.getElementById('theme-toggle');
-        const themeIcon = document.getElementById('theme-icon');
-        const root = document.documentElement;
-
-        const DARK_MODE_ICON = "https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/moon.svg";
-        const LIGHT_MODE_ICON = "https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/sun.svg";
-
-        function toggleTheme() {
-            if (root.classList.contains('dark-theme')) {
-                root.classList.remove('dark-theme');
-                themeIcon.src = DARK_MODE_ICON;
-                themeIcon.alt = "Dark Mode";
-                localStorage.setItem('theme', 'light');
-            } else {
-                root.classList.add('dark-theme');
-                themeIcon.src = LIGHT_MODE_ICON;
-                themeIcon.alt = "Light Mode";
-                localStorage.setItem('theme', 'dark');
-            }
-        }
-
-        themeToggle.addEventListener('click', toggleTheme);
-
-        // Check local storage for saved theme
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme === 'dark') {
-            root.classList.add('dark-theme');
-            themeIcon.src = LIGHT_MODE_ICON;
-            themeIcon.alt = "Light Mode";
-        } else {
-            themeIcon.src = DARK_MODE_ICON;
-            themeIcon.alt = "Dark Mode";
-        }
-    </script>
-</body>
-</html>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
-    <title>Projects - Koothodil Abhijith Augustine</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <style>
-        /* General Reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        /* Root styles */
-        :root {
-            --primary-color: #008080;
-            --secondary-color: #4a5568;
-            --accent-color: #f6e05e;
-            --background-color: #f7fafc;
-            --text-color: #2d3748;
-            --font-family: 'Inter', sans-serif;
-            --transition-duration: 0.3s;
-            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            --border-radius: 0.5rem;
-        }
-
-        /* Dark theme variables */
-        :root.dark-theme {
-            --primary-color: #48bb78;
-            --secondary-color: #a0aec0;
-            --accent-color: #f6e05e;
-            --background-color: #1a202c;
-            --text-color: #f5f5f5;
-            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
-        }
-
-        body {
-            font-family: var(--font-family);
-            background-color: var(--background-color);
-            color: var(--text-color);
-            line-height: 1.7;
-            transition: background-color var(--transition-duration), color var(--transition-duration);
-        }
-
-        header {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 2rem 0;
-            text-align: center;
-            box-shadow: var(--box-shadow);
-            border-radius: 0;
-        }
-
-        header h1 {
-            font-size: 2.25rem;
-            margin-bottom: 0.5rem;
-        }
-
-        header p {
-            font-size: 1rem;
-            font-weight: 400;
-        }
-
-        nav {
-            display: flex;
-            justify-content: center;
-            background-color: var(--secondary-color);
-            padding: 1rem 0;
-            border-radius: 0;
-            flex-wrap: wrap;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0.75rem 1.5rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            transition: color var(--transition-duration);
-            padding: 0.5rem 0;
-        }
-
-        nav a:hover,
-        nav a.active {
-            color: var(--accent-color);
-        }
-
-        main {
-            padding: 2rem;
-            max-width: 1000px;
-            margin: 0 auto;
-            text-align: left;
-        }
-
-        section {
-            margin-bottom: 3rem;
-        }
-
-        section h2 {
-            color: var(--primary-color);
-            margin-bottom: 1.5rem;
-            font-size: 1.85rem;
-            font-weight: 700;
-            text-align: center;
-        }
-
-        section p {
-            font-size: 1rem;
-            line-height: 1.7;
-            color: var(--text-color);
-            text-align: left;
-        }
-
-        footer {
-            text-align: center;
-            padding: 2rem;
-            background-color: var(--secondary-color);
-            color: white;
-            margin-top: 3rem;
-            border-top: 1px solid #e0e0e0;
-            border-radius: 0;
-        }
-
-        footer a {
-            color: var(--accent-color);
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .project-card {
-            background-color: white;
-            padding: 2rem;
-            border-radius: var(--border-radius);
-            box-shadow: var(--box-shadow);
-            transition: transform var(--transition-duration), box-shadow var(--transition-duration);
-            text-align: left;
-        }
-
-        .project-card h3 {
-            margin-bottom: 1rem;
-            color: var(--primary-color);
-            font-size: 1.25rem;
-        }
-
-        .project-card p {
-            margin-bottom: 1rem;
-            color: var(--text-color);
-            font-size: 1rem;
-        }
-
-        .project-card a {
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: 600;
-            transition: color var(--transition-duration);
-        }
-
-        .project-card a:hover {
-            text-decoration: underline;
-            color: #0056b3;
-        }
-
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 2rem;
-            }
-
-            nav a {
-                margin: 0.5rem 1rem;
-            }
-
-            main {
-                padding: 2rem;
-            }
-
-            section h2 {
-                font-size: 1.6rem;
-            }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-            .project-card{
-                padding: 1.5rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            header h1 {
-                font-size: 1.75rem;
-            }
-
-            nav {
-                flex-direction: column;
-            }
-
-            nav a {
-                margin: 0.5rem;
-                text-align: center;
-            }
-
-            main {
-                padding: 1.5rem;
-            }
-
-            section h2 {
-                font-size: 1.4rem;
-            }
-             .project-card {
-                padding: 1rem;
-            }
-        }
-    </style>
-</head>
-<body>
-    <header>
-        <h1>Projects</h1>
-        <p>Explore my work and research endeavors</p>
-    </header>
-
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="projects.html" class = "active">Projects</a>
-        <a href="publications.html">Publications</a>
-    </nav>
-    
-    <main>
-        <section>
-            <h2>Research Projects</h2>
+        <!-- Projects Section -->
+        <section id="projects" class="section">
+            <h2 class="section-title">Projects</h2>
             <div class="projects-grid">
-                <div class="project-card">
-                    <h3>Anti-correlation between Flux and Photon Index of Hard X-ray Emission from The Crab</h3>
-                    <p>Using Swift Burst Alert Telescope (BAT) event-mode data during Gamma Ray Burst (GRB) occurrences, we conducted spectral analysis for the Crab system. From 38 good observations, which spans over a period of 18 years from 2006 to 2023, we found that the Crab's X-ray flux does not only flicker, but also significantly anti-correlates to its spectral power-law photon index. Since emission contribution of the Crab pulsar in this energy range is small, this anti-correlation is mainly about the emission of the Crab nebula. We suggest that this anti-correlation is an observational supporting evidence for the long-standing notion that the nebula emission is due to synchrotron radiation of shocked pulsar winds in the nebula.</p>
-                    <a href="https://iopscience.iop.org/article/10.3847/1538-4357/adb70e">Read more.</a>
+                <div class="card">
+                    <h3>Anti-correlation in Hard X-ray Emission from The Crab</h3>
+                    <p>Conducted spectral analysis of the Crab system using 18 years of Swift BAT data. Our findings show a significant anti-correlation between the X-ray flux and the spectral power-law photon index, providing strong observational evidence for the synchrotron radiation model in the Crab nebula.</p>
+                    <a href="https://iopscience.iop.org/article/10.3847/1538-4357/adb70e" target="_blank">View Publication</a>
                 </div>
-
-                <div class="project-card">
-                    <h3>COSI</h3>
-                    <p>When COSI launches in 2027, we plan on analysing the soft gamma ray pulsar population in COSI's energy band. I'm also part of some of the working groups such as data analysis and Science group.</p>
-                    <a href="https://cosi.ssl.berkeley.edu/">Read more</a>
+                <div class="card">
+                    <h3>COSI Telescope Science</h3>
+                    <p>Member of the science and data analysis working groups for the upcoming COSI space telescope. Our goal is to analyze the soft gamma-ray pulsar population upon its launch in 2027, leveraging COSI's unique capabilities in this energy band.</p>
+                    <a href="https://cosi.ssl.berkeley.edu/" target="_blank">Learn about COSI</a>
                 </div>
-
-                <div class="project-card">
-                    <h3>Polarization Studies with custom made cubesats.</h3>
-                    <p>Simulating sources (Cosima) and analyzing the Compton data (Revan) to determine the minimum detectable polarization (MDP, Mimrec) using MEGAlib.</p>
-                    <a href="https://megalibtoolkit.com/home.html">Read more</a>
+                <div class="card">
+                    <h3>CubeSat Polarization Studies</h3>
+                    <p>Currently simulating high-energy sources (Cosima), analyzing Compton data (Revan), and determining the minimum detectable polarization (MDP) using MEGAlib. This research contributes to developing polarization measurement techniques for custom-built CubeSats.</p>
+                    <a href="https://megalibtoolkit.com/home.html" target="_blank">MEGAlib Toolkit</a>
                 </div>
             </div>
         </section>
+
+        <!-- Education Section -->
+        <section id="education" class="section">
+            <h2 class="section-title">Education & Experience</h2>
+             <div class="card">
+                <h3>Graduate Research Assistant</h3>
+                <p class="institution">National Tsing Hua University, Taiwan (2023 - Present)</p>
+            </div>
+            <div class="card">
+                <h3>PhD in Astronomy</h3>
+                <p class="institution">National Tsing Hua University, Taiwan (2023 - Present)</p>
+                <p><strong>Research Focus:</strong> High-energy astrophysical observational study of pulsars and Pulsar Wind Nebulae (PWN).</p>
+            </div>
+            <div class="card">
+                <h3>Master of Science in Physics</h3>
+                <p class="institution">Sant Longowal Institute of Engineering and Technology, India (2021 - 2023)</p>
+                <p><strong>Thesis:</strong> Exploring the JWST PRIMER Catalog: An Investigation of Infrared Galaxies.</p>
+            </div>
+            <div class="card">
+                <h3>Bachelor of Science in Physics</h3>
+                <p class="institution">University College, University of Kerala, India (2018 - 2021)</p>
+                <p><strong>Thesis:</strong> Effect of aerosol absorption coefficient on solar flux.</p>
+            </div>
+        </section>
+        
+        <!-- Skills Section -->
+        <section id="skills" class="section">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="card">
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3>Astrophysical Analysis</h3>
+                        <ul>
+                            <li>- Xspec, Fermipy, Cosipy</li>
+                            <li>- Spectral & Timing Analysis</li>
+                            <li>- Phase-Resolved Spectroscopy</li>
+                            <li>- Simulation with MEGAlib (Cosima)</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Programming & Data Science</h3>
+                        <ul>
+                            <li>- Python (Astropy, NumPy, Pandas)</li>
+                            <li>- Data Visualization (Matplotlib)</li>
+                            <li>- Linux Shell Scripting & Automation</li>
+                            <li>- Version Control (Git & GitHub)</li>
+                        </ul>
+                    </div>
+                     <div class="skill-category">
+                        <h3>General</h3>
+                        <ul>
+                            <li>- High-Energy Astrophysical Systems</li>
+                            <li>- Scientific & Technical Writing</li>
+                            <li>- Research Communication</li>
+                            <li>- Collaborative Research</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Publications Section -->
+        <section id="publications" class="section">
+            <h2 class="section-title">Publications</h2>
+            <div class="card">
+                <h3>Anti-correlation between Flux and Photon Index of Hard X-ray Emission from The Crab</h3>
+                <p class="institution">The Astrophysical Journal (ApJ) - 2025</p>
+                <p>Authors: Hsiang-Kuang Chang, Koothodil L. A. Augustine, Yi-Hao Su</p>
+                <a href="https://iopscience.iop.org/article/10.3847/1538-4357/adb70e" target="_blank">Read at ApJ</a>
+            </div>
+            <!-- Add more publication cards here as needed -->
+        </section>
+
     </main>
 
-    <footer>
-        <p>&copy; 2025 Koothodil Abhijith Augustine | <a href="https://github.com/koothodilabhijithaugustine">GitHub</a></p>
+    <footer class="site-footer">
+        <p>© 2025 Koothodil Abhijith Augustine. Designed with passion for the cosmos.</p>
     </footer>
 
+    <!-- JavaScript for Particle Animation and Scroll Effects -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
-        const themeToggle = document.getElementById('theme-toggle');
-        const themeIcon = document.getElementById('theme-icon');
-        const root = document.documentElement;
-
-        const DARK_MODE_ICON = "https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/moon.svg";
-        const LIGHT_MODE_ICON = "https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/sun.svg";
-
-        function toggleTheme() {
-            if (root.classList.contains('dark-theme')) {
-                root.classList.remove('dark-theme');
-                themeIcon.src = DARK_MODE_ICON;
-                themeIcon.alt = "Dark Mode";
-                localStorage.setItem('theme', 'light');
-            } else {
-                root.classList.add('dark-theme');
-                themeIcon.src = LIGHT_MODE_ICON;
-                themeIcon.alt = "Light Mode";
-                localStorage.setItem('theme', 'dark');
-            }
-        }
-
-        themeToggle.addEventListener('click', toggleTheme);
-
-        // Check local storage for saved theme
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme === 'dark') {
-            root.classList.add('dark-theme');
-            themeIcon.src = LIGHT_MODE_ICON;
-            themeIcon.alt = "Light Mode";
-        } else {
-            themeIcon.src = DARK_MODE_ICON;
-            themeIcon.alt = "Dark Mode";
-        }
-    </script>
-</body>
-</html>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
-    <title>Koothodil Abhijith Augustine</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <style>
-        /* General Reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        /* Root styles */
-        :root {
-            --primary-color: #008080;  /* Teal - more modern */
-            --secondary-color: #4a5568; /* Dark Gray - for better contrast */
-            --accent-color: #f6e05e;    /* Yellow - subtle accent */
-            --background-color: #f7fafc; /* Very light gray */
-            --text-color: #2d3748;       /* Dark gray for text */
-            --font-family: 'Inter', sans-serif;
-            --transition-duration: 0.3s;
-            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            --border-radius: 0.5rem;
-        }
-
-        /* Dark theme variables */
-        :root.dark-theme {
-            --primary-color: #48bb78; /* A lighter shade of teal for dark mode*/
-            --secondary-color: #a0aec0;
-            --accent-color: #f6e05e;
-            --background-color: #1a202c; /* Very dark gray */
-            --text-color: #f5f5f5;       /* Off-white for text in dark mode */
-            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
-        }
-
-        body {
-            font-family: var(--font-family);
-            background-color: var(--background-color);
-            color: var(--text-color);
-            line-height: 1.7;
-            transition: background-color var(--transition-duration), color var(--transition-duration);
-        }
-
-        header {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 2rem 0;
-            text-align: center;
-            box-shadow: var(--box-shadow);
-            border-radius: 0;
-        }
-
-        header h1 {
-            font-size: 2.25rem; /* Slightly smaller heading for better fit on mobile */
-            margin-bottom: 0.5rem;
-        }
-
-        header p {
-            font-size: 1rem;
-            font-weight: 400;
-        }
-
-        nav {
-            display: flex;
-            justify-content: center;
-            background-color: var(--secondary-color);
-            padding: 1rem 0;
-            border-radius: 0;
-            flex-wrap: wrap; /* Make navigation wrap on smaller screens */
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0.75rem 1.5rem; /* Adjusted margin for wrapping */
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            transition: color var(--transition-duration);
-            padding: 0.5rem 0;
-        }
-
-        nav a:hover,
-        nav a.active {
-            color: var(--accent-color);
-        }
-
-        main {
-            padding: 2rem;
-            max-width: 1000px; /* Increased max-width for larger screens */
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        section {
-            margin-bottom: 3rem;
-        }
-
-        section h2 {
-            color: var(--primary-color);
-            margin-bottom: 1.5rem;
-            font-size: 1.85rem; /* Slightly smaller heading for mobile */
-            font-weight: 700;
-            text-align: center;
-        }
-
-        section p {
-            font-size: 1rem;
-            line-height: 1.7;
-            color: var(--text-color);
-            text-align: left; /* Aligned left for better readability on larger screens */
-        }
-
-        footer {
-            text-align: center;
-            padding: 2rem;
-            background-color: var(--secondary-color);
-            color: white;
-            margin-top: 3rem;
-            border-top: 1px solid #e0e0e0;
-            border-radius: 0;
-        }
-
-        footer a {
-            color: var(--accent-color);
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
-        }
-
-        .profile-image {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            margin: 0 auto 2rem;
-            display: block;
-            border: 5px solid var(--primary-color);
-            box-shadow: var(--box-shadow);
-            transition: transform var(--transition-duration);
-        }
-
-        .profile-image:hover {
-            transform: scale(1.05);
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjusted minmax for responsiveness */
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .project-card {
-            background-color: white;
-            padding: 2rem;
-            border-radius: var(--border-radius);
-            box-shadow: var(--box-shadow);
-            transition: transform var(--transition-duration), box-shadow var(--transition-duration);
-            text-align: left;
-        }
-
-        .project-card:hover {
-            transform: translateY(-0.5rem);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-        }
-
-        .project-card h3 {
-            margin-bottom: 1rem;
-            color: var(--primary-color);
-            font-size: 1.25rem; /* Slightly smaller heading for project cards */
-        }
-
-        .project-card p {
-            margin-bottom: 1rem;
-            color: var(--text-color);
-            font-size: 1rem;
-        }
-
-        .project-link {
-            display: inline-block;
-            padding: 0.75rem 1.5rem;
-            background-color: var(--primary-color);
-            color: white;
-            text-decoration: none;
-            border-radius: var(--border-radius);
-            font-weight: 600;
-            transition: background-color var(--transition-duration);
-            margin-top: 1rem;
-        }
-
-        .project-link:hover {
-            background-color: #0056b3;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.75rem 1.5rem;
-            background-color: var(--primary-color);
-            color: white;
-            text-decoration: none;
-            border-radius: var(--border-radius);
-            font-weight: 600;
-            transition: background-color var(--transition-duration);
-            margin-top: 1rem;
-            cursor: pointer;
-            border: none;
-            font-size: 1rem;
-        }
-
-        .btn:hover {
-            background-color: #0056b3;
-        }
-
-        #theme-toggle {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1000;
-            padding: 0.5rem;
-            background-color: transparent;
-            border: none;
-            cursor: pointer;
-            font-size: 1.5rem;
-            color: var(--text-color);
-            transition: color 0.3s;
-        }
-
-        #theme-toggle:hover {
-            color: var(--accent-color);
-        }
-
-        .icon {
-            width: 1.5rem;
-            height: 1.5rem;
-        }
-
-        .hidden {
-            display: none;
-        }
-
-        .skills-section {
-            text-align: left;
-        }
-
-        .skills-section ul {
-            list-style: none;
-            padding-left: 0;
-            margin-left: 0;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .skills-section li {
-            background-color: var(--accent-color);
-            color: var(--text-color);
-            padding: 0.5rem 1rem;
-            border-radius: var(--border-radius);
-            font-weight: 600;
-            font-size: 0.9rem; /* Adjusted font size for skills */
-        }
-
-        .publications-section {
-            text-align: left;
-        }
-
-        .publication {
-            margin-bottom: 1.5rem;
-        }
-
-        .publication-title {
-            font-size: 1.1rem; /* Adjusted font size for publications */
-            font-weight: bold;
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
-        }
-
-        .publication-authors {
-            font-size: 0.9rem; /* Adjusted font size for publications */
-            color: var(--secondary-color);
-            margin-bottom: 0.5rem;
-        }
-
-        .publication-journal {
-            font-size: 0.9rem; /* Adjusted font size for publications */
-            font-style: italic;
-            color: var(--text-color);
-        }
-
-        .text-primary {
-            color: var(--primary-color);
-        }
-
-        /* Media Queries for Responsiveness */
-
-        /* For tablets (smaller screens) */
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 2rem;
-            }
-
-            nav a {
-                margin: 0.5rem 1rem;
-            }
-
-            main {
-                padding: 2rem;
-            }
-
-            section h2 {
-                font-size: 1.6rem;
-            }
-
-            .profile-image {
-                width: 120px;
-                height: 120px;
-            }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* For phones (even smaller screens) */
-        @media (max-width: 480px) {
-            header h1 {
-                font-size: 1.75rem;
-            }
-
-            nav {
-                flex-direction: column;
-            }
-
-            nav a {
-                margin: 0.5rem;
-                text-align: center;
-            }
-
-            main {
-                padding: 1.5rem;
-            }
-
-            section h2 {
-                font-size: 1.4rem;
-            }
-
-            .profile-image {
-                width: 100px;
-                height: 100px;
-            }
-              .skills-section li{
-                font-size: 0.8rem;
-            }
-        }
-    </style>
-</head>
-<body>
-    <button id="theme-toggle">
-        <img id="theme-icon" src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/moon.svg" alt="Dark Mode" class="icon">
-    </button>
-    <header>
-        <h1>Koothodil Abhijith Augustine</h1>
-        <p>Welcome to my personal website</p>
-    </header>
-
-    <nav>
-        <a href="index.html" >Home</a>
-        <a href="about.html">About</a>
-        <a href="projects.html">Projects</a>
-        <a href="publications.html" class="active">Publications</a>
-    </nav>
-
-    <section>
-            <h2>Publications</h2>
-            <div class="cv-item">
-                <h3>Anti-correlation between Flux and Photon Index of Hard X-ray Emission from The Crab</h3>
-                <p>ApJ 2025 </p><a href="https://iopscience.iop.org/article/10.3847/1538-4357/adb70e">Read it!</a>
-            </div>
-        </section>
-
-    <footer>
-        <p>&copy; 2025 Koothodil Abhijith Augustine | <a href="https://github.com/koothodilabhijithaugustine">GitHub</a></p>
-    </footer>
-
-    <script>
-        const themeToggle = document.getElementById('theme-toggle');
-        const themeIcon = document.getElementById('theme-icon');
-        const root = document.documentElement;
-
-        const DARK_MODE_ICON = "https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/moon.svg";
-        const LIGHT_MODE_ICON = "https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/sun.svg";
-
-        function toggleTheme() {
-            if (root.classList.contains('dark-theme')) {
-                root.classList.remove('dark-theme');
-                themeIcon.src = DARK_MODE_ICON;
-                themeIcon.alt = "Dark Mode";
-                localStorage.setItem('theme', 'light');
-            } else {
-                root.classList.add('dark-theme');
-                themeIcon.src = LIGHT_MODE_ICON;
-                themeIcon.alt = "Light Mode";
-                localStorage.setItem('theme', 'dark');
-            }
-        }
-
-        themeToggle.addEventListener('click', toggleTheme);
-
-        // Check local storage for saved theme
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme === 'dark') {
-            root.classList.add('dark-theme');
-            themeIcon.src = LIGHT_MODE_ICON;
-            themeIcon.alt = "Light Mode";
-        } else {
-            themeIcon.src = DARK_MODE_ICON;
-            themeIcon.alt = "Dark Mode";
-        }
+        // --- Particle.js Background Animation ---
+        particlesJS("particles-js", {
+            "particles": {
+                "number": { "value": 100, "density": { "enable": true, "value_area": 800 } },
+                "color": { "value": "#ffffff" },
+                "shape": { "type": "circle", "stroke": { "width": 0, "color": "#000000" } },
+                "opacity": { "value": 0.5, "random": true, "anim": { "enable": true, "speed": 1, "opacity_min": 0.1, "sync": false } },
+                "size": { "value": 2, "random": true, "anim": { "enable": false } },
+                "line_linked": { "enable": false },
+                "move": { "enable": true, "speed": 0.5, "direction": "none", "random": true, "straight": false, "out_mode": "out", "bounce": false }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": { "onhover": { "enable": true, "mode": "bubble" }, "onclick": { "enable": false }, "resize": true },
+                "modes": { "bubble": { "distance": 150, "size": 3, "duration": 2, "opacity": 1, "speed": 3 } }
+            },
+            "retina_detect": true
+        });
+
+        // --- Fade-in on Scroll Animation ---
+        const sections = document.querySelectorAll('.section');
+        const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    // Optional: unobserve after it's visible
+                    // observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+        
+        // --- Active Navigation Link on Scroll ---
+        const navLinks = document.querySelectorAll('.nav-links a');
+        const allSections = document.querySelectorAll('main .section');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            allSections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 150) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').substring(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+        
     </script>
 </body>
 </html>
