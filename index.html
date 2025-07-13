@@ -13,38 +13,22 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Icons (Lucide) -->
-    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 
     <style>
         /* CSS Reset & Root Variables */
         :root {
             --primary-glow: #00aaff;
             --secondary-glow: #ff00ff;
+            --linkedin-blue: #0A66C2;
+            --orcid-green: #A6CE39;
             --background-start: #010409;
             --background-end: #0a011a;
-            --glass-bg: rgba(20, 20, 30, 0.5);
+            --glass-bg: rgba(10, 10, 20, 0.4);
             --border-color: rgba(255, 255, 255, 0.1);
             --text-primary: #e6f1ff;
             --text-secondary: #a8b2d1;
-            --header-bg: rgba(1, 4, 9, 0.6);
-            --card-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
             --font-family: 'Poppins', sans-serif;
             --transition-speed: 0.3s;
-        }
-
-        body.light-theme {
-            --primary-glow: #0077cc;
-            --secondary-glow: #d900ff;
-            --background-start: #f0f4f9;
-            --background-end: #e6eaf2;
-            --glass-bg: rgba(255, 255, 255, 0.6);
-            --border-color: rgba(0, 0, 0, 0.1);
-            --text-primary: #1c2a4e;
-            --text-secondary: #5a647e;
-            --header-bg: rgba(255, 255, 255, 0.7);
-            --card-shadow: 0 8px 24px 0 rgba(0, 0, 0, 0.1);
         }
 
         *, *::before, *::after {
@@ -60,20 +44,18 @@
         body {
             font-family: var(--font-family);
             background: linear-gradient(135deg, var(--background-start), var(--background-end));
-            background-attachment: fixed;
             color: var(--text-primary);
             overflow-x: hidden;
-            transition: background 0.5s, color var(--transition-speed);
         }
         
-        #interactive-background {
+        /* Particle.js Background Canvas */
+        #particles-js {
             position: fixed;
             width: 100%;
             height: 100%;
             top: 0;
             left: 0;
             z-index: -1;
-            cursor: crosshair;
         }
 
         /* Header & Navigation */
@@ -83,7 +65,7 @@
             left: 0;
             width: 100%;
             padding: 1rem 5%;
-            background: var(--header-bg);
+            background: rgba(1, 4, 9, 0.5);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             display: flex;
@@ -91,7 +73,6 @@
             align-items: center;
             z-index: 1000;
             border-bottom: 1px solid var(--border-color);
-            transition: background var(--transition-speed), border-color var(--transition-speed);
         }
 
         .nav-logo {
@@ -99,17 +80,6 @@
             font-weight: 700;
             color: var(--text-primary);
             text-decoration: none;
-            z-index: 1001;
-        }
-        
-        .header-controls {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .nav-links {
-            display: flex;
         }
 
         .nav-links a {
@@ -123,35 +93,6 @@
         .nav-links a:hover, .nav-links a.active {
             color: var(--primary-glow);
             text-shadow: 0 0 10px var(--primary-glow);
-        }
-        
-        /* Theme Toggle */
-        .theme-switch {
-            background: none;
-            border: none;
-            color: var(--text-secondary);
-            cursor: pointer;
-            padding: 0.5rem;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .theme-switch:hover {
-            color: var(--primary-glow);
-        }
-        .theme-switch .moon { display: none; }
-        body.light-theme .theme-switch .sun { display: none; }
-        body.light-theme .theme-switch .moon { display: block; }
-
-        /* Hamburger Menu */
-        .hamburger {
-            display: none;
-            cursor: pointer;
-            z-index: 1001;
-            background: none;
-            border: none;
-            color: var(--text-primary);
         }
 
         /* Main Container & Sections */
@@ -202,58 +143,58 @@
             font-size: 1.25rem;
             color: var(--text-secondary);
             margin-bottom: 2rem;
-            max-width: 600px;
         }
         
         .social-links {
             display: flex;
-            gap: 2rem;
+            gap: 1.5rem;
             align-items: center;
-            justify-content: center;
         }
         
         .social-links a {
             color: var(--text-secondary);
-            transition: color var(--transition-speed), text-shadow var(--transition-speed), transform var(--transition-speed);
-            display: inline-block;
+            transition: color var(--transition-speed), transform var(--transition-speed);
         }
         
         .social-links a:hover {
-            color: var(--primary-glow);
-            text-shadow: 0 0 10px var(--primary-glow);
-            transform: translateY(-3px) scale(1.1);
-        }
-
-        .social-links a svg, .social-links a i {
-            width: 28px;
-            height: 28px;
-            vertical-align: middle;
+            transform: scale(1.1);
         }
         
-        /* CV Button (relocated and smaller) */
-        .view-cv-container {
-            text-align: center;
-            margin-top: 1rem;
+        .social-icon {
+            width: 28px;
+            height: 28px;
+            fill: currentColor;
         }
 
+        .social-links a:hover .github-icon {
+            color: white;
+        }
+        .social-links a:hover .linkedin-icon {
+            color: var(--linkedin-blue);
+            filter: drop-shadow(0 0 8px var(--linkedin-blue));
+        }
+        .social-links a:hover .orcid-icon {
+            color: var(--orcid-green);
+            filter: drop-shadow(0 0 8px var(--orcid-green));
+        }
+        
         .cv-button {
             display: inline-block;
-            padding: 0.75rem 1.5rem; /* Smaller */
+            margin-top: 2rem; /* Adjusted margin */
+            padding: 1rem 2rem;
             background: transparent;
             border: 2px solid var(--primary-glow);
             border-radius: 50px;
             color: var(--text-primary);
             text-decoration: none;
             font-weight: 600;
-            font-size: 0.9rem; /* Smaller */
-            transition: background var(--transition-speed), box-shadow var(--transition-speed), color var(--transition-speed);
+            transition: background var(--transition-speed), box-shadow var(--transition-speed);
         }
         
         .cv-button:hover {
             background: var(--primary-glow);
             box-shadow: 0 0 20px var(--primary-glow);
             color: var(--background-start);
-            border-color: var(--primary-glow);
         }
 
         /* Glass Card Style */
@@ -265,22 +206,19 @@
             border-radius: 15px;
             padding: 2rem;
             margin-bottom: 2rem;
-            transition: transform var(--transition-speed), box-shadow var(--transition-speed), background var(--transition-speed), border var(--transition-speed);
-            box-shadow: var(--card-shadow);
+            transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
         }
         
         .card:hover {
             transform: translateY(-5px);
             box-shadow: 0 0 25px rgba(0, 170, 255, 0.3), 0 0 25px rgba(255, 0, 255, 0.3);
         }
-        body.light-theme .card:hover {
-            box-shadow: 0 0 25px rgba(0, 119, 204, 0.2), 0 0 25px rgba(217, 0, 255, 0.2);
-        }
 
         .card h3 {
             font-size: 1.5rem;
             color: var(--text-primary);
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
         }
 
         .card .institution {
@@ -290,7 +228,7 @@
             margin-bottom: 1rem;
         }
         
-        .card p, .card ul {
+        .card p {
             color: var(--text-secondary);
             line-height: 1.6;
         }
@@ -307,52 +245,6 @@
             text-shadow: 0 0 8px var(--secondary-glow);
         }
 
-        /* Publication Card Specifics */
-        .pub-controls {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-top: 1rem;
-        }
-        .pub-toggle-btn {
-            background-color: transparent;
-            border: 1px solid var(--border-color);
-            color: var(--text-secondary);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            cursor: pointer;
-            transition: background-color var(--transition-speed), color var(--transition-speed), border-color var(--transition-speed);
-            font-size: 0.8rem;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            text-decoration: none; /* For the link styled as a button */
-        }
-        .pub-toggle-btn:hover, .pub-toggle-btn.active {
-            background-color: var(--primary-glow);
-            color: var(--background-start) !important;
-            border-color: var(--primary-glow);
-        }
-        .pub-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease-out, padding 0.4s ease-out, margin 0.4s ease-out;
-            padding: 0 1rem;
-            margin-top: 0;
-            border-left: 2px solid var(--primary-glow);
-        }
-        .pub-content.visible {
-            max-height: 1000px; /* Large enough to fit content */
-            padding: 1rem;
-            margin-top: 1rem;
-        }
-        .pub-content p {
-            font-size: 0.9rem;
-        }
-        .pub-content .authors {
-            font-style: italic;
-        }
-
         /* Skills */
         .skills-grid {
             display: grid;
@@ -363,16 +255,15 @@
         .skill-category h3 {
              color: var(--primary-glow);
              margin-bottom: 1rem;
-             font-size: 1.2rem;
         }
         
         .skills-grid ul {
             list-style: none;
-            padding-left: 0;
         }
         
         .skills-grid li {
             padding: 0.5rem 0;
+            color: var(--text-secondary);
         }
 
         /* Projects */
@@ -391,103 +282,77 @@
         }
         
         /* Responsive Design */
-        @media (max-width: 992px) {
-            .nav-links {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                width: 60%;
-                max-width: 300px;
-                height: 100vh;
-                background: var(--header-bg);
-                flex-direction: column;
-                padding: 6rem 2rem 2rem;
-                transition: right 0.4s ease-in-out;
-                backdrop-filter: blur(15px);
-                -webkit-backdrop-filter: blur(15px);
-            }
-            .nav-links.is-open {
-                right: 0;
-            }
-            .nav-links a {
-                font-size: 1.2rem;
-                margin: 1rem 0;
-            }
-            .hamburger {
-                display: block;
-            }
-            .hero h1 { font-size: 2.8rem; }
-            .section-title { font-size: 2.2rem; }
-        }
-
         @media (max-width: 768px) {
+            .site-header { padding: 1rem 5%; justify-content: center; }
+            .nav-logo { display: none; }
+            .nav-links a { margin: 0 1rem; }
             .hero h1 { font-size: 2.5rem; }
             .section-title { font-size: 2rem; }
         }
+         @media (max-width: 480px) {
+            .nav-links a { font-size: 0.9rem; margin: 0 0.5rem; }
+         }
 
     </style>
 </head>
 
 <body>
-    <canvas id="interactive-background"></canvas>
+    <!-- The animated background will be rendered here -->
+    <div id="particles-js"></div>
 
     <header class="site-header">
         <a href="#home" class="nav-logo">K.A. Augustine</a>
-        <div class="header-controls">
-            <nav class="nav-links">
-                <a href="#about" class="active">About</a>
-                <a href="#projects">Projects</a>
-                <a href="#education">Education</a>
-                <a href="#skills">Skills</a>
-                <a href="#publications">Publications</a>
-            </nav>
-            <button class="theme-switch" aria-label="Toggle light/dark theme">
-                <i class="sun" data-lucide="sun"></i>
-                <i class="moon" data-lucide="moon"></i>
-            </button>
-            <button class="hamburger" aria-label="Open menu">
-                <i data-lucide="menu"></i>
-            </button>
-        </div>
+        <nav class="nav-links">
+            <a href="#about" class="active">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#education">Education</a>
+            <a href="#skills">Skills</a>
+            <a href="#publications">Publications</a>
+        </nav>
     </header>
 
     <main class="container">
 
+        <!-- Home/Hero Section -->
         <section id="home" class="hero section">
             <h1>Koothodil Abhijith Augustine</h1>
             <p>PhD Student in High-Energy Astrophysics</p>
             <div class="social-links">
-                <a href="https://www.linkedin.com/in/koothodilabhijithaugustine/" target="_blank" title="LinkedIn" aria-label="LinkedIn Profile">
-                    <i data-lucide="linkedin"></i>
+                <!-- GitHub Icon -->
+                <a href="https://github.com/koothodilabhijithaugustine" target="_blank" title="GitHub">
+                    <svg class="social-icon github-icon" viewBox="0 0 16 16">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.67.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
                 </a>
-                <a href="https://scholar.google.com/citations?user=shW26_UAAAAJ&hl=en" target="_blank" title="Google Scholar" aria-label="Google Scholar Profile">
-                    <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="fill: currentColor;"><title>Google Scholar</title><path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10.93c4.107 0 7.442 3.333 7.442 7.442C19.442 22.48 16.107 24 12 24c-4.107 0-7.442-1.52-7.442-5.625 0-4.11 3.335-7.443 7.442-7.443z"/></svg>
+                <!-- LinkedIn Icon (Custom SVG) -->
+                <a href="#" target="_blank" title="LinkedIn">
+                    <svg class="social-icon linkedin-icon" viewBox="0 0 32 32">
+                        <path d="M26,3H6C4.3,3,3,4.3,3,6v20c0,1.7,1.3,3,3,3h20c1.7,0,3-1.3,3-3V6C29,4.3,27.7,3,26,3z M12.5,25h-4V13h4V25z M10.5,11.3 c-1.3,0-2.2-0.9-2.2-2.1c0-1.2,0.9-2.1,2.2-2.1c1.3,0,2.2,0.9,2.2,2.1C12.7,10.4,11.8,11.3,10.5,11.3z M25,25h-4v-6.3 c0-1.5-0.5-2.5-1.9-2.5c-1,0-1.6,0.7-1.9,1.4C17.1,17.8,17,18.5,17,19.1V25h-4v-8.7c0,0,0.1-1.7,0.1-1.7h3.9v1.9 c0.6-0.9,1.6-2.2,3.5-2.2c2.6,0,4.4,1.7,4.4,5.4V25z"/>
+                    </svg>
                 </a>
-                <a href="https://orcid.org/0009-0008-7888-7584" target="_blank" title="ORCID" aria-label="ORCID Profile">
-                    <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="fill: currentColor;"><title>ORCID</title><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM8.402 19.438V8.562h2.116v10.876H8.402zM9.46 7.51c-.656 0-1.19-.534-1.19-1.19s.534-1.19 1.19-1.19c.656 0 1.19.534 1.19 1.19s-.534 1.19-1.19 1.19zM18.03 19.438h-2.116v-5.45c0-1.375-.99-2.362-2.232-2.362-1.242 0-2.116.89-2.116 2.232v5.58h-2.116V11.5h2.116v1.123c.36-.6 1.19-1.375 2.232-1.375 2.362 0 3.128 1.562 3.128 3.6v4.59z"/></svg>
-                </a>
-                <a href="https://github.com/koothodilabhijithaugustine" target="_blank" title="GitHub" aria-label="GitHub Profile">
-                    <i data-lucide="github"></i>
-                </a>
-                <a href="https://www.instagram.com/koothodil_abhijith_augustine/" target="_blank" title="Instagram" aria-label="Instagram Profile">
-                    <i data-lucide="instagram"></i>
+                <!-- ORCID Icon (Custom SVG) -->
+                <a href="#" target="_blank" title="ORCID">
+                    <svg class="social-icon orcid-icon" viewBox="0 0 32 32">
+                        <path d="M16,3C8.8,3,3,8.8,3,16s5.8,13,13,13s13-5.8,13-13S23.2,3,16,3z M21.3,23.3h-2.9V14c0-0.7,0-1.8-0.1-2.9 c-0.5-0.1-1.1-0.2-1.6-0.2c-2.3,0-3.9,1.4-3.9,4v8.3H9.9V9h2.9v1.4c0.7-1.1,2.1-1.8,3.6-1.8c0.6,0,1.2,0.1,1.9,0.3V23.3z"/>
+                        <path d="M12.9,11.7c-1.3,0-2.2-0.9-2.2-2.1c0-1.2,0.9-2.1,2.2-2.1s2.2,0.9,2.2,2.1C15.1,10.8,14.2,11.7,12.9,11.7z"/>
+                    </svg>
                 </a>
             </div>
+             <a href="assets/CV.pdf" class="cv-button" target="_blank">Download Full CV</a>
         </section>
 
+        <!-- About Section -->
         <section id="about" class="section">
             <h2 class="section-title">About Me</h2>
             <div class="card">
-                <p>I am an Astronomy PhD student specializing in high-energy astrophysics. My research involves analyzing observational data to understand the physics of extreme cosmic objects, particularly pulsars and their surrounding nebulae.
+                <p>Hello! I'm Abhi, an Astronomy PhD student with a passion for uncovering the secrets of the universe through high-energy astrophysics. My work focuses on the observational study of pulsars and pulsar wind nebulae, aiming to contribute to our understanding of the most extreme objects in the cosmos.
                 <br><br>
-                I am currently pursuing my research at National Tsing Hua University under the supervision of <a href="http://www.phys.nthu.edu.tw/~hkchang/" target="_blank">Prof. Hsiang-Kuang Chang</a>. This site serves as a portfolio of my academic journey, projects, and publications.
+                I am currently pursuing my research at National Tsing Hua University, working with the esteemed <a href="http://www.phys.nthu.edu.tw/~hkchang/" target="_blank">Prof. Hsiang-Kuang Chang</a>. This site serves as a portfolio of my academic journey, projects, and publications.
                 </p>
-            </div>
-            <div class="view-cv-container">
-                <a href="assets/CV.pdf" class="cv-button" target="_blank">View CV</a>
             </div>
         </section>
         
+        <!-- Projects Section -->
         <section id="projects" class="section">
             <h2 class="section-title">Projects</h2>
             <div class="projects-grid">
@@ -498,28 +363,28 @@
                 </div>
                 <div class="card">
                     <h3>COSI Telescope Science</h3>
-                    <p>As a member of the science and data analysis working groups for the upcoming COSI space telescope, my part in the team is to analyze the soft gamma-ray pulsar population upon its launch in 2027, leveraging COSI's unique capabilities in this energy band.</p>
+                    <p>Member of the science and data analysis working groups for the upcoming COSI space telescope. Our goal is to analyze the soft gamma-ray pulsar population upon its launch in 2027, leveraging COSI's unique capabilities in this energy band.</p>
                     <a href="https://cosi.ssl.berkeley.edu/" target="_blank">Learn about COSI</a>
                 </div>
                 <div class="card">
                     <h3>CubeSat Polarization Studies</h3>
-                    <p>Had an opportunity to simulate high-energy sources (cosima), analyze Compton data (revan), and determine the minimum detectable polarization (MDP) using MEGAlib. This research contributes to developing polarization measurement techniques for custom-built CubeSats.</p>
+                    <p>Currently simulating high-energy sources (Cosima), analyzing Compton data (Revan), and determining the minimum detectable polarization (MDP) using MEGAlib. This research contributes to developing polarization measurement techniques for custom-built CubeSats.</p>
                     <a href="https://megalibtoolkit.com/home.html" target="_blank">MEGAlib Toolkit</a>
-                </div>
-                <div class="card">
-                    <h3>GUI for BTO Detector Testing</h3>
-                    <p>The Background and Transient Observer (BTO) is a student-led experiment on the COSI satellite. I am developing a graphical user interface (GUI) to streamline data acquisition (e.g., counts/keV, temperature, voltage) and real-time analysis, such as light-curve generation, during the calibration of its NaI(Tl) detectors.</p>
-                    <a href="https://cosi.ssl.berkeley.edu/bto/" target="_blank">About BTO</a>
                 </div>
             </div>
         </section>
 
+        <!-- Education Section -->
         <section id="education" class="section">
-            <h2 class="section-title">Education</h2>
+            <h2 class="section-title">Education & Experience</h2>
+             <div class="card">
+                <h3>Graduate Research Assistant</h3>
+                <p class="institution">National Tsing Hua University, Taiwan (2023 - Present)</p>
+            </div>
             <div class="card">
                 <h3>PhD in Astronomy</h3>
                 <p class="institution">National Tsing Hua University, Taiwan (2023 - Present)</p>
-                <p><strong>Research Focus:</strong> High-energy astrophysical observational study of the Crab pulsar and Pulsar Wind Nebula.</p>
+                <p><strong>Research Focus:</strong> High-energy astrophysical observational study of pulsars and Pulsar Wind Nebulae (PWN).</p>
             </div>
             <div class="card">
                 <h3>Master of Science in Physics</h3>
@@ -533,6 +398,7 @@
             </div>
         </section>
         
+        <!-- Skills Section -->
         <section id="skills" class="section">
             <h2 class="section-title">Technical Skills</h2>
             <div class="card">
@@ -540,284 +406,110 @@
                     <div class="skill-category">
                         <h3>Astrophysical Analysis</h3>
                         <ul>
-                            <li>Xspec, Fermipy, Cosipy</li>
-                            <li>Spectral & Timing Analysis</li>
-                            <li>Phase-Resolved Spectroscopy</li>
-                            <li>Simulation with MEGAlib (cosima, revan, mimrec)</li>
+                            <li>- Xspec, Fermipy, Cosipy</li>
+                            <li>- Spectral & Timing Analysis</li>
+                            <li>- Phase-Resolved Spectroscopy</li>
+                            <li>- Simulation with MEGAlib (Cosima)</li>
                         </ul>
                     </div>
                     <div class="skill-category">
                         <h3>Programming & Data Science</h3>
                         <ul>
-                            <li>Python (Astropy, NumPy, Pandas)</li>
-                            <li>Data Visualization (Matplotlib, Seaborn)</li>
-                            <li>Linux Shell Scripting & Automation</li>
+                            <li>- Python (Astropy, NumPy, Pandas)</li>
+                            <li>- Data Visualization (Matplotlib)</li>
+                            <li>- Linux Shell Scripting & Automation</li>
+                            <li>- Version Control (Git & GitHub)</li>
+                        </ul>
+                    </div>
+                     <div class="skill-category">
+                        <h3>General</h3>
+                        <ul>
+                            <li>- High-Energy Astrophysical Systems</li>
+                            <li>- Scientific & Technical Writing</li>
+                            <li>- Research Communication</li>
+                            <li>- Collaborative Research</li>
                         </ul>
                     </div>
                 </div>
             </div>
         </section>
         
+        <!-- Publications Section -->
         <section id="publications" class="section">
             <h2 class="section-title">Publications</h2>
-             <div class="card">
-                <h3>Investigating the Anti-Correlation between Photon Index and Flux of the Crab using RXTE and NuSTAR</h3>
-                <p class="institution">arXiv e-prints (Jun 2025)</p>
-                <div class="pub-controls">
-                    <button class="pub-toggle-btn" data-target="pub-1-abstract">Read Abstract</button>
-                    <button class="pub-toggle-btn" data-target="pub-1-authors">View Authors</button>
-                    <a href="https://arxiv.org/abs/2506.17899" target="_blank" class="pub-toggle-btn">Read at arXiv</a>
-                </div>
-                <div id="pub-1-abstract" class="pub-content">
-                    <p>We present a systematic study of the recently reported anti-correlation between X-ray flux and photon index (Γ) in the Crab Nebula, using archival RXTE/PCA (3 - 50 keV), RXTE/HEXTE (20 - 100 keV), and NuSTAR (3 - 78 keV) observations. Spectra were extracted in soft (3 - 10 keV) and hard bands (10 - 50 keV, 10 - 78 keV, 20 - 100 keV) and fitted with an absorbed power-law model. Across all instruments and energy ranges, we confirm the existence of a persistent negative correlation -- harder spectra at higher flux levels. The correlation is stronger in the hard bands compared to the soft bands. This is consistent with synchrotron emission modulated by magnetic field variations in the pulsar wind nebula.</p>
-                </div>
-                <div id="pub-1-authors" class="pub-content">
-                    <p class="authors">Debjit Chatterjee, Hsiang-Kuang Chang, Dipak Debnath, Koothodil Abhijith Augustine, Tzu-Hsuan Lin</p>
-                </div>
-            </div>
             <div class="card">
                 <h3>Anti-correlation between Flux and Photon Index of Hard X-ray Emission from The Crab</h3>
                 <p class="institution">The Astrophysical Journal (ApJ) - 2025</p>
-                 <div class="pub-controls">
-                    <button class="pub-toggle-btn" data-target="pub-2-abstract">Read Abstract</button>
-                    <button class="pub-toggle-btn" data-target="pub-2-authors">View Authors</button>
-                    <a href="https://iopscience.iop.org/article/10.3847/1538-4357/adb70e" target="_blank" class="pub-toggle-btn">Read at ApJ</a>
-                </div>
-                <div id="pub-2-abstract" class="pub-content">
-                    <p>Using Swift Burst Alert Telescope event-mode data during gamma-ray burst occurrences, we conduct spectral analysis for the Crab system. From 38 good observations, which span a period of 18 yr from 2006 to 2023, we find that the Crab’s X-ray flux not only flickers but also significantly anticorrelates to its spectral power-law photon index. Since the emission contribution of the Crab pulsar in this energy range is small, this anticorrelation is mainly about the emission of the Crab nebula. We suggest that this anticorrelation provides observational supporting evidence for the long-standing notion that the nebula emission is due to synchrotron radiation of shocked pulsar winds in the nebula.</p>
-                </div>
-                <div id="pub-2-authors" class="pub-content">
-                    <p class="authors">Koothodil Abhijith Augustine and Hsiang-Kuang Chang</p>
-                </div>
+                <p>Authors: Hsiang-Kuang Chang, Koothodil L. A. Augustine, Yi-Hao Su</p>
+                <a href="https://iopscience.iop.org/article/10.3847/1538-4357/adb70e" target="_blank">Read at ApJ</a>
             </div>
         </section>
 
     </main>
 
     <footer class="site-footer">
-        <p>© 2025 Koothodil Abhijith Augustine. Designed using Gemini 2.5 Pro.</p>
+        <p>© 2025 Koothodil Abhijith Augustine. Designed with passion for the cosmos.</p>
     </footer>
 
+    <!-- JavaScript for Particle Animation and Scroll Effects -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const body = document.body;
-
-            // --- Interactive Canvas Background ---
-            const canvas = document.getElementById('interactive-background');
-            const ctx = canvas.getContext('2d');
-            let width, height, particles, animationFrameId;
-
-            const mouse = {
-                x: null,
-                y: null,
-                radius: 150
-            };
-
-            const setupCanvas = () => {
-                width = canvas.width = window.innerWidth;
-                height = canvas.height = window.innerHeight;
-                particles = [];
-                const particleCount = Math.floor(width * height / 15000); // Responsive particle count
-                const isLightTheme = body.classList.contains('light-theme');
-                
-                for (let i = 0; i < particleCount; i++) {
-                    particles.push(new Particle(isLightTheme));
-                }
-
-                if (animationFrameId) {
-                    cancelAnimationFrame(animationFrameId);
-                }
-                animate();
-            };
-
-            class Particle {
-                constructor(isLight) {
-                    this.x = Math.random() * width;
-                    this.y = Math.random() * height;
-                    this.size = Math.random() * 1.5 + 1;
-                    this.baseX = this.x;
-                    this.baseY = this.y;
-                    this.density = (Math.random() * 30) + 1;
-                    this.isLight = isLight;
-                    this.setColor();
-                }
-
-                setColor() {
-                    if (this.isLight) {
-                        // Lighter, warmer "star chart" colors
-                        const h = Math.random() * 60 + 200; // Blues to purples
-                        const s = Math.random() * 50 + 50;
-                        const l = Math.random() * 20 + 60;
-                        this.color = `hsl(${h}, ${s}%, ${l}%)`;
-                    } else {
-                        // Vibrant, deep space "nebula" colors
-                        const h = Math.random() * 120 + 180; // Blues, purples, pinks
-                        const s = Math.random() * 50 + 50;
-                        const l = Math.random() * 30 + 40;
-                        this.color = `hsl(${h}, ${s}%, ${l}%)`;
-                    }
-                }
-
-                draw() {
-                    ctx.fillStyle = this.color;
-                    ctx.beginPath();
-                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                    ctx.closePath();
-                    ctx.fill();
-                }
-
-                update() {
-                    let dx = mouse.x - this.x;
-                    let dy = mouse.y - this.y;
-                    let distance = Math.sqrt(dx * dx + dy * dy);
-                    let forceDirectionX = dx / distance;
-                    let forceDirectionY = dy / distance;
-                    let maxDistance = mouse.radius;
-                    let force = (maxDistance - distance) / maxDistance;
-                    let directionX = forceDirectionX * force * this.density;
-                    let directionY = forceDirectionY * force * this.density;
-
-                    if (distance < mouse.radius) {
-                        this.x -= directionX;
-                        this.y -= directionY;
-                    } else {
-                        if (this.x !== this.baseX) {
-                            let dx = this.x - this.baseX;
-                            this.x -= dx / 10;
-                        }
-                        if (this.y !== this.baseY) {
-                            let dy = this.y - this.baseY;
-                            this.y -= dy / 10;
-                        }
-                    }
-                }
-            }
-            
-            const connect = () => {
-                let opacityValue = 1;
-                for (let a = 0; a < particles.length; a++) {
-                    for (let b = a; b < particles.length; b++) {
-                        let distance = ((particles[a].x - particles[b].x) * (particles[a].x - particles[b].x))
-                                     + ((particles[a].y - particles[b].y) * (particles[a].y - particles[b].y));
-                        
-                        if (distance < (width/7) * (height/7)) {
-                            opacityValue = 1 - (distance/20000);
-                            ctx.strokeStyle = `rgba(${body.classList.contains('light-theme') ? '100,150,255' : '173,216,230'}, ${opacityValue})`;
-                            ctx.lineWidth = 1;
-                            ctx.beginPath();
-                            ctx.moveTo(particles[a].x, particles[a].y);
-                            ctx.lineTo(particles[b].x, particles[b].y);
-                            ctx.stroke();
-                        }
-                    }
-                }
-            };
-
-            const animate = () => {
-                ctx.clearRect(0, 0, width, height);
-                particles.forEach(p => {
-                    p.update();
-                    p.draw();
-                });
-                connect();
-                animationFrameId = requestAnimationFrame(animate);
-            };
-
-            window.addEventListener('mousemove', (e) => {
-                mouse.x = e.x;
-                mouse.y = e.y;
-            });
-            window.addEventListener('mouseout', () => {
-                mouse.x = null;
-                mouse.y = null;
-            });
-            window.addEventListener('resize', setupCanvas);
-            
-
-            // --- Theme Switcher ---
-            const themeSwitch = document.querySelector('.theme-switch');
-            const applyTheme = (theme) => {
-                const isLight = theme === 'light';
-                body.classList.toggle('light-theme', isLight);
-                localStorage.setItem('theme', theme);
-                // Update particles for new theme
-                if (particles) {
-                   particles.forEach(p => {
-                       p.isLight = isLight;
-                       p.setColor();
-                   });
-                }
-            };
-
-            themeSwitch.addEventListener('click', () => {
-                const newTheme = body.classList.contains('light-theme') ? 'dark' : 'light';
-                applyTheme(newTheme);
-            });
-
-            // Set default theme to dark, but respect user's saved preference
-            const savedTheme = localStorage.getItem('theme');
-            applyTheme(savedTheme || 'dark'); // Default to 'dark' if no theme is saved
-            setupCanvas(); // Initial setup
-
-            // --- Hamburger Menu ---
-            const hamburger = document.querySelector('.hamburger');
-            const navLinks = document.querySelector('.nav-links');
-            const navMenuLinks = navLinks.querySelectorAll('a');
-            const toggleMenu = () => navLinks.classList.toggle('is-open');
-            const closeMenu = () => navLinks.classList.remove('is-open');
-            hamburger.addEventListener('click', (e) => { e.stopPropagation(); toggleMenu(); });
-            navMenuLinks.forEach(link => link.addEventListener('click', closeMenu));
-            document.addEventListener('click', (e) => {
-                if (navLinks.classList.contains('is-open') && !navLinks.contains(e.target)) {
-                    closeMenu();
-                }
-            });
-
-            // --- Publication Toggles ---
-            document.querySelectorAll('.pub-toggle-btn').forEach(button => {
-                if(button.tagName === 'A') return;
-                button.addEventListener('click', () => {
-                    const targetId = button.dataset.target;
-                    const targetElement = document.getElementById(targetId);
-                    button.classList.toggle('active');
-                    targetElement.classList.toggle('visible');
-                });
-            });
-
-            // --- Fade-in on Scroll Animation ---
-            const sections = document.querySelectorAll('.section');
-            const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('is-visible');
-                    }
-                });
-            }, observerOptions);
-            sections.forEach(section => observer.observe(section));
-            
-            // --- Active Navigation Link on Scroll ---
-            const allNavLinks = document.querySelectorAll('.nav-links a');
-            const allSections = document.querySelectorAll('main .section');
-            window.addEventListener('scroll', () => {
-                let current = 'home';
-                allSections.forEach(section => {
-                    const sectionTop = section.offsetTop;
-                    if (pageYOffset >= sectionTop - 150) {
-                        current = section.getAttribute('id');
-                    }
-                });
-                allNavLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href').substring(1) === current) {
-                        link.classList.add('active');
-                    }
-                });
-            }, { passive: true });
-
-            // --- Initialize Lucide Icons ---
-            lucide.createIcons();
+        // --- Particle.js Background Animation ---
+        particlesJS("particles-js", {
+            particles: {
+                number: { value: 100, density: { enable: true, value_area: 800 } },
+                color: { value: "#ffffff" },
+                shape: { type: "circle", stroke: { width: 0, color: "#000000" } },
+                opacity: { value: 0.5, random: true, anim: { enable: true, speed: 1, opacity_min: 0.1, sync: false } },
+                size: { value: 2, random: true, anim: { enable: false } },
+                line_linked: { enable: false },
+                move: { enable: true, speed: 0.5, direction: "none", random: true, straight: false, out_mode: "out", bounce: false }
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: { onhover: { enable: true, mode: "bubble" }, onclick: { enable: false }, resize: true },
+                modes: { bubble: { distance: 150, size: 3, duration: 2, opacity: 1, speed: 3 } }
+            },
+            retina_detect: true
         });
+
+        // --- Fade-in on Scroll Animation ---
+        const sections = document.querySelectorAll('.section');
+        const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+        
+        // --- Active Navigation Link on Scroll ---
+        const navLinks = document.querySelectorAll('.nav-links a');
+        const allSections = document.querySelectorAll('main .section');
+
+        window.addEventListener('scroll', () => {
+            let current = 'about'; // Default to 'about'
+            allSections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 150) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').substring(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+        
     </script>
 </body>
 </html>
