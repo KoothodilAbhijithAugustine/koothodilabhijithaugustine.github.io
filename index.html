@@ -22,14 +22,14 @@
         :root {
             --primary-glow: #00aaff;
             --secondary-glow: #ff00ff;
-            --background-start: #010409;
-            --background-end: #0a011a;
-            --glass-bg: rgba(20, 20, 30, 0.5);
-            --border-color: rgba(255, 255, 255, 0.1);
-            --text-primary: #e6f1ff;
+            --background-start: #020024; /* Deeper, more cosmic blue */
+            --background-end: #09303b; /* Dark teal for nebula effect */
+            --glass-bg: rgba(20, 20, 30, 0.6); /* Dark glass tint */
+            --border-color: rgba(255, 255, 255, 0.1); /* Subtle edge highlight */
+            --text-primary: #f0f4f9; /* Slightly softer white */
             --text-secondary: #a8b2d1;
-            --header-bg: rgba(1, 4, 9, 0.6);
-            --card-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            --header-bg: rgba(1, 4, 9, 0.5); /* Header glass tint */
+            --card-shadow: 0 8px 24px 0 rgba(0, 0, 0, 0.25);
             --font-family: 'Poppins', sans-serif;
             --transition-speed: 0.3s;
         }
@@ -37,14 +37,14 @@
         body.light-theme {
             --primary-glow: #0077cc;
             --secondary-glow: #d900ff;
-            --background-start: #f0f4f9;
-            --background-end: #e6eaf2;
-            --glass-bg: rgba(255, 255, 255, 0.6);
-            --border-color: rgba(0, 0, 0, 0.1);
+            --background-start: #e0eafc; /* Light, airy blue */
+            --background-end: #cfdef3; /* Soft lavender */
+            --glass-bg: rgba(255, 255, 255, 0.5); /* Light glass tint */
+            --border-color: rgba(0, 0, 0, 0.1); /* Subtle dark border */
             --text-primary: #1c2a4e;
             --text-secondary: #5a647e;
-            --header-bg: rgba(255, 255, 255, 0.7);
-            --card-shadow: 0 8px 24px 0 rgba(0, 0, 0, 0.1);
+            --header-bg: rgba(255, 255, 255, 0.5); /* Header glass tint */
+            --card-shadow: 0 8px 24px 0 rgba(0, 0, 0, 0.08);
         }
 
         *, *::before, *::after {
@@ -84,8 +84,8 @@
             width: 100%;
             padding: 1rem 5%;
             background: var(--header-bg);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(20px); /* Increased blur for glass effect */
+            -webkit-backdrop-filter: blur(20px);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -260,25 +260,41 @@
             border-color: var(--primary-glow);
         }
 
-        /* Glass Card Style */
+        /* Liquid Glass Card Style */
         .card {
             background: var(--glass-bg);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(20px); /* Increased blur for glass effect */
+            -webkit-backdrop-filter: blur(20px);
             border: 1px solid var(--border-color);
-            border-radius: 15px;
+            border-radius: 20px; /* Slightly more rounded */
             padding: 2rem;
             margin-bottom: 2rem;
             transition: transform var(--transition-speed), box-shadow var(--transition-speed), background var(--transition-speed), border var(--transition-speed);
             box-shadow: var(--card-shadow);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Subtle sheen effect for glass */
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(160deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%);
+            pointer-events: none;
         }
         
         .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 0 25px rgba(0, 170, 255, 0.3), 0 0 25px rgba(255, 0, 255, 0.3);
+            transform: translateY(-8px) scale(1.01);
+            box-shadow: 0 0 20px rgba(0, 170, 255, 0.2), 0 0 20px rgba(255, 0, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.25);
         }
         body.light-theme .card:hover {
-            box-shadow: 0 0 25px rgba(0, 119, 204, 0.2), 0 0 25px rgba(217, 0, 255, 0.2);
+            box-shadow: 0 0 20px rgba(0, 119, 204, 0.15), 0 0 20px rgba(217, 0, 255, 0.15);
+            border-color: rgba(0, 0, 0, 0.2);
         }
 
         .card h3 {
@@ -319,7 +335,7 @@
             margin-top: 1rem;
         }
         .pub-toggle-btn {
-            background-color: transparent;
+            background-color: rgba(255,255,255,0.05);
             border: 1px solid var(--border-color);
             color: var(--text-secondary);
             padding: 0.5rem 1rem;
@@ -368,7 +384,7 @@
              color: var(--primary-glow);
              margin-bottom: 1rem;
              font-size: 1.2rem;
-        }
+         }
         
         .skills-grid ul {
             list-style: none;
@@ -407,8 +423,9 @@
                 flex-direction: column;
                 padding: 6rem 2rem 2rem;
                 transition: right 0.4s ease-in-out;
-                backdrop-filter: blur(15px);
-                -webkit-backdrop-filter: blur(15px);
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+                border-left: 1px solid var(--border-color);
             }
             .nav-links.is-open {
                 right: 0;
@@ -530,7 +547,7 @@
             <div class="card">
                 <h3>Bachelor of Science in Physics</h3>
                 <p class="institution">University College, University of Kerala, India (2018 - 2021)</p>
-                <p><strong>Thesis:</strong> Effect of aerosol absorption coefficient on solar flux.</p>
+                <p><strong>Thesis:</strong> Effect of solar flux on aerosol absorption coefficient.</p>
             </div>
         </section>
         
@@ -744,8 +761,8 @@
                 // Update particles for new theme
                 if (particles) {
                    particles.forEach(p => {
-                       p.isLight = isLight;
-                       p.setColor();
+                        p.isLight = isLight;
+                        p.setColor();
                    });
                 }
             };
