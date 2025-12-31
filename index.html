@@ -6,46 +6,42 @@
   <meta name="description" content="Personal Portfolio of Koothodil Abhijith Augustine, Astronomy PhD Student" />
   <title>Koothodil Abhijith Augustine | High-Energy Astrophysics</title>
   
-  <!-- Modern Fonts: Space Grotesk for headings, Inter for body -->
+  <!-- Academic Fonts: Playfair Display (Serif Headers), Lato (Clean Body) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
   
   <style>
-    /* ===== Modern Variables & Reset ===== */
+    /* ===== Academic Theme Variables ===== */
     :root {
-      /* Dark Theme (Default) - Deep Space Palette */
-      --bg-dark: #050a14;
-      --bg-gradient: radial-gradient(circle at 50% 0%, #1e293b, #050a14 60%);
-      --text-primary: #f8fafc;
-      --text-secondary: #94a3b8;
-      --accent: #38bdf8; /* Sky Blue */
-      --accent-glow: rgba(56, 189, 248, 0.2);
+      /* Light Theme (Default) - Journal Style */
+      --bg-color: #f8f9fa; /* Off-white paper */
+      --text-main: #2c3e50; /* Dark slate */
+      --text-muted: #6c757d;
+      --accent-color: #2c3e50; /* Midnight Blue */
+      --highlight-color: #c0392b; /* Academic Red for accents */
       
-      /* Glassmorphism Cards */
-      --card-bg: rgba(255, 255, 255, 0.03);
-      --card-border: rgba(255, 255, 255, 0.08);
-      --card-hover: rgba(255, 255, 255, 0.07);
+      --card-bg: #ffffff;
+      --card-shadow: 0 2px 15px rgba(0,0,0,0.05);
+      --card-border: 1px solid #e9ecef;
       
-      --nav-bg: rgba(5, 10, 20, 0.7);
-      --nav-border: rgba(255, 255, 255, 0.1);
+      --font-heading: 'Playfair Display', serif;
+      --font-body: 'Lato', sans-serif;
       
-      --radius: 16px;
-      --maxw: 1000px;
+      --maxw: 960px;
     }
 
-    [data-theme="light"] {
-      --bg-dark: #ffffff;
-      --bg-gradient: radial-gradient(circle at 50% 0%, #eef2ff, #ffffff 60%);
-      --text-primary: #0f172a;
-      --text-secondary: #475569;
-      --accent: #0284c7;
-      --accent-glow: rgba(2, 132, 199, 0.1);
-      --card-bg: rgba(0, 0, 0, 0.02);
-      --card-border: rgba(0, 0, 0, 0.06);
-      --card-hover: rgba(0, 0, 0, 0.04);
-      --nav-bg: rgba(255, 255, 255, 0.8);
-      --nav-border: rgba(0, 0, 0, 0.05);
+    [data-theme="dark"] {
+      /* Dark Reading Mode */
+      --bg-color: #1a1a1a;
+      --text-main: #e0e0e0;
+      --text-muted: #a0a0a0;
+      --accent-color: #f0f0f0;
+      --highlight-color: #e74c3c;
+      
+      --card-bg: #252525;
+      --card-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      --card-border: 1px solid #333;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -53,307 +49,334 @@
     html { scroll-behavior: smooth; }
     
     body {
-      font-family: 'Inter', sans-serif;
-      background-color: var(--bg-dark);
-      background-image: var(--bg-gradient);
-      background-attachment: fixed;
-      color: var(--text-primary);
-      line-height: 1.7;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      transition: background-color 0.3s, color 0.3s;
+      font-family: var(--font-body);
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      line-height: 1.8;
+      transition: background-color 0.4s ease, color 0.4s ease;
     }
 
-    /* Headings */
+    /* Typography */
     h1, h2, h3 {
-      font-family: 'Space Grotesk', sans-serif;
-      color: var(--text-primary);
-      line-height: 1.2;
+      font-family: var(--font-heading);
+      color: var(--text-main);
+      font-weight: 700;
+      line-height: 1.3;
     }
     
-    h1 { font-size: clamp(2.5rem, 5vw, 4rem); letter-spacing: -0.02em; font-weight: 700; }
-    h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); margin-bottom: 1.5rem; letter-spacing: -0.01em; }
-    h3 { font-size: 1.25rem; margin-bottom: 0.5rem; font-weight: 700; }
+    h1 { 
+      font-size: 3rem; 
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.5px;
+    }
     
-    p { color: var(--text-secondary); margin-bottom: 1rem; }
-    a { color: var(--text-primary); text-decoration: none; transition: 0.2s; }
-    a:hover { color: var(--accent); }
+    h2 { 
+      font-size: 2.2rem; 
+      margin-bottom: 2rem; 
+      position: relative;
+      padding-bottom: 1rem;
+    }
+    
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 60px; height: 3px;
+      background-color: var(--highlight-color);
+    }
+    
+    h3 { font-size: 1.25rem; margin-bottom: 0.5rem; }
+    
+    p { margin-bottom: 1.2rem; color: var(--text-muted); font-size: 1.05rem; }
+    
+    a { 
+      color: var(--accent-color); 
+      text-decoration: none; 
+      transition: 0.2s;
+      border-bottom: 1px dotted var(--text-muted);
+    }
+    a:hover { 
+      color: var(--highlight-color); 
+      border-bottom-style: solid;
+    }
 
     /* Layout */
-    main { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 1.5rem; flex: 1; }
-    section { padding: 4rem 0; scroll-margin-top: 100px; }
+    main { 
+      width: 100%; 
+      max-width: var(--maxw); 
+      margin: 0 auto; 
+      padding: 0 2rem; 
+    }
+    
+    section { 
+      padding: 5rem 0; 
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+    section:last-child { border-bottom: none; }
 
-    /* ===== Modern Floating Navigation ===== */
+    /* ===== Minimalist Header ===== */
     header {
       position: sticky;
-      top: 1rem;
+      top: 0;
       z-index: 100;
-      display: flex;
-      justify-content: center;
-      padding: 0 1rem;
+      background: var(--bg-color); /* Match bg for seamless look */
+      border-bottom: 1px solid var(--card-border);
+      padding: 1.2rem 0;
+      opacity: 0.98;
     }
 
     .nav {
-      background: var(--nav-bg);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid var(--nav-border);
-      padding: 0.75rem 1.5rem;
-      border-radius: 99px;
-      display: flex;
-      align-items: center;
-      gap: 2rem;
-      box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
-      transition: background 0.3s, border 0.3s;
-    }
-
-    .brand { display: none; font-weight: 700; font-family: 'Space Grotesk', sans-serif; }
-    
-    .links { display: flex; gap: 1.5rem; align-items: center; }
-    .links a { 
-      font-size: 0.9rem; 
-      font-weight: 500; 
-      color: var(--text-secondary); 
-      position: relative;
-    }
-    .links a:hover, .links a:active { color: var(--accent); }
-    
-    /* Underline animation for links */
-    .links a::after {
-      content: ''; position: absolute; width: 0; height: 2px;
-      bottom: -4px; left: 0; background: var(--accent);
-      transition: width 0.3s;
-    }
-    .links a:hover::after { width: 100%; }
-
-    /* ===== Hero Section ===== */
-    .hero {
-      text-align: center;
-      padding: 6rem 0 4rem;
-      animation: fadeIn 0.8s ease-out;
-    }
-    
-    .profile-container {
-      position: relative;
-      display: inline-block;
-      margin-bottom: 1.5rem;
-    }
-    
-    .hero-img {
-      width: 150px; height: 150px;
-      object-fit: cover;
-      border-radius: 50%;
-      border: 2px solid var(--card-border);
-      box-shadow: 0 0 40px var(--accent-glow);
-      background: linear-gradient(135deg, #1e293b, #0f172a);
-    }
-
-    .hero h1 {
-      background: linear-gradient(to right, var(--text-primary), var(--text-secondary));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 0.5rem;
-    }
-    
-    .tagline {
-      font-size: 1.2rem;
-      color: var(--accent);
-      font-family: 'Space Grotesk', sans-serif;
-      margin-bottom: 1.5rem;
-    }
-
-    .social { display: flex; gap: 1rem; justify-content: center; margin-top: 1rem; }
-    .icon-link {
-      width: 44px; height: 44px;
-      border-radius: 50%;
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      display: flex; align-items: center; justify-content: center;
-      transition: all 0.2s ease;
-      color: var(--text-secondary);
-      position: relative; /* For tooltip positioning if needed, though using title attr */
-    }
-    .icon-link:hover {
-      background: var(--accent);
-      color: #fff;
-      transform: translateY(-3px);
-      box-shadow: 0 5px 15px var(--accent-glow);
-      border-color: var(--accent);
-    }
-    .icon { width: 20px; height: 20px; }
-
-    /* ===== Modern Cards (Glassmorphism) ===== */
-    .grid {
-      display: grid;
-      gap: 1.5rem;
-    }
-    @media (min-width: 768px) { .grid.cols-2 { grid-template-columns: 1fr 1fr; } }
-    
-    .card {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: var(--radius);
-      padding: 2rem;
-      transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-    }
-    
-    .card:hover {
-      transform: translateY(-4px);
-      background: var(--card-hover);
-      box-shadow: 0 20px 40px -10px rgba(0,0,0,0.3);
-      border-color: var(--text-secondary);
-    }
-
-    /* Links inside cards */
-    .card-link {
-      margin-top: auto;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: var(--accent);
-    }
-    .card-link::after { content: '→'; transition: transform 0.2s; }
-    .card-link:hover::after { transform: translateX(4px); }
-
-    /* Lists in cards */
-    .card ul { list-style: none; padding: 0; }
-    .card ul li {
-      position: relative;
-      padding-left: 1.2rem;
-      margin-bottom: 0.5rem;
-      color: var(--text-secondary);
-    }
-    .card ul li::before {
-      content: '•';
-      color: var(--accent);
-      position: absolute; left: 0;
-      font-size: 1.2rem; line-height: 1;
-    }
-
-    /* ===== Buttons & CV Preview ===== */
-    .btn-container {
-        position: relative;
-        display: inline-block;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 0.8rem 1.5rem;
-      border-radius: 99px;
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      color: var(--text-primary);
-      font-weight: 600;
-      transition: 0.2s;
-      cursor: pointer;
-      position: relative;
-      z-index: 2;
-    }
-    .btn:hover {
-      background: var(--text-primary);
-      color: var(--bg-dark);
-      border-color: var(--text-primary);
-    }
-    .btn-toggle { font-size: 1.2rem; padding: 0.5rem 0.8rem; }
-    
-    /* CV Preview Tooltip */
-    .cv-preview {
-        position: absolute;
-        bottom: 120%; /* Position above the button */
-        left: 50%;
-        transform: translateX(-50%) translateY(10px);
-        width: 300px;
-        height: 400px;
-        background: white;
-        border: 4px solid var(--card-border);
-        border-radius: 8px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        opacity: 0;
-        visibility: hidden;
-        transition: all 0.3s ease;
-        z-index: 10;
-        overflow: hidden;
-    }
-    
-    .cv-preview::after {
-        content: '';
-        position: absolute;
-        top: 100%;
-        left: 50%;
-        margin-left: -8px;
-        border-width: 8px;
-        border-style: solid;
-        border-color: var(--card-border) transparent transparent transparent;
-    }
-
-    /* Show on hover */
-    .btn-container:hover .cv-preview {
-        opacity: 1;
-        visibility: visible;
-        transform: translateX(-50%) translateY(0);
-    }
-
-    .cv-preview iframe {
-        width: 100%;
-        height: 100%;
-        border: none;
-    }
-
-    /* ===== Publications Details ===== */
-    article.card { padding: 1.5rem; }
-    details {
-      margin-top: 1rem;
-      padding: 0.5rem 0;
-      border-top: 1px solid var(--card-border);
-    }
-    details summary {
-      cursor: pointer;
-      font-weight: 600;
-      color: var(--text-secondary);
-      list-style: none;
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 0 2rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
-    details summary::-webkit-details-marker { display: none; }
-    details summary::after {
-      content: '+'; 
-      font-size: 1.2rem; 
+
+    .links { display: flex; gap: 2.5rem; align-items: center; }
+    .links a { 
+      font-size: 0.95rem; 
       font-weight: 400;
+      color: var(--text-muted);
+      border-bottom: none;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 0.8rem;
     }
-    details[open] summary::after { content: '-'; }
-    details p { margin-top: 0.75rem; font-size: 0.95rem; }
+    .links a:hover { color: var(--highlight-color); transform: translateY(-1px); }
+    
+    /* ===== Hero Section ===== */
+    .hero {
+      text-align: center;
+      padding: 6rem 0;
+      border-bottom: none;
+    }
+    
+    .profile-container {
+      margin-bottom: 2rem;
+      display: inline-block;
+      padding: 8px;
+      border: 1px solid var(--card-border);
+      border-radius: 50%; /* Circle */
+      background: var(--card-bg);
+    }
+    
+    .hero-img {
+      width: 140px; height: 140px;
+      display: block;
+      border-radius: 50%;
+      object-fit: cover;
+      filter: grayscale(20%); /* Slight mute for elegance */
+    }
+
+    .tagline {
+      font-size: 1.2rem;
+      font-family: var(--font-body);
+      margin-bottom: 2rem;
+      color: var(--text-muted);
+      font-style: italic;
+      font-weight: 300;
+    }
+
+    .social { display: flex; gap: 1.5rem; justify-content: center; margin-top: 2rem; }
+    .icon-link {
+      width: 44px; height: 44px;
+      border: 1px solid var(--card-border);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--text-muted);
+      transition: all 0.2s;
+      background: var(--card-bg);
+      border-bottom: none; /* Override standard link style */
+    }
+    .icon-link:hover {
+      border-color: var(--highlight-color);
+      color: var(--highlight-color);
+      transform: translateY(-2px);
+      box-shadow: var(--card-shadow);
+    }
+    .icon { width: 20px; height: 20px; }
+
+    /* ===== Academic Cards ===== */
+    .grid { display: grid; gap: 2rem; }
+    @media (min-width: 768px) { .grid.cols-2 { grid-template-columns: repeat(2, 1fr); } }
+    
+    .card {
+      background: var(--card-bg);
+      border: var(--card-border);
+      padding: 2.5rem;
+      transition: 0.3s ease;
+      position: relative;
+      /* Subtle top accent */
+      border-top: 3px solid transparent;
+    }
+    
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--card-shadow);
+      border-top-color: var(--highlight-color);
+    }
+
+    .card h3 { 
+      font-size: 1.4rem; 
+      margin-bottom: 1rem;
+    }
+
+    /* Links inside cards */
+    .card-link {
+      display: inline-block;
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--highlight-color);
+      border-bottom: none;
+    }
+    .card-link::after { content: ' →'; transition: margin 0.2s; }
+    .card-link:hover::after { margin-left: 5px; }
+
+    /* Lists in cards */
+    .card ul { list-style: none; padding: 0; }
+    .card ul li {
+      padding-left: 1rem;
+      margin-bottom: 0.5rem;
+      position: relative;
+      color: var(--text-muted);
+    }
+    .card ul li::before {
+      content: '—'; /* Em dash bullet */
+      position: absolute; left: 0;
+      color: var(--highlight-color);
+    }
+
+    /* ===== Buttons & CV ===== */
+    .btn-container { position: relative; display: inline-block; }
+
+    .btn {
+      display: inline-block;
+      padding: 0.8rem 2rem;
+      background: var(--text-main);
+      color: var(--bg-color);
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: 0.3s;
+      border: none;
+      border-radius: 4px;
+    }
+    
+    .btn:hover {
+      background: var(--highlight-color);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      color: white; /* Ensure readability */
+    }
+    
+    .btn-toggle { 
+        background: transparent;
+        color: var(--text-muted);
+        padding: 0.5rem;
+        font-size: 1.2rem;
+        border: 1px solid var(--card-border);
+        border-radius: 50%;
+        width: 40px; height: 40px;
+        display: flex; align-items: center; justify-content: center;
+    }
+    .btn-toggle:hover {
+        background: var(--card-bg);
+        color: var(--highlight-color);
+        border-color: var(--highlight-color);
+    }
+
+    /* CV Preview Popover */
+    .cv-preview {
+        position: absolute; bottom: 125%; left: 50%;
+        transform: translateX(-50%) translateY(10px);
+        width: 350px; height: 480px;
+        background: var(--card-bg);
+        border: 1px solid var(--card-border);
+        opacity: 0; visibility: hidden;
+        transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+        z-index: 10;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+        border-radius: 8px;
+        padding: 5px;
+    }
+    
+    /* Small arrow at bottom */
+    .cv-preview::after {
+        content: ''; position: absolute; top: 100%; left: 50%; margin-left: -8px;
+        border-width: 8px; border-style: solid;
+        border-color: var(--card-bg) transparent transparent transparent;
+    }
+
+    .btn-container:hover .cv-preview {
+        opacity: 1; visibility: visible;
+        transform: translateX(-50%) translateY(0);
+    }
+    .cv-preview iframe { width: 100%; height: 100%; border: 1px solid #eee; background: #fff; border-radius: 4px; }
+
+    /* ===== Details & Summary (Publications) ===== */
+    article.card { padding-left: 2.5rem; border-left: 4px solid var(--highlight-color); border-top: 1px solid var(--card-border); }
+    
+    /* Remove hover lift for these, keep them grounded */
+    article.card:hover { transform: none; box-shadow: none; background: rgba(0,0,0,0.01); }
+
+    details {
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px dashed var(--card-border);
+    }
+    
+    details summary {
+      cursor: pointer;
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--text-main);
+      list-style: none;
+      outline: none;
+    }
+    details summary::-webkit-details-marker { display: none; }
+    details summary:hover { color: var(--highlight-color); }
+    
+    details p { 
+      margin-top: 1rem; 
+      font-size: 1rem; 
+      font-family: 'Playfair Display', serif; /* Serif for reading abstract */
+      line-height: 1.8;
+      color: var(--text-main);
+    }
+
+    /* Meta tags styles */
+    .meta-tag {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+      display: block;
+      margin-bottom: 0.5rem;
+    }
 
     /* Footer */
     footer {
-      border-top: 1px solid var(--card-border);
       text-align: center;
-      padding: 3rem 1rem;
-      color: var(--text-secondary);
+      padding: 4rem 1rem;
+      color: var(--text-muted);
       font-size: 0.9rem;
-      margin-top: 2rem;
-    }
-
-    /* Animation */
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+      background: var(--bg-color);
+      border-top: 1px solid var(--card-border);
     }
 
     /* Mobile Responsive */
-    @media (max-width: 700px) {
-      .nav { gap: 1rem; padding: 0.75rem 1rem; width: 100%; justify-content: space-between;}
-      .links { gap: 0.8rem; }
-      .links a { font-size: 0.8rem; }
-      h1 { font-size: 2rem; }
-      /* Hide preview on mobile as hover doesn't exist/work well */
-      .cv-preview { display: none; }
+    @media (max-width: 768px) {
+      h1 { font-size: 2.2rem; }
+      .nav { flex-direction: column; gap: 1rem; padding: 1rem; }
+      .links { flex-wrap: wrap; justify-content: center; gap: 1.5rem; }
+      .cv-preview { display: none; } /* Hide on mobile */
     }
   </style>
 </head>
@@ -366,9 +389,9 @@
         <a href="#projects">Projects</a>
         <a href="#education">Education</a>
         <a href="#publications">Publications</a>
-        <a href="assets/CV.pdf" target="_blank">CV</a>
+        <a href="assets/CV.pdf" target="_blank">Curriculum Vitae</a>
       </div>
-      <button id="themeToggle" class="btn btn-toggle" type="button" aria-pressed="false" title="Toggle theme">🌙</button>
+      <button id="themeToggle" class="btn-toggle" type="button" aria-pressed="false" title="Toggle theme">◐</button>
     </nav>
   </header>
 
@@ -376,18 +399,19 @@
     <!-- Hero -->
     <section id="home" class="hero">
       <div class="profile-container">
-        <!-- Using a generated SVG for the profile to ensure it renders in the preview -->
+        <!-- Generated SVG for profile placeholder -->
         <svg class="hero-img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" aria-label="Portrait Placeholder">
             <defs>
                 <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" style="stop-color:#38bdf8;stop-opacity:1" />
-                <stop offset="100%" style="stop-color:#050a14;stop-opacity:1" />
+                <stop offset="0%" style="stop-color:#2c3e50;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#34495e;stop-opacity:1" />
                 </linearGradient>
             </defs>
-            <circle cx="50" cy="50" r="50" fill="url(#grad1)" />
-            <text x="50" y="55" font-family="Space Grotesk, sans-serif" font-weight="700" font-size="40" fill="white" text-anchor="middle" alignment-baseline="middle">KA</text>
+            <rect width="100" height="100" fill="url(#grad1)" />
+            <text x="50" y="55" font-family="Playfair Display, serif" font-weight="700" font-size="40" fill="white" text-anchor="middle" alignment-baseline="middle">KA</text>
         </svg>
       </div>
+      
       <h1>Koothodil Abhijith Augustine</h1>
       <div class="tagline">High-Energy Astrophysics PhD Student</div>
       
@@ -395,9 +419,8 @@
         <a class="icon-link" href="https://www.linkedin.com/in/koothodilabhijithaugustine/" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn">
           <svg class="icon" viewBox="0 0 24 24" role="img" aria-hidden="true"><path fill="currentColor" d="M4.98 3.5a2.5 2.5 0 1 1 0 5.001 2.5 2.5 0 0 1 0-5.001ZM3 9h4v12H3zM14.5 9c-2.33 0-3.5 1.28-3.5 3.09V21h4v-6.2c0-1.14.77-1.9 1.82-1.9 1.02 0 1.68.7 1.68 1.88V21h4v-6.9C22.5 10.83 20.73 9 18.16 9c-1.5 0-2.66.6-3.16 1.39V9h- .5z"/></svg>
         </a>
-        <!-- Google Scholar Removed -->
         <a class="icon-link" href="https://ui.adsabs.harvard.edu/search/q=orcid%3A0009-0008-7888-7584&sort=date+desc" target="_blank" rel="noopener" aria-label="NASA ADS" title="NASA ADS">
-          <!-- Custom ADS Logo -->
+          <!-- Clean SVG Icon for ADS -->
           <svg class="icon" viewBox="0 0 24 24" role="img" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
           </svg>
@@ -407,84 +430,88 @@
 
     <!-- About -->
     <section id="about">
-      <div class="card">
-        <h2>About Me</h2>
-        <p>
-          I am an Astronomy student specializing in high-energy astrophysics. My research involves analyzing observational data to understand pulsars.
-        </p>
-        <p>
-          I am currently at National Tsing Hua University doing a PhD under the supervision of <a href="http://www.phys.nthu.edu.tw/~hkchang/" target="_blank" style="color:var(--accent); text-decoration: underline;">Prof. Hsiang-Kuang Chang</a>.
-        </p>
-        <div style="margin-top: 1.5rem;">
-            <div class="btn-container">
-                <a class="btn" href="assets/CV.pdf" target="_blank">View Curriculum Vitae</a>
-                <div class="cv-preview">
-                    <!-- Note: This will only work if the PDF file exists at this path -->
-                    <iframe src="assets/CV.pdf" title="CV Preview"></iframe>
+        <div style="text-align: center; max-width: 700px; margin: 0 auto;">
+            <h2>Biography</h2>
+            <p style="font-size: 1.2rem; line-height: 1.8; color: var(--text-main);">
+            I am an Astronomy student specializing in high-energy astrophysics. My research involves analyzing observational data to understand pulsars.
+            </p>
+            <p>
+            I am currently at National Tsing Hua University doing a PhD under the supervision of <a href="http://www.phys.nthu.edu.tw/~hkchang/" target="_blank">Prof. Hsiang-Kuang Chang</a>.
+            </p>
+            <div style="margin-top: 2.5rem;">
+                <div class="btn-container">
+                    <a class="btn" href="assets/CV.pdf" target="_blank">View Curriculum Vitae</a>
+                    <div class="cv-preview">
+                        <!-- Note: This will only work if the PDF file exists at this path -->
+                        <iframe src="assets/CV.pdf" title="CV Preview"></iframe>
+                    </div>
                 </div>
             </div>
         </div>
-      </div>
     </section>
 
     <!-- Projects -->
     <section id="projects">
       <h2>Selected Projects</h2>
       <div class="grid cols-2">
-        <article class="card">
+        <div class="card">
+          <span class="meta-tag">Research Analysis</span>
           <h3>Anti‑correlation in Crab X‑ray Emission</h3>
           <p>Spectral analysis of the Crab system using 18 years of Swift BAT data. Found a significant anti‑correlation between X‑ray flux and photon index, supporting a synchrotron origin.</p>
-          <a class="card-link" href="https://iopscience.iop.org/article/10.3847/1538-4357/adb70e" target="_blank">View Publication</a>
-        </article>
+          <a class="card-link" href="https://iopscience.iop.org/article/10.3847/1538-4357/adb70e" target="_blank">Read Publication</a>
+        </div>
         
-        <article class="card">
+        <div class="card">
+          <span class="meta-tag">Mission Planning</span>
           <h3>COSI Telescope Science</h3>
           <p>Member of Pulsar science working group planning studies of the soft gamma‑ray pulsar population (0.2–5 MeV) for the upcoming Compton Spectrometer and Imager mission.</p>
           <a class="card-link" href="https://cosi.ssl.berkeley.edu/" target="_blank">About COSI</a>
-        </article>
+        </div>
         
-        <article class="card">
+        <div class="card">
+          <span class="meta-tag">Simulation & Data</span>
           <h3>CubeSat Studies</h3>
           <p>Simulations (cosima) and Compton data analysis (revan) to understand Crab pulsar. MDP estimates with MEGAlib to inform polarization measurements for CubeSat missions.</p>
           <a class="card-link" href="https://megalibtoolkit.com/home.html" target="_blank">MEGAlib Toolkit</a>
-        </article>
+        </div>
         
-        <article class="card">
+        <div class="card">
+          <span class="meta-tag">Software Development</span>
           <h3>BTO Detector Testing</h3>
           <p>Developed a Python GUI for data acquisition and quick‑look analysis (counts, temperature, light curves) for BTO (on-board COSI) calibration.</p>
-          <a class="card-link" href="https://cosi.ssl.berkeley.edu/bto/" target="_blank">About BTO</a>
-        </article>
+          <a class="card-link" href="https://cosi.ssl.berkeley.edu/bto/" target="_blank">View Specs</a>
+        </div>
       </div>
     </section>
 
     <!-- Education -->
     <section id="education">
-      <h2>Education</h2>
-      <div class="grid cols-2"> <!-- Changed to grid for better balance -->
+      <h2>Academic History</h2>
+      <div class="grid cols-2">
         <div class="card">
+          <span class="meta-tag">2023 – Present</span>
           <h3>PhD in Astronomy</h3>
-          <p class="mb-0" style="color: var(--accent);">2023 – Present</p>
           <p><strong>National Tsing Hua University, Taiwan</strong></p>
-          <p style="font-size: 0.9rem;"><em>Focus:</em> Crab pulsar and Pulsar Wind Nebula.</p>
+          <p>Focus: Crab pulsar and Pulsar Wind Nebula.</p>
         </div>
         <div class="card">
+          <span class="meta-tag">2021 – 2023</span>
           <h3>M.Sc. in Physics</h3>
-          <p class="mb-0" style="color: var(--accent);">2021 – 2023</p>
           <p><strong>SLIET, India</strong></p>
-          <p style="font-size: 0.9rem;"><em>Thesis:</em> JWST PRIMER Catalog & Infrared Galaxies.</p>
+          <p>Thesis: JWST PRIMER Catalog & Infrared Galaxies.</p>
         </div>
-        <div class="card" style="grid-column: 1 / -1;"> <!-- Full width item -->
+        <div class="card" style="grid-column: 1 / -1;">
+          <span class="meta-tag">2018 – 2021</span>
           <h3>B.Sc. in Physics</h3>
-          <p class="mb-0" style="color: var(--accent);">2018 – 2021</p>
           <p><strong>University of Kerala, India</strong></p>
-          <p style="font-size: 0.9rem;"><em>Thesis:</em> Effect of solar flux on aerosol absorption.</p>
+          <p>Thesis: Effect of solar flux on aerosol absorption.</p>
         </div>
       </div>
     </section>
 
     <!-- Skills -->
     <section id="skills">
-      <h2>Technical Stack</h2>
+      <h2>Technical Expertise</h2>
       <div class="grid cols-2">
         <div class="card">
           <h3>Astrophysical Analysis</h3>
@@ -509,35 +536,34 @@
 
     <!-- Publications -->
     <section id="publications">
-      <h2>Publications</h2>
-
+      <h2>Selected Publications</h2>
       <div class="grid">
         <article class="card">
             <div>
-                <span style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; color: var(--accent);">ApJ &mdash; 2025</span>
+                <span class="meta-tag" style="color:var(--highlight-color); font-weight:700;">ApJ — 2025</span>
                 <h3>Investigating the Anti‑Correlation between Photon Index and Flux of the Crab using RXTE and NuSTAR</h3>
                 <p><em>Debjit Chatterjee, Hsiang‑Kuang Chang, Dipak Debnath, <strong>Koothodil Abhijith Augustine</strong>, Tzu‑Hsuan Lin</em></p>
             </div>
-            <div style="margin-top: auto;">
-                <a class="card-link" href="https://iopscience.iop.org/article/10.3847/1538-4357/ade9bd" target="_blank">Read Paper</a>
+            <div style="margin-top: 1.5rem;">
+                <a class="card-link" href="https://iopscience.iop.org/article/10.3847/1538-4357/ade9bd" target="_blank">View Full Paper</a>
                 <details>
-                <summary>Abstract</summary>
-                <p>We present a systematic study of the recently reported anticorrelation between X-ray flux and photon index (Γ) in the Crab Nebula, using archival Rossi X-Ray Timing Explorer (RXTE) Proportional Counter Array (3–50 keV), RXTE High Energy X-ray Timing Experiment (HEXTE; 20–100 keV), and Nuclear Spectroscopic Telescope Array (3–78 keV) observations. Spectra were extracted in soft (3–10 keV) and hard bands (10–50, 10–78, 20–100 keV) and fitted with an absorbed power-law model. Across all instruments and energy ranges, we confirm the existence of a persistent negative correlation–harder spectra at higher flux levels. The correlation is stronger in the hard bands compared to the soft bands. This is consistent with synchrotron emission modulated by magnetic-field variations in the pulsar wind nebula.</p>
+                    <summary>Read Abstract</summary>
+                    <p>We present a systematic study of the recently reported anticorrelation between X-ray flux and photon index (Γ) in the Crab Nebula, using archival Rossi X-Ray Timing Explorer (RXTE) Proportional Counter Array (3–50 keV), RXTE High Energy X-ray Timing Experiment (HEXTE; 20–100 keV), and Nuclear Spectroscopic Telescope Array (3–78 keV) observations. Spectra were extracted in soft (3–10 keV) and hard bands (10–50, 10–78, 20–100 keV) and fitted with an absorbed power-law model. Across all instruments and energy ranges, we confirm the existence of a persistent negative correlation–harder spectra at higher flux levels. The correlation is stronger in the hard bands compared to the soft bands. This is consistent with synchrotron emission modulated by magnetic-field variations in the pulsar wind nebula.</p>
                 </details>
             </div>
         </article>
 
         <article class="card">
             <div>
-                <span style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; color: var(--accent);">ApJ &mdash; 2025</span>
+                <span class="meta-tag" style="color:var(--highlight-color); font-weight:700;">ApJ — 2025</span>
                 <h3>Anti‑correlation between Flux and Photon Index of Hard X‑ray Emission from The Crab</h3>
                 <p><em><strong>Koothodil Abhijith Augustine</strong> and Hsiang‑Kuang Chang</em></p>
             </div>
-            <div style="margin-top: auto;">
-                <a class="card-link" href="https://iopscience.iop.org/article/10.3847/1538-4357/adb70e" target="_blank">Read Paper</a>
+            <div style="margin-top: 1.5rem;">
+                <a class="card-link" href="https://iopscience.iop.org/article/10.3847/1538-4357/adb70e" target="_blank">View Full Paper</a>
                 <details>
-                <summary>Abstract</summary>
-                <p>Using Swift Burst Alert Telescope event-mode data during gamma-ray burst occurrences, we conduct spectral analysis for the Crab system. From 38 good observations, which span a period of 18 yr from 2006 to 2023, we find that the Crab’s X-ray flux not only flickers but also significantly anticorrelates to its spectral power-law photon index. Since the emission contribution of the Crab pulsar in this energy range is small, this anticorrelation is mainly about the emission of the Crab nebula. We suggest that this anticorrelation provides observational supporting evidence for the long-standing notion that the nebula emission is due to synchrotron radiation of shocked pulsar winds in the nebula.</p>
+                    <summary>Read Abstract</summary>
+                    <p>Using Swift Burst Alert Telescope event-mode data during gamma-ray burst occurrences, we conduct spectral analysis for the Crab system. From 38 good observations, which span a period of 18 yr from 2006 to 2023, we find that the Crab’s X-ray flux not only flickers but also significantly anticorrelates to its spectral power-law photon index. Since the emission contribution of the Crab pulsar in this energy range is small, this anticorrelation is mainly about the emission of the Crab nebula. We suggest that this anticorrelation provides observational supporting evidence for the long-standing notion that the nebula emission is due to synchrotron radiation of shocked pulsar winds in the nebula.</p>
                 </details>
             </div>
         </article>
@@ -546,11 +572,11 @@
   </main>
 
   <footer>
-    <p>© 2025 Koothodil Abhijith Augustine.</p>
+    <p>&copy; 2025 Koothodil Abhijith Augustine. Made with Gemini 3.0</p>
   </footer>
 
   <script>
-    // Theme Logic
+    // Simple Theme Toggle
     (function(){
       const root = document.documentElement;
       const key = 'theme';
@@ -559,15 +585,10 @@
       const set = (t)=>{ 
         root.setAttribute('data-theme', t); 
         localStorage.setItem(key, t); 
-        if(btn){ 
-          btn.textContent = t==='light' ? '🌞' : '🌙'; 
-          btn.setAttribute('aria-pressed', t==='light'); 
-        } 
       };
       
-      // Default to 'dark' if no preference is saved, ignoring system preference for the initial state
       const saved = localStorage.getItem(key);
-      set(saved || 'dark');
+      set(saved || 'light'); // Default to light/journal mode
 
       if(btn){ 
         btn.addEventListener('click', ()=>{ 
