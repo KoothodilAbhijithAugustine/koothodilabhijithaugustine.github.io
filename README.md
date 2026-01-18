@@ -1,3 +1,3 @@
 Academic profile.
-Updated on 25/07/2025.
+Updated on 18/01/2026.
 Always a work in progress...
