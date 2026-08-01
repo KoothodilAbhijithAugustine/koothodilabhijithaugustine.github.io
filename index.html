@@ -1,591 +1,473 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Personal Portfolio of Koothodil Abhijith Augustine, Astronomy PhD Student" />
-  <title>Koothodil Abhijith Augustine | High-Energy Astrophysics</title>
-  
-  <!-- Academic Fonts: Playfair Display (Serif Headers), Lato (Clean Body) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-  
-  <style>
-    /* ===== Academic Theme Variables ===== */
-    :root {
-      /* Light Theme (Default) - Journal Style */
-      --bg-color: #f8f9fa; /* Off-white paper */
-      --text-main: #2c3e50; /* Dark slate */
-      --text-muted: #6c757d;
-      --accent-color: #2c3e50; /* Midnight Blue */
-      --highlight-color: #c0392b; /* Academic Red for accents */
-      
-      --card-bg: #ffffff;
-      --card-shadow: 0 2px 15px rgba(0,0,0,0.05);
-      --card-border: 1px solid #e9ecef;
-      
-      --font-heading: 'Playfair Display', serif;
-      --font-body: 'Lato', sans-serif;
-      
-      --maxw: 960px;
-    }
-
-    [data-theme="dark"] {
-      /* Dark Reading Mode */
-      --bg-color: #1a1a1a;
-      --text-main: #e0e0e0;
-      --text-muted: #a0a0a0;
-      --accent-color: #f0f0f0;
-      --highlight-color: #e74c3c;
-      
-      --card-bg: #252525;
-      --card-shadow: 0 4px 20px rgba(0,0,0,0.3);
-      --card-border: 1px solid #333;
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Koothodil Abhijith Augustine (Abhi) - Ph.D. Candidate in Astronomy" />
+    <title>Koothodil Abhijith Augustine | Portfolio</title>
     
-    html { scroll-behavior: smooth; }
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
     
-    body {
-      font-family: var(--font-body);
-      background-color: var(--bg-color);
-      color: var(--text-main);
-      line-height: 1.8;
-      transition: background-color 0.4s ease, color 0.4s ease;
-    }
-
-    /* Typography */
-    h1, h2, h3 {
-      font-family: var(--font-heading);
-      color: var(--text-main);
-      font-weight: 700;
-      line-height: 1.3;
-    }
-    
-    h1 { 
-      font-size: 3rem; 
-      margin-bottom: 0.5rem;
-      letter-spacing: -0.5px;
-    }
-    
-    h2 { 
-      font-size: 2.2rem; 
-      margin-bottom: 2rem; 
-      position: relative;
-      padding-bottom: 1rem;
-    }
-    
-    h2::after {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 0;
-      width: 60px; height: 3px;
-      background-color: var(--highlight-color);
-    }
-    
-    h3 { font-size: 1.25rem; margin-bottom: 0.5rem; }
-    
-    p { margin-bottom: 1.2rem; color: var(--text-muted); font-size: 1.05rem; }
-    
-    a { 
-      color: var(--accent-color); 
-      text-decoration: none; 
-      transition: 0.2s;
-      border-bottom: 1px dotted var(--text-muted);
-    }
-    a:hover { 
-      color: var(--highlight-color); 
-      border-bottom-style: solid;
-    }
-
-    /* Layout */
-    main { 
-      width: 100%; 
-      max-width: var(--maxw); 
-      margin: 0 auto; 
-      padding: 0 2rem; 
-    }
-    
-    section { 
-      padding: 5rem 0; 
-      border-bottom: 1px solid rgba(0,0,0,0.05);
-    }
-    section:last-child { border-bottom: none; }
-
-    /* ===== Minimalist Header ===== */
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: var(--bg-color); /* Match bg for seamless look */
-      border-bottom: 1px solid var(--card-border);
-      padding: 1.2rem 0;
-      opacity: 0.98;
-    }
-
-    .nav {
-      max-width: var(--maxw);
-      margin: 0 auto;
-      padding: 0 2rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .links { display: flex; gap: 2.5rem; align-items: center; }
-    .links a { 
-      font-size: 0.95rem; 
-      font-weight: 400;
-      color: var(--text-muted);
-      border-bottom: none;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      font-size: 0.8rem;
-    }
-    .links a:hover { color: var(--highlight-color); transform: translateY(-1px); }
-    
-    /* ===== Hero Section ===== */
-    .hero {
-      text-align: center;
-      padding: 6rem 0;
-      border-bottom: none;
-    }
-    
-    .profile-container {
-      margin-bottom: 2rem;
-      display: inline-block;
-      padding: 8px;
-      border: 1px solid var(--card-border);
-      border-radius: 50%; /* Circle */
-      background: var(--card-bg);
-    }
-    
-    .hero-img {
-      width: 140px; height: 140px;
-      display: block;
-      border-radius: 50%;
-      object-fit: cover;
-      filter: grayscale(20%); /* Slight mute for elegance */
-    }
-
-    .tagline {
-      font-size: 1.2rem;
-      font-family: var(--font-body);
-      margin-bottom: 2rem;
-      color: var(--text-muted);
-      font-style: italic;
-      font-weight: 300;
-    }
-
-    .social { display: flex; gap: 1.5rem; justify-content: center; margin-top: 2rem; }
-    .icon-link {
-      width: 44px; height: 44px;
-      border: 1px solid var(--card-border);
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      color: var(--text-muted);
-      transition: all 0.2s;
-      background: var(--card-bg);
-      border-bottom: none; /* Override standard link style */
-    }
-    .icon-link:hover {
-      border-color: var(--highlight-color);
-      color: var(--highlight-color);
-      transform: translateY(-2px);
-      box-shadow: var(--card-shadow);
-    }
-    .icon { width: 20px; height: 20px; }
-
-    /* ===== Academic Cards ===== */
-    .grid { display: grid; gap: 2rem; }
-    @media (min-width: 768px) { .grid.cols-2 { grid-template-columns: repeat(2, 1fr); } }
-    
-    .card {
-      background: var(--card-bg);
-      border: var(--card-border);
-      padding: 2.5rem;
-      transition: 0.3s ease;
-      position: relative;
-      /* Subtle top accent */
-      border-top: 3px solid transparent;
-    }
-    
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--card-shadow);
-      border-top-color: var(--highlight-color);
-    }
-
-    .card h3 { 
-      font-size: 1.4rem; 
-      margin-bottom: 1rem;
-    }
-
-    /* Links inside cards */
-    .card-link {
-      display: inline-block;
-      margin-top: 1rem;
-      font-size: 0.9rem;
-      font-weight: 700;
-      color: var(--highlight-color);
-      border-bottom: none;
-    }
-    .card-link::after { content: ' →'; transition: margin 0.2s; }
-    .card-link:hover::after { margin-left: 5px; }
-
-    /* Lists in cards */
-    .card ul { list-style: none; padding: 0; }
-    .card ul li {
-      padding-left: 1rem;
-      margin-bottom: 0.5rem;
-      position: relative;
-      color: var(--text-muted);
-    }
-    .card ul li::before {
-      content: '—'; /* Em dash bullet */
-      position: absolute; left: 0;
-      color: var(--highlight-color);
-    }
-
-    /* ===== Buttons & CV ===== */
-    .btn-container { position: relative; display: inline-block; }
-
-    .btn {
-      display: inline-block;
-      padding: 0.8rem 2rem;
-      background: var(--text-main);
-      color: var(--bg-color);
-      font-family: var(--font-body);
-      font-size: 0.9rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      cursor: pointer;
-      transition: 0.3s;
-      border: none;
-      border-radius: 4px;
-    }
-    
-    .btn:hover {
-      background: var(--highlight-color);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-      color: white; /* Ensure readability */
-    }
-    
-    .btn-toggle { 
-        background: transparent;
-        color: var(--text-muted);
-        padding: 0.5rem;
-        font-size: 1.2rem;
-        border: 1px solid var(--card-border);
-        border-radius: 50%;
-        width: 40px; height: 40px;
-        display: flex; align-items: center; justify-content: center;
-    }
-    .btn-toggle:hover {
-        background: var(--card-bg);
-        color: var(--highlight-color);
-        border-color: var(--highlight-color);
-    }
-
-    /* CV Preview Popover */
-    .cv-preview {
-        position: absolute; bottom: 125%; left: 50%;
-        transform: translateX(-50%) translateY(10px);
-        width: 350px; height: 480px;
-        background: var(--card-bg);
-        border: 1px solid var(--card-border);
-        opacity: 0; visibility: hidden;
-        transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
-        z-index: 10;
-        box-shadow: 0 10px 40px rgba(0,0,0,0.15);
-        border-radius: 8px;
-        padding: 5px;
-    }
-    
-    /* Small arrow at bottom */
-    .cv-preview::after {
-        content: ''; position: absolute; top: 100%; left: 50%; margin-left: -8px;
-        border-width: 8px; border-style: solid;
-        border-color: var(--card-bg) transparent transparent transparent;
-    }
-
-    .btn-container:hover .cv-preview {
-        opacity: 1; visibility: visible;
-        transform: translateX(-50%) translateY(0);
-    }
-    .cv-preview iframe { width: 100%; height: 100%; border: 1px solid #eee; background: #fff; border-radius: 4px; }
-
-    /* ===== Details & Summary (Publications) ===== */
-    article.card { padding-left: 2.5rem; border-left: 4px solid var(--highlight-color); border-top: 1px solid var(--card-border); }
-    
-    /* Remove hover lift for these, keep them grounded */
-    article.card:hover { transform: none; box-shadow: none; background: rgba(0,0,0,0.01); }
-
-    details {
-      margin-top: 1rem;
-      padding-top: 1rem;
-      border-top: 1px dashed var(--card-border);
-    }
-    
-    details summary {
-      cursor: pointer;
-      font-family: var(--font-body);
-      font-size: 0.9rem;
-      font-weight: 700;
-      color: var(--text-main);
-      list-style: none;
-      outline: none;
-    }
-    details summary::-webkit-details-marker { display: none; }
-    details summary:hover { color: var(--highlight-color); }
-    
-    details p { 
-      margin-top: 1rem; 
-      font-size: 1rem; 
-      font-family: 'Playfair Display', serif; /* Serif for reading abstract */
-      line-height: 1.8;
-      color: var(--text-main);
-    }
-
-    /* Meta tags styles */
-    .meta-tag {
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      color: var(--text-muted);
-      display: block;
-      margin-bottom: 0.5rem;
-    }
-
-    /* Footer */
-    footer {
-      text-align: center;
-      padding: 4rem 1rem;
-      color: var(--text-muted);
-      font-size: 0.9rem;
-      background: var(--bg-color);
-      border-top: 1px solid var(--card-border);
-    }
-
-    /* Mobile Responsive */
-    @media (max-width: 768px) {
-      h1 { font-size: 2.2rem; }
-      .nav { flex-direction: column; gap: 1rem; padding: 1rem; }
-      .links { flex-wrap: wrap; justify-content: center; gap: 1.5rem; }
-      .cv-preview { display: none; } /* Hide on mobile */
-    }
-  </style>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        primary: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            900: '#1e3a8a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        .glass-header {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .dark .glass-header {
+            background: rgba(15, 23, 42, 0.8);
+        }
+        /* Custom scrollbar for a polished look */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        .dark ::-webkit-scrollbar-thumb { background: #475569; }
+        
+        .fade-in {
+            animation: fadeIn 0.8s ease-in forwards;
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        @keyframes fadeIn {
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
 </head>
-<body>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-300 transition-colors duration-300 font-sans">
 
-  <header>
-    <nav class="nav" aria-label="Primary">
-      <div class="links">
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <a href="#education">Education</a>
-        <a href="#publications">Publications</a>
-        <a href="assets/CV.pdf" target="_blank">Curriculum Vitae</a>
-      </div>
-      <button id="themeToggle" class="btn-toggle" type="button" aria-pressed="false" title="Toggle theme">◐</button>
-    </nav>
-  </header>
+    <header class="fixed w-full top-0 z-50 glass-header border-b border-slate-200/60 dark:border-slate-800/60 transition-colors duration-300">
+        <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="#" class="font-serif font-bold text-xl tracking-tight text-slate-900 dark:text-white hover:text-primary-600 dark:hover:text-primary-500 transition-colors">
+                K. A. Augustine
+            </a>
+            
+            <nav class="hidden md:flex gap-8 items-center">
+                <a href="#education" class="text-sm font-medium hover:text-primary-600 dark:hover:text-primary-500 transition-colors">Education</a>
+                <a href="#publications" class="text-sm font-medium hover:text-primary-600 dark:hover:text-primary-500 transition-colors">Publications</a>
+                <a href="#collaborations" class="text-sm font-medium hover:text-primary-600 dark:hover:text-primary-500 transition-colors">Collaborations</a>
+                <a href="#skills" class="text-sm font-medium hover:text-primary-600 dark:hover:text-primary-500 transition-colors">Skills</a>
+                <a href="CV_Abhi.pdf" target="_blank" class="text-sm font-medium text-primary-600 dark:text-primary-500 hover:underline underline-offset-4">CV_Abhi.pdf</a>
+            </nav>
 
-  <main>
-    <!-- Hero -->
-    <section id="home" class="hero">
-      <div class="profile-container">
-        <img src="images/profile_pic.jpg" alt="Koothodil Abhijith Augustine" class="hero-img">
-      </div>
-      
-      <h1>Koothodil Abhijith Augustine</h1>
-      <div class="tagline">High-Energy Astrophysics PhD Student</div>
-      
-      <p class="social" aria-label="Social links">
-        <a class="icon-link" href="https://www.linkedin.com/in/koothodilabhijithaugustine/" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn">
-          <svg class="icon" viewBox="0 0 24 24" role="img" aria-hidden="true"><path fill="currentColor" d="M4.98 3.5a2.5 2.5 0 1 1 0 5.001 2.5 2.5 0 0 1 0-5.001ZM3 9h4v12H3zM14.5 9c-2.33 0-3.5 1.28-3.5 3.09V21h4v-6.2c0-1.14.77-1.9 1.82-1.9 1.02 0 1.68.7 1.68 1.88V21h4v-6.9C22.5 10.83 20.73 9 18.16 9c-1.5 0-2.66.6-3.16 1.39V9h- .5z"/></svg>
-        </a>
-        <a class="icon-link" href="https://ui.adsabs.harvard.edu/search/q=orcid%3A0009-0008-7888-7584&sort=date+desc" target="_blank" rel="noopener" aria-label="NASA ADS" title="NASA ADS">
-          <!-- Clean SVG Icon for ADS -->
-          <svg class="icon" viewBox="0 0 24 24" role="img" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-             <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-          </svg>
-        </a>
-      </p>
-    </section>
+            <button id="themeToggle" class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors focus:outline-none" aria-label="Toggle Dark Mode">
+                <!-- Sun Icon -->
+                <svg id="sunIcon" class="hidden w-5 h-5 text-slate-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                <!-- Moon Icon -->
+                <svg id="moonIcon" class="hidden w-5 h-5 text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+            </button>
+        </div>
+    </header>
 
-    <!-- About -->
-    <section id="about">
-        <div style="text-align: center; max-width: 700px; margin: 0 auto;">
-            <h2>Biography</h2>
-            <p style="font-size: 1.2rem; line-height: 1.8; color: var(--text-main);">
-            I am an Astronomy student specializing in high-energy astrophysics. My research involves analyzing observational data to understand pulsars.
-            </p>
-            <p>
-            I am currently at National Tsing Hua University doing a PhD under the supervision of <a href="http://www.phys.nthu.edu.tw/~hkchang/" target="_blank">Prof. Hsiang-Kuang Chang</a>.
-            </p>
-            <div style="margin-top: 2.5rem;">
-                <div class="btn-container">
-                    <a class="btn" href="assets/CV.pdf" target="_blank">View Curriculum Vitae</a>
-                    <div class="cv-preview">
-                        <!-- Note: This will only work if the PDF file exists at this path -->
-                        <iframe src="assets/CV.pdf" title="CV Preview"></iframe>
+    <main class="pt-28 pb-16">
+        <section class="max-w-6xl mx-auto px-6 py-16 md:py-24 fade-in">
+            <div class="flex flex-col items-center text-center max-w-3xl mx-auto">
+                <h1 class="font-serif text-4xl md:text-6xl font-bold text-slate-900 dark:text-white leading-tight mb-6 tracking-tight">
+                    Koothodil Abhijith Augustine
+                </h1>
+                
+                <div class="flex flex-col md:flex-row gap-4 items-center justify-center text-slate-600 dark:text-slate-400 mb-10">
+                    <a href="mailto:abhijithaugustine007@gmail.com" class="flex items-center gap-2 hover:text-primary-600 dark:hover:text-primary-500 transition-colors">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                        abhijithaugustine007@gmail.com
+                    </a>
+                    <span class="hidden md:inline text-slate-300 dark:text-slate-700">|</span>
+                    <a href="https://koothodilabhijithaugustine.github.io/" target="_blank" class="flex items-center gap-2 hover:text-primary-600 dark:hover:text-primary-500 transition-colors">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path></svg>
+                        https://koothodilabhijithaugustine.github.io/
+                    </a>
+                </div>
+
+                <a href="CV_Abhi.pdf" target="_blank" class="inline-flex items-center justify-center px-8 py-3.5 text-sm font-medium text-white bg-slate-900 dark:bg-white dark:text-slate-900 rounded-lg hover:bg-slate-800 dark:hover:bg-slate-100 transition-all shadow-sm hover:shadow-md">
+                    View CV_Abhi.pdf
+                </a>
+            </div>
+        </section>
+
+        <section id="education" class="max-w-6xl mx-auto px-6 py-16 border-t border-slate-200/60 dark:border-slate-800/60">
+            <h2 class="font-serif text-3xl font-bold text-slate-900 dark:text-white mb-10">Education</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- PhD -->
+                <div class="bg-white dark:bg-slate-900 p-8 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow group">
+                    <span class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs font-semibold tracking-wider uppercase rounded-full mb-4">2023 - Present</span>
+                    <h3 class="font-serif text-xl font-semibold text-slate-900 dark:text-white mb-2">Ph.D. in Astronomy</h3>
+                    <p class="text-slate-600 dark:text-slate-400 mb-4 font-medium">Institute of Astronomy, National Tsing Hua University, Hsinchu, Taiwan</p>
+                    <div class="space-y-2 text-sm text-slate-500 dark:text-slate-400">
+                        <p><span class="text-slate-700 dark:text-slate-300 font-medium">Tentative thesis title:</span> MeV observations of Pulsars</p>
+                        <p><span class="text-slate-700 dark:text-slate-300 font-medium">Advisor:</span> Prof. Hsiang-Kuang Chang</p>
+                    </div>
+                </div>
+
+                <!-- MSc -->
+                <div class="bg-white dark:bg-slate-900 p-8 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow group">
+                    <span class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs font-semibold tracking-wider uppercase rounded-full mb-4">2021 - 2023</span>
+                    <h3 class="font-serif text-xl font-semibold text-slate-900 dark:text-white mb-2">M.Sc. in Physics</h3>
+                    <p class="text-slate-600 dark:text-slate-400 mb-4 font-medium">The Department of Physics, Sant Longowal Institute of Engineering and Technology, Punjab, India</p>
+                    <div class="space-y-2 text-sm text-slate-500 dark:text-slate-400">
+                        <p><span class="text-slate-700 dark:text-slate-300 font-medium">Thesis title:</span> Exploring the JWST PRIMER Catalog: An Investigation of Infrared Galaxies</p>
+                        <p><span class="text-slate-700 dark:text-slate-300 font-medium">Advisor:</span> Prof. S.S. Verma and Prof. Tomo Goto</p>
+                    </div>
+                </div>
+
+                <!-- BSc -->
+                <div class="bg-white dark:bg-slate-900 p-8 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow group md:col-span-2">
+                    <span class="inline-block px-3 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs font-semibold tracking-wider uppercase rounded-full mb-4">2018 - 2021</span>
+                    <h3 class="font-serif text-xl font-semibold text-slate-900 dark:text-white mb-2">B.Sc. in Physics</h3>
+                    <p class="text-slate-600 dark:text-slate-400 mb-4 font-medium">The Department of Physics, University College, The University of Kerala, Kerala, India</p>
+                    <div class="space-y-2 text-sm text-slate-500 dark:text-slate-400">
+                        <p><span class="text-slate-700 dark:text-slate-300 font-medium">Thesis title:</span> Effect of Solar Flux on Aerosol Absorption Coefficient</p>
+                        <p><span class="text-slate-700 dark:text-slate-300 font-medium">Advisor:</span> Prof. S. Bindu</p>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Projects -->
-    <section id="projects">
-      <h2>Selected Projects</h2>
-      <div class="grid cols-2">
-        <div class="card">
-          <span class="meta-tag">Research Analysis</span>
-          <h3>Anti‑correlation in Crab X‑ray Emission</h3>
-          <p>Spectral analysis of the Crab system using 18 years of Swift BAT data. Found a significant anti‑correlation between X‑ray flux and photon index, supporting a synchrotron origin.</p>
-          <a class="card-link" href="https://iopscience.iop.org/article/10.3847/1538-4357/adb70e" target="_blank">Read Publication</a>
+        <section id="publications" class="max-w-6xl mx-auto px-6 py-16 border-t border-slate-200/60 dark:border-slate-800/60">
+            <h2 class="font-serif text-3xl font-bold text-slate-900 dark:text-white mb-10">Publications</h2>
+            <ol class="space-y-6 list-decimal list-outside ml-5 text-slate-600 dark:text-slate-400 leading-relaxed">
+                <li class="pl-2">
+                    K. A. Augustine and H.-K. Chang, "Anticorrelation Between Flux and Photon Index of Hard-X-Ray Emission from the Crab," vol. 981, no. 2, 173, p. 173, Mar. 2025. DOI: 10.3847/1538-4357/adb70e. arXiv: 2408.00406 [astro-ph.HE].
+                </li>
+                <li class="pl-2">
+                    D. Chatterjee, H.-K. Chang, D. Debnath, K. A. Augustine, and T.-H. Lin, "Investigating the Anti-Correlation between Photon Index and Flux of the Crab using RXTE and NuSTAR," vol. 988, no. 1, 105, p. 105, Jul. 2025. DOI: 10.3847/1538-4357/ade9bd. arXiv: 2506.17899 [astro-ph. HE].
+                </li>
+            </ol>
+        </section>
+
+        <section id="collaborations" class="max-w-6xl mx-auto px-6 py-16 border-t border-slate-200/60 dark:border-slate-800/60">
+            <h2 class="font-serif text-3xl font-bold text-slate-900 dark:text-white mb-10">Collaborations</h2>
+            <ul class="space-y-6 text-slate-600 dark:text-slate-400 leading-relaxed">
+                <li class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-100 dark:border-slate-800 shadow-sm">
+                    <span class="font-semibold text-slate-900 dark:text-white">COSI (The Compton Spectrometer and Imager:)</span> 2024-Present, Early Career Co-Lead of Galactic Science team, and Galactic Science team member working on Pulsars.
+                </li>
+                <li class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-100 dark:border-slate-800 shadow-sm">
+                    <span class="font-semibold text-slate-900 dark:text-white">BTO (The Background and Transient Observer on board COSI:)</span> 2025-Present, Software team member working on ground software analysis.
+                </li>
+                <li class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-100 dark:border-slate-800 shadow-sm">
+                    <span class="font-semibold text-slate-900 dark:text-white">GTM (The Gamma-ray Transients Monitor on board Formosat-8B:)</span> 2025-Present, Science team member working on the Crab.
+                </li>
+            </ul>
+        </section>
+
+        <section id="skills" class="max-w-6xl mx-auto px-6 py-16 border-t border-slate-200/60 dark:border-slate-800/60">
+            <h2 class="font-serif text-3xl font-bold text-slate-900 dark:text-white mb-10">Skills</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-100 dark:border-slate-800">
+                    <h3 class="font-serif text-lg font-semibold text-slate-900 dark:text-white mb-3">Languages</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">English, Malayalam, Telugu, Hindi, and basic proficiency in Tamil and French.</p>
+                </div>
+                <div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-100 dark:border-slate-800">
+                    <h3 class="font-serif text-lg font-semibold text-slate-900 dark:text-white mb-3">Coding</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Python.</p>
+                </div>
+                <div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-100 dark:border-slate-800">
+                    <h3 class="font-serif text-lg font-semibold text-slate-900 dark:text-white mb-3">Astro. Software</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">XSpec, MEGAlib, Fermipy, and Cosipy.</p>
+                </div>
+                <div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-100 dark:border-slate-800">
+                    <h3 class="font-serif text-lg font-semibold text-slate-900 dark:text-white mb-3">Misc.</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Academic research, tutoring while in school, LATEX typesetting.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="presentations" class="max-w-6xl mx-auto px-6 py-16 border-t border-slate-200/60 dark:border-slate-800/60">
+            <h2 class="font-serif text-3xl font-bold text-slate-900 dark:text-white mb-10">Presentations</h2>
+            <ol class="space-y-5 list-decimal list-outside ml-5 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                <li class="pl-2">K. A. Augustine, H.-K. Chang, D. Chatterjee, D. Debnath, and T.-H. Lin, "Anticorrelation Between Flux and Photon Index of Hard-X-Ray Emission from the Crab revealed by multiple X-ray instruments," in The 2026 Scientific Assembly of the Astronomical Society of the Republic of China (ASROC2026), at the College of Hakka Studies at National Yang Ming Chiao Tung University in Zhubei, 2026</li>
+                <li class="pl-2">K. A. Augustine, H.-K. Chang, D. Chatterjee, D. Debnath, and T.-H. Lin, "Anticorrelation Between Flux and Photon Index of Hard-X-Ray Emission from the Crab revealed by multiple X-ray instruments," in American Astronomical Society Meeting Abstracts, vol. 247, Jan. 2026.</li>
+                <li class="pl-2">K. A. Augustine, H.-K. Chang, D. Chatterjee, D. Debnath, and T.-H. Lin, "Anticorrelation between flux and photon index of hard-x-ray emission from the crab revealed by multiple x-ray instruments," in 2026 Annual Meeting of the Physical Society of Taiwan, Astrophysics, Gravity and Cosmology session, National Chung Cheng University, Taiwan, 2026.</li>
+                <li class="pl-2">K. A. Augustine and H.-K. Chang, "An anti-correlation found between Photon Index and Flux in a long-term study of The Crab," in The 2025 Scientific Assembly of the Astronomical Society of the Republic of China (ASROC2025), National Formosa University, Taiwan, 2025.</li>
+                <li class="pl-2">K. A. Augustine and H.-K. Chang, "An anti-correlation found between Photon Index and Flux in a long-term study of The Crab," in Fermi Summer School (2025), University of Delaware Conference Center in Lewes, Delaware, 2025.</li>
+                <li class="pl-2">K. A. Augustine and H.-K. Chang, "Anticorrelation Between Flux and Photon Index of Hard-X-Ray Emission from the Crab," in American Astronomical Society Meeting Abstracts, vol. 246, Jun. 2025, 411.09, P. 411.09.</li>
+                <li class="pl-2">K. A. Augustine, H.-K. Chang, D. Chatterjee, D. Debnath, and T.-H. Lin, "Anticorrelation Between Flux and Photon Index of Hard-X-Ray Emission from the Crab revealed by multiple X-ray instruments," in IA Forth Seminar, Nov. 2025.</li>
+                <li class="pl-2">K. A. Augustine and H.-K. Chang, "An anti-correlation found between Photon Index and Flux in a long-term study of The Crab," in The 2024 Scientific Assembly of the Astronomical Society of the Republic of China (ASROC2024), National Changhua University of Education, Changhua, Taiwan, 2024.</li>
+                <li class="pl-2">K. A. Augustine and H.-K. Chang, "An anti-correlation found between Photon Index and Flux in a long-term study of The Crab," in COSI Fest, Space Science Laboratory, UC Berkeley, 2024.</li>
+                <li class="pl-2">K. A. Augustine and H.-K. Chang, "Spectral Analysis of Pulsars detected in the Swift BAT 157-Month Hard X-ray Survey," in 2024 Annual Meeting of the Physical Society of Taiwan, Oral Contestant in Astrophysics, Gravity and Cosmology session, National Central University, Taoyuan, Taiwan, 2024.</li>
+            </ol>
+        </section>
+
+        <section id="posters" class="max-w-6xl mx-auto px-6 py-16 border-t border-slate-200/60 dark:border-slate-800/60">
+            <h2 class="font-serif text-3xl font-bold text-slate-900 dark:text-white mb-10">Posters</h2>
+            <ul class="space-y-4 list-disc list-outside ml-5 text-slate-600 dark:text-slate-400 leading-relaxed">
+                <li class="pl-2">AAS 247: Jan 05, 2026, "A cosipy Pipeline for Pulsar Timing and Phase Resolved Spectroscopy with COSI" at the 2026 Winter Meeting of the American Astronomical Society, Phoenix, AZ, USA.</li>
+                <li class="pl-2">TPS 2025: Jan 14, 2025, "Anti-correlation between Flux and Photon Index of Hard X-ray Emission from The Crab" at National Sun Yat-sen University, Kaohsiung, Taiwan.</li>
+            </ul>
+        </section>
+
+        <section id="awards" class="max-w-6xl mx-auto px-6 py-16 border-t border-slate-200/60 dark:border-slate-800/60">
+            <h2 class="font-serif text-3xl font-bold text-slate-900 dark:text-white mb-10">Awards and Achievements</h2>
+            <ul class="space-y-4 list-disc list-outside ml-5 text-slate-600 dark:text-slate-400 leading-relaxed">
+                <li class="pl-2">2017: Valedictorian, 12th standard best outgoing student at St. Mary's Higher Secondary School, Mullenkolly, Kerala, India.</li>
+                <li class="pl-2">2015: CIGI, Calicut, Selected to represent 300 students at my higher secondary school to guide them in choosing their career. Attended a 5-day camp in The Center for Information and Guidance India (CIGI), Kozhikode, Kerala.</li>
+                <li class="pl-2">2015: Valedictorian, Proficiency Award in the 10th class for scoring the highest grades at Little Flower High School, T. Sundupalli, Andhra Pradesh, India.</li>
+            </ul>
+        </section>
+
+        <section id="activities" class="max-w-6xl mx-auto px-6 py-16 border-t border-slate-200/60 dark:border-slate-800/60">
+            <h2 class="font-serif text-3xl font-bold text-slate-900 dark:text-white mb-10">Activities</h2>
+            <ul class="space-y-4 list-disc list-outside ml-5 text-slate-600 dark:text-slate-400 leading-relaxed">
+                <li class="pl-2">2017-2023: Seminars, Participated and organized multiple National and International Seminars during undergraduate and postgraduate studies, mostly related to multidisciplinary topics.</li>
+                <li class="pl-2">2021: IUCAA-ISSAA, 2021, Participated in the Introduction Summer School Program conducted by the Inter-University Center for Astronomy and Astrophysics, Pune (10 May to 11 June 2021).</li>
+                <li class="pl-2">2018-2021: WWS, Part of Walk With a Scholar (WWS), a mentoring program for undergraduate students. Attended lectures of eminent scientists from ISRO and talks by Civil Service Officers and Emeritus Professors.</li>
+                <li class="pl-2">2015-2017: NSS, Part of the National Service Scheme (Indian government public sector service program). Participated in organ and blood donation drives, green farming, and tribal camp upliftment. Attended a 7-day camp in 2016.</li>
+            </ul>
+        </section>
+
+        <section id="references" class="max-w-6xl mx-auto px-6 py-16 border-t border-slate-200/60 dark:border-slate-800/60">
+            <h2 class="font-serif text-3xl font-bold text-slate-900 dark:text-white mb-10">References</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Ref 1 -->
+                <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm">
+                    <h3 class="font-serif text-xl font-semibold text-slate-900 dark:text-white mb-3">Prof. Hsiang-Kuang Chang</h3>
+                    <div class="space-y-2 text-sm text-slate-600 dark:text-slate-400 break-words">
+                        <p>Institute of Astronomy, National Tsing Hua University, Hsinchu, Taiwan.</p>
+                        <p><span class="font-medium text-slate-700 dark:text-slate-300">Email:</span> <a href="mailto:hkchang@mx.nthu.edu.tw" class="hover:text-primary-600 dark:hover:text-primary-500 transition-colors">hkchang@mx.nthu.edu.tw</a></p>
+                        <p><span class="font-medium text-slate-700 dark:text-slate-300">URL:</span> <a href="http://www.phys.nthu.edu.tw/~hkchang/" target="_blank" class="hover:text-primary-600 dark:hover:text-primary-500 transition-colors">http://www.phys.nthu.edu.tw/~hkchang/</a></p>
+                    </div>
+                </div>
+
+                <!-- Ref 2 -->
+                <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm">
+                    <h3 class="font-serif text-xl font-semibold text-slate-900 dark:text-white mb-3">Prof. Amy Lien</h3>
+                    <div class="space-y-2 text-sm text-slate-600 dark:text-slate-400 break-words">
+                        <p>Department of Physics and Astronomy, University of Tampa, FL, USA.</p>
+                        <p><span class="font-medium text-slate-700 dark:text-slate-300">Email:</span> <a href="mailto:alien@ut.edu" class="hover:text-primary-600 dark:hover:text-primary-500 transition-colors">alien@ut.edu</a></p>
+                        <p><span class="font-medium text-slate-700 dark:text-slate-300">URL:</span> <a href="https://www.ut.edu/directory/lien-amy-y" target="_blank" class="hover:text-primary-600 dark:hover:text-primary-500 transition-colors">https://www.ut.edu/directory/lien-amy-y</a></p>
+                    </div>
+                </div>
+
+                <!-- Ref 3 -->
+                <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm">
+                    <h3 class="font-serif text-xl font-semibold text-slate-900 dark:text-white mb-3">Prof. S. S. Verma</h3>
+                    <div class="space-y-2 text-sm text-slate-600 dark:text-slate-400 break-words">
+                        <p>The Department of Physics, Sant Longowal Institute of Engineering and Technology, Punjab, India.</p>
+                        <p><span class="font-medium text-slate-700 dark:text-slate-300">Email:</span> <a href="mailto:ssverma@sliet.ac.in" class="hover:text-primary-600 dark:hover:text-primary-500 transition-colors">ssverma@sliet.ac.in</a></p>
+                        <p><span class="font-medium text-slate-700 dark:text-slate-300">URL:</span> <a href="http://sliet.ac.in/people/ssverma/" target="_blank" class="hover:text-primary-600 dark:hover:text-primary-500 transition-colors">http://sliet.ac.in/people/ssverma/</a></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- AI Chatbot UI -->
+    <div id="chat-widget" class="fixed bottom-6 right-6 z-50 flex flex-col items-end font-sans">
+        <!-- Chat Box -->
+        <div id="chat-box" class="hidden bg-white dark:bg-slate-900 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-800 w-80 sm:w-96 mb-4 flex flex-col overflow-hidden transition-all duration-300 origin-bottom-right">
+            <!-- Header -->
+            <div class="bg-slate-900 dark:bg-slate-950 border-b border-slate-800 text-white p-4 flex justify-between items-center">
+                <div class="flex items-center gap-2">
+                    <svg class="w-5 h-5 text-primary-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    <h3 class="font-semibold text-sm">Research Assistant AI</h3>
+                </div>
+                <button id="close-chat" class="text-slate-400 hover:text-white focus:outline-none transition-colors">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+            <!-- Messages -->
+            <div id="chat-messages" class="p-4 h-80 overflow-y-auto bg-slate-50 dark:bg-slate-900 flex flex-col gap-4 text-sm scroll-smooth">
+                <!-- Initial Message -->
+                <div class="bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-200 p-3 rounded-2xl rounded-tl-sm self-start max-w-[85%] border border-slate-100 dark:border-slate-700 shadow-sm">
+                    Hello! I'm an AI assistant trained on Abhijith's portfolio. Ask me anything about his research on pulsars, publications, or academic background!
+                </div>
+            </div>
+            <!-- Loading Indicator -->
+            <div id="chat-loading" class="hidden p-4 bg-slate-50 dark:bg-slate-900 text-xs text-slate-500 dark:text-slate-400 italic flex items-center gap-2">
+                <svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-primary-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
+                Thinking...
+            </div>
+            <!-- Input -->
+            <div class="p-3 bg-white dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800 flex gap-2">
+                <input type="text" id="chat-input" class="flex-1 bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 transition-shadow" placeholder="Ask a question..." autocomplete="off">
+                <button id="send-chat" class="bg-slate-900 dark:bg-primary-600 hover:bg-slate-800 dark:hover:bg-primary-500 text-white rounded-xl px-4 py-2.5 flex items-center justify-center transition-colors">
+                    <svg class="w-4 h-4 transform rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path></svg>
+                </button>
+            </div>
         </div>
+
+        <!-- Chat Toggle Button -->
+        <button id="toggle-chat" class="bg-slate-900 dark:bg-primary-600 text-white rounded-full p-4 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all focus:outline-none flex items-center justify-center border-2 border-transparent dark:border-primary-400">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path></svg>
+        </button>
+    </div>
+
+    <footer class="py-8 text-center text-sm text-slate-500 dark:text-slate-500 border-t border-slate-200/60 dark:border-slate-800/60">
+        <p>&copy; 2026 Koothodil Abhijith Augustine.</p>
+    </footer>
+
+    <script>
+        const themeToggleBtn = document.getElementById('themeToggle');
+        const sunIcon = document.getElementById('sunIcon');
+        const moonIcon = document.getElementById('moonIcon');
+
+        // On page load or when changing themes, best to add inline in `head` to avoid FOUC, but doing it here for simplicity
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            sunIcon.classList.remove('hidden');
+        } else {
+            document.documentElement.classList.remove('dark');
+            moonIcon.classList.remove('hidden');
+        }
+
+        themeToggleBtn.addEventListener('click', function() {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.theme = 'light';
+                sunIcon.classList.add('hidden');
+                moonIcon.classList.remove('hidden');
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.theme = 'dark';
+                moonIcon.classList.add('hidden');
+                sunIcon.classList.remove('hidden');
+            }
+        });
+
+        // AI Chatbot Logic
+        const chatWidget = document.getElementById('chat-widget');
+        const chatBox = document.getElementById('chat-box');
+        const toggleChatBtn = document.getElementById('toggle-chat');
+        const closeChatBtn = document.getElementById('close-chat');
+        const chatMessages = document.getElementById('chat-messages');
+        const chatInput = document.getElementById('chat-input');
+        const sendChatBtn = document.getElementById('send-chat');
+        const chatLoading = document.getElementById('chat-loading');
+
+        let chatHistory = [];
+
+        // System Instruction acts as the "Brain" of the assistant, feeding it Abhijith's CV data.
+        const systemPrompt = `You are a helpful and polite AI assistant integrated into the professional portfolio of Koothodil Abhijith Augustine, an Astronomy PhD student. 
+        Your goal is to answer questions about Abhi's academic background, research, and skills based on the provided context. Keep your answers concise, professional, and directly related to the user's question.
         
-        <div class="card">
-          <span class="meta-tag">Mission Planning</span>
-          <h3>COSI Telescope Science</h3>
-          <p>Member of Pulsar science working group planning studies of the soft gamma‑ray pulsar population (0.2–5 MeV) for the upcoming Compton Spectrometer and Imager mission.</p>
-          <a class="card-link" href="https://cosi.ssl.berkeley.edu/" target="_blank">About COSI</a>
-        </div>
+        Information about Koothodil Abhijith Augustine:
+        Education:
+        - Ph.D. in Astronomy, Institute of Astronomy, National Tsing Hua University, Taiwan (2023-Present). Advisor: Prof. Hsiang-Kuang Chang. Tentative thesis: MeV observations of Pulsars.
+        - M.Sc. in Physics, Sant Longowal Institute of Engineering and Technology, India (2021-2023). Thesis: Exploring the JWST PRIMER Catalog: An Investigation of Infrared Galaxies.
+        - B.Sc. in Physics, University of Kerala, India (2018-2021). Thesis: Effect of Solar Flux on Aerosol Absorption Coefficient.
         
-        <div class="card">
-          <span class="meta-tag">Simulation & Data</span>
-          <h3>CubeSat Studies</h3>
-          <p>Simulations (cosima) and Compton data analysis (revan) to understand Crab pulsar. MDP estimates with MEGAlib to inform polarization measurements for CubeSat missions.</p>
-          <a class="card-link" href="https://megalibtoolkit.com/home.html" target="_blank">MEGAlib Toolkit</a>
-        </div>
+        Publications:
+        - Anticorrelation Between Flux and Photon Index of Hard-X-Ray Emission from the Crab (Mar 2025).
+        - Investigating the Anti-Correlation between Photon Index and Flux of the Crab using RXTE and NuSTAR (Jul 2025).
         
-        <div class="card">
-          <span class="meta-tag">Software Development</span>
-          <h3>BTO Detector Testing</h3>
-          <p>Developed a Python GUI for data acquisition and quick‑look analysis (counts, temperature, light curves) for BTO (on-board COSI) calibration.</p>
-          <a class="card-link" href="https://cosi.ssl.berkeley.edu/bto/" target="_blank">View Specs</a>
-        </div>
-      </div>
-    </section>
+        Collaborations:
+        - COSI (Compton Spectrometer and Imager): Early Career Co-Lead of Galactic Science team, working on Pulsars (2024-Present).
+        - BTO (Background and Transient Observer on board COSI): Software team member for ground software analysis (2025-Present).
+        - GTM (Gamma-ray Transients Monitor on board Formosat-8B): Science team member working on the Crab (2025-Present).
+        
+        Skills: Python, XSpec, MEGAlib, Fermipy, Cosipy. Languages: English, Malayalam, Telugu, Hindi, Tamil, French.
+        
+        If asked something outside this scope, politely state that you are an AI focused only on answering questions regarding Abhijith's portfolio and academic work. Do not make up information.`;
 
-    <!-- Education -->
-    <section id="education">
-      <h2>Academic History</h2>
-      <div class="grid cols-2">
-        <div class="card">
-          <span class="meta-tag">2023 – Present</span>
-          <h3>PhD in Astronomy</h3>
-          <p><strong>National Tsing Hua University, Taiwan</strong></p>
-          <p>Focus: Crab pulsar and Pulsar Wind Nebula.</p>
-        </div>
-        <div class="card">
-          <span class="meta-tag">2021 – 2023</span>
-          <h3>M.Sc. in Physics</h3>
-          <p><strong>SLIET, India</strong></p>
-          <p>Thesis: JWST PRIMER Catalog & Infrared Galaxies.</p>
-        </div>
-        <div class="card" style="grid-column: 1 / -1;">
-          <span class="meta-tag">2018 – 2021</span>
-          <h3>B.Sc. in Physics</h3>
-          <p><strong>University of Kerala, India</strong></p>
-          <p>Thesis: Effect of solar flux on aerosol absorption.</p>
-        </div>
-      </div>
-    </section>
+        // Toggle chat visibility
+        toggleChatBtn.addEventListener('click', () => {
+            chatBox.classList.toggle('hidden');
+            if (!chatBox.classList.contains('hidden')) {
+                chatInput.focus();
+            }
+        });
 
-    <!-- Skills -->
-    <section id="skills">
-      <h2>Technical Expertise</h2>
-      <div class="grid cols-2">
-        <div class="card">
-          <h3>Astrophysical Analysis</h3>
-          <ul>
-            <li>XSPEC, Fermipy, Cosipy</li>
-            <li>Spectral & Timing Analysis</li>
-            <li>Phase‑resolved Spectroscopy</li>
-            <li>MEGAlib (cosima, revan, mimrec)</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>Data Science & Code</h3>
-          <ul>
-            <li>Python (Astropy, NumPy, Pandas)</li>
-            <li>Data Viz (Matplotlib, Seaborn)</li>
-            <li>Linux Shell Scripting</li>
-            <li>Automation & HPC Workflows</li>
-          </ul>
-        </div>
-      </div>
-    </section>
+        closeChatBtn.addEventListener('click', () => {
+            chatBox.classList.add('hidden');
+        });
 
-    <!-- Publications -->
-    <section id="publications">
-      <h2>Selected Publications</h2>
-      <div class="grid">
-        <article class="card">
-            <div>
-                <span class="meta-tag" style="color:var(--highlight-color); font-weight:700;">ApJ — 2025</span>
-                <h3>Investigating the Anti‑Correlation between Photon Index and Flux of the Crab using RXTE and NuSTAR</h3>
-                <p><em>Debjit Chatterjee, Hsiang‑Kuang Chang, Dipak Debnath, <strong>Koothodil Abhijith Augustine</strong>, Tzu‑Hsuan Lin</em></p>
-            </div>
-            <div style="margin-top: 1.5rem;">
-                <a class="card-link" href="https://iopscience.iop.org/article/10.3847/1538-4357/ade9bd" target="_blank">View Full Paper</a>
-                <details>
-                    <summary>Read Abstract</summary>
-                    <p>We present a systematic study of the recently reported anticorrelation between X-ray flux and photon index (Γ) in the Crab Nebula, using archival Rossi X-Ray Timing Explorer (RXTE) Proportional Counter Array (3–50 keV), RXTE High Energy X-ray Timing Experiment (HEXTE; 20–100 keV), and Nuclear Spectroscopic Telescope Array (3–78 keV) observations. Spectra were extracted in soft (3–10 keV) and hard bands (10–50, 10–78, 20–100 keV) and fitted with an absorbed power-law model. Across all instruments and energy ranges, we confirm the existence of a persistent negative correlation–harder spectra at higher flux levels. The correlation is stronger in the hard bands compared to the soft bands. This is consistent with synchrotron emission modulated by magnetic-field variations in the pulsar wind nebula.</p>
-                </details>
-            </div>
-        </article>
+        // Function to render messages in the UI
+        function appendMessage(text, isUser) {
+            const msgDiv = document.createElement('div');
+            // Format styling based on sender
+            msgDiv.className = isUser 
+                ? 'bg-slate-900 dark:bg-primary-600 text-white p-3 rounded-2xl rounded-tr-sm self-end max-w-[85%] shadow-sm' 
+                : 'bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-200 p-3 rounded-2xl rounded-tl-sm self-start max-w-[85%] border border-slate-100 dark:border-slate-700 shadow-sm whitespace-pre-wrap';
+            
+            msgDiv.textContent = text;
+            chatMessages.appendChild(msgDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
 
-        <article class="card">
-            <div>
-                <span class="meta-tag" style="color:var(--highlight-color); font-weight:700;">ApJ — 2025</span>
-                <h3>Anti‑correlation between Flux and Photon Index of Hard X‑ray Emission from The Crab</h3>
-                <p><em><strong>Koothodil Abhijith Augustine</strong> and Hsiang‑Kuang Chang</em></p>
-            </div>
-            <div style="margin-top: 1.5rem;">
-                <a class="card-link" href="https://iopscience.iop.org/article/10.3847/1538-4357/adb70e" target="_blank">View Full Paper</a>
-                <details>
-                    <summary>Read Abstract</summary>
-                    <p>Using Swift Burst Alert Telescope event-mode data during gamma-ray burst occurrences, we conduct spectral analysis for the Crab system. From 38 good observations, which span a period of 18 yr from 2006 to 2023, we find that the Crab’s X-ray flux not only flickers but also significantly anticorrelates to its spectral power-law photon index. Since the emission contribution of the Crab pulsar in this energy range is small, this anticorrelation is mainly about the emission of the Crab nebula. We suggest that this anticorrelation provides observational supporting evidence for the long-standing notion that the nebula emission is due to synchrotron radiation of shocked pulsar winds in the nebula.</p>
-                </details>
-            </div>
-        </article>
-      </div>
-    </section>
-  </main>
+        // Handle sending messages to Gemini API
+        async function handleSendMessage() {
+            const text = chatInput.value.trim();
+            if (!text) return;
 
-  <footer>
-    <p>&copy; 2025 Koothodil Abhijith Augustine.</p>
-  </footer>
+            // Update UI with user message
+            appendMessage(text, true);
+            chatInput.value = '';
+            
+            // Maintain chat history array for context in multi-turn conversations
+            chatHistory.push({ role: 'user', parts: [{ text: text }] });
 
-  <script>
-    // Simple Theme Toggle
-    (function(){
-      const root = document.documentElement;
-      const key = 'theme';
-      const btn = document.getElementById('themeToggle');
-      
-      const set = (t)=>{ 
-        root.setAttribute('data-theme', t); 
-        localStorage.setItem(key, t); 
-      };
-      
-      const saved = localStorage.getItem(key);
-      set(saved || 'light'); // Default to light/journal mode
+            chatLoading.classList.remove('hidden');
+            chatMessages.scrollTop = chatMessages.scrollHeight;
 
-      if(btn){ 
-        btn.addEventListener('click', ()=>{ 
-          set(root.getAttribute('data-theme')==='light' ? 'dark' : 'light'); 
-        }); 
-      }
-    })();
-  </script>
+            try {
+                // The Canvas environment automatically provides the API key dynamically when left blank
+                const apiKey = ""; 
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
+                
+                const payload = {
+                    contents: chatHistory,
+                    systemInstruction: {
+                        parts: [{ text: systemPrompt }]
+                    }
+                };
+
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                const result = await response.json();
+                
+                if (result.candidates && result.candidates.length > 0) {
+                    const aiText = result.candidates[0].content.parts[0].text;
+                    appendMessage(aiText, false);
+                    chatHistory.push({ role: 'model', parts: [{ text: aiText }] });
+                } else {
+                    appendMessage("I'm sorry, I encountered an unexpected error. Please try again later.", false);
+                }
+            } catch (error) {
+                console.error("Gemini API Error:", error);
+                appendMessage("I'm having trouble connecting to the AI service right now.", false);
+            } finally {
+                chatLoading.classList.add('hidden');
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+        }
+
+        // Event listeners for sending
+        sendChatBtn.addEventListener('click', handleSendMessage);
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') handleSendMessage();
+        });
+
+    </script>
 </body>
 </html>
