@@ -1,17 +1,12 @@
-<!doctype html>
-<html lang="en" class="scroll-smooth">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Koothodil Abhijith Augustine (Abhi) - Ph.D. in Astronomy" />
+<!-- ... existing code ... -->
     <title>Abhi</title>
     
     <link rel="icon" href="https://raw.githubusercontent.com/KoothodilAbhijithAugustine/koothodilabhijithaugustine.github.io/main/assets/favicon.ico" type="image/x-icon">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- Modern typography pairing: Inter for UI, Merriweather for elegant headings -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- Futuristic typography pairing: Inter for readable UI, Space Grotesk for tech/sci-fi headings -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     
     <script>
@@ -21,15 +16,30 @@
                 extend: {
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
-                        serif: ['Merriweather', 'serif'],
+                        display: ['Space Grotesk', 'sans-serif'], // Replaced serif with display
                     },
                     colors: {
                         brand: {
-                            50: '#f0fdfa',
-                            100: '#ccfbf1',
-                            500: '#14b8a6', // Teal accent
-                            600: '#0d9488',
-                            900: '#134e4a',
+                            50: '#fff1f2',
+                            100: '#ffe4e6',
+                            400: '#fb7185', // Pinkish red light
+                            500: '#f43f5e', // Pinkish red base
+                            600: '#e11d48', // Deep pinkish red
+                            900: '#881337',
+                        },
+                        neon: {
+                            pink: '#ff2a5f',
+                            purple: '#8b5cf6',
+                        }
+                    },
+                    animation: {
+                        'spin-slow': 'spin 8s linear infinite',
+                        'pulse-glow': 'pulseGlow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        pulseGlow: {
+                            '0%, 100%': { opacity: 1, boxShadow: '0 0 15px rgba(255, 42, 95, 0.2)' },
+                            '50%': { opacity: .7, boxShadow: '0 0 30px rgba(255, 42, 95, 0.6)' },
                         }
                     }
                 }
@@ -41,29 +51,47 @@
         body {
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
-            /* Make the body background transparent so the canvas shows through */
             background-color: transparent !important;
         }
         
-        /* The container for the HTML content to ensure background canvas is behind */
+        /* High-tech grid overlay in background */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            background-image: 
+                linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+        .dark body::before {
+            opacity: 1;
+            background-image: 
+                linear-gradient(to right, rgba(255,255,255,0.02) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255,255,255,0.02) 1px, transparent 1px);
+        }
+
         #content-wrapper {
             position: relative;
             z-index: 10;
         }
 
-        /* Glassmorphism for modern sticky header */
         .glass-nav {
             background: rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 42, 95, 0.1);
         }
         .dark .glass-nav {
-            background: rgba(9, 9, 11, 0.6);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            background: rgba(5, 5, 10, 0.7);
+            border-bottom: 1px solid rgba(255, 42, 95, 0.15);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
         }
         
-        /* Subtle entrance animations */
         .animate-fade-in-up {
             animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
             opacity: 0;
@@ -77,46 +105,62 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Modern Additions */
+        /* Sci-Fi Glass Cards */
         .glass-card {
-            background: rgba(255, 255, 255, 0.5);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.3) 100%);
             backdrop-filter: blur(24px);
             -webkit-backdrop-filter: blur(24px);
             border: 1px solid rgba(255, 255, 255, 0.6);
+            border-left: 2px solid theme('colors.brand.500');
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
         }
         .dark .glass-card {
-            background: rgba(24, 24, 27, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(135deg, rgba(15, 20, 30, 0.7) 0%, rgba(5, 10, 15, 0.8) 100%);
+            border: 1px solid rgba(255, 42, 95, 0.1);
+            border-left: 2px solid theme('colors.brand.400');
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+        }
+        .dark .glass-card:hover {
+            border-color: rgba(255, 42, 95, 0.4);
+            box-shadow: 0 0 20px rgba(255, 42, 95, 0.15), inset 0 0 20px rgba(255, 42, 95, 0.05);
         }
         
         .glow-dot {
-            box-shadow: 0 0 16px currentColor;
+            box-shadow: 0 0 12px currentColor;
+        }
+        
+        /* Tech border for avatar */
+        .tech-ring {
+            border: 2px dashed rgba(244, 63, 94, 0.5);
+            animation: spin 15s linear infinite;
+        }
+        .dark .tech-ring {
+            border-color: rgba(255, 42, 95, 0.6);
+            box-shadow: 0 0 15px rgba(255, 42, 95, 0.2);
         }
     </style>
 </head>
 <body class="text-zinc-800 dark:text-zinc-300 transition-colors duration-300 font-sans selection:bg-brand-500 selection:text-white">
 
-    <!-- Fixed background canvas for interactive space art -->
     <canvas id="space-bg" class="fixed inset-0 w-full h-full pointer-events-none z-[-1] bg-zinc-50 dark:bg-zinc-950 transition-colors duration-300"></canvas>
 
     <div id="content-wrapper">
         <header class="fixed w-full top-0 z-50 glass-nav transition-colors duration-300">
             <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
-                <a href="#" class="font-serif font-bold text-lg tracking-tight text-zinc-900 dark:text-white hover:text-brand-600 dark:hover:text-brand-500 transition-colors">
+                <a href="#" class="font-display font-bold text-xl tracking-widest uppercase text-zinc-900 dark:text-white hover:text-brand-600 dark:hover:text-neon-pink transition-colors drop-shadow-md">
                     Abhi
                 </a>
                 
                 <nav class="hidden md:flex gap-8 items-center">
-                    <a href="#education" class="text-sm font-medium hover:text-brand-600 dark:hover:text-brand-500 transition-colors">Education</a>
-                    <a href="#publications" class="text-sm font-medium hover:text-brand-600 dark:hover:text-brand-500 transition-colors">Publications</a>
-                    <a href="#expertise" class="text-sm font-medium hover:text-brand-600 dark:hover:text-brand-500 transition-colors">Expertise</a>
-                    <a href="https://koothodilabhijithaugustine.github.io/assets/CV_Abhi.pdf" target="_blank" class="text-sm font-medium text-brand-600 dark:text-brand-500 hover:underline underline-offset-4">CV</a>
+                    <a href="#education" class="text-xs tracking-widest uppercase font-semibold text-zinc-600 dark:text-zinc-400 hover:text-brand-600 dark:hover:text-neon-pink transition-all hover:drop-shadow-[0_0_8px_rgba(255,42,95,0.8)]">Education</a>
+                    <a href="#publications" class="text-xs tracking-widest uppercase font-semibold text-zinc-600 dark:text-zinc-400 hover:text-brand-600 dark:hover:text-neon-pink transition-all hover:drop-shadow-[0_0_8px_rgba(255,42,95,0.8)]">Publications</a>
+                    <a href="#expertise" class="text-xs tracking-widest uppercase font-semibold text-zinc-600 dark:text-zinc-400 hover:text-brand-600 dark:hover:text-neon-pink transition-all hover:drop-shadow-[0_0_8px_rgba(255,42,95,0.8)]">Expertise</a>
+                    <a href="https://koothodilabhijithaugustine.github.io/assets/CV_Abhi.pdf" target="_blank" class="text-xs tracking-widest uppercase font-bold text-brand-600 dark:text-brand-400 hover:text-brand-500 transition-all drop-shadow-[0_0_5px_rgba(244,63,94,0.4)]">CV</a>
                 </nav>
 
-                <button id="themeToggle" class="p-2 rounded-full hover:bg-zinc-200/50 dark:hover:bg-zinc-800/50 transition-colors focus:outline-none" aria-label="Toggle Dark Mode">
-                    <svg id="sunIcon" class="hidden w-4 h-4 text-zinc-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                <button id="themeToggle" class="p-2 rounded-md hover:bg-zinc-200/50 dark:hover:bg-zinc-800/80 transition-colors border border-transparent dark:hover:border-zinc-700 focus:outline-none" aria-label="Toggle Dark Mode">
+<!-- ... existing code ... -->
                     <svg id="moonIcon" class="hidden w-4 h-4 text-zinc-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
             </button>
         </div>
@@ -125,34 +169,45 @@
     <main class="pt-32 pb-16 px-6 max-w-5xl mx-auto">
         <section class="py-12 md:py-24 animate-fade-in-up">
             <div class="flex flex-col md:flex-row gap-12 items-center md:items-start relative">
-                <!-- Decorative background blur behind profile -->
-                <div class="absolute -top-10 -left-10 w-48 h-48 bg-brand-500/20 dark:bg-brand-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                
+                <div class="absolute -top-20 -left-20 w-80 h-80 bg-brand-500/20 dark:bg-brand-500/10 rounded-full blur-3xl pointer-events-none"></div>
                 
                 <div class="shrink-0 relative group cursor-pointer z-10">
-                    <div class="absolute inset-0 bg-gradient-to-tr from-brand-500 to-blue-500 rounded-full blur opacity-40 group-hover:opacity-70 transition-opacity duration-500"></div>
-                    <div class="w-32 h-32 md:w-44 md:h-44 rounded-full overflow-hidden ring-4 ring-white/90 dark:ring-zinc-900/90 shadow-2xl relative z-10 transform group-hover:scale-[1.02] transition-transform duration-500">
-                        <img src="https://raw.githubusercontent.com/KoothodilAbhijithAugustine/koothodilabhijithaugustine.github.io/main/images/20260711_131556.jpg" alt="Koothodil Abhijith Augustine" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/400x400/18181b/ffffff?text=KAA'">
+                    <!-- Tech/Futuristic spinning ring - Made softer and larger -->
+                    <div class="absolute -inset-6 rounded-full tech-ring pointer-events-none opacity-40 group-hover:opacity-100 transition-opacity duration-700 blur-[1px]"></div>
+                    
+                    <!-- Increased size (w-52/64) and softened edges -->
+                    <div class="w-52 h-52 md:w-64 md:h-64 rounded-full overflow-hidden border-2 border-zinc-200/50 dark:border-brand-500/20 relative z-10 transform group-hover:scale-105 transition-all duration-500 shadow-xl dark:shadow-[0_0_40px_rgba(255,42,95,0.15)] dark:group-hover:shadow-[0_0_60px_rgba(255,42,95,0.4)]">
+                        <!-- Holographic tint overlay to soften the image in dark mode -->
+                        <div class="absolute inset-0 bg-brand-500/10 mix-blend-color pointer-events-none transition-opacity group-hover:opacity-0 dark:block hidden"></div>
+                        <div class="absolute inset-0 bg-gradient-to-tr from-brand-900/30 to-transparent mix-blend-overlay pointer-events-none dark:block hidden"></div>
+                        
+                        <img src="https://raw.githubusercontent.com/KoothodilAbhijithAugustine/koothodilabhijithaugustine.github.io/main/images/20260711_131556.jpg" alt="Koothodil Abhijith Augustine" class="w-full h-full object-cover opacity-90 transition-opacity duration-500 group-hover:opacity-100" onerror="this.src='https://placehold.co/400x400/18181b/ffffff?text=KAA'">
                     </div>
                 </div>
                 
-                <div class="text-center md:text-left flex-1 z-10">
-                    <h1 class="font-serif text-4xl md:text-6xl font-bold text-zinc-900 dark:text-white mb-5 tracking-tight leading-tight">
+                <div class="text-center md:text-left flex-1 z-10 mt-4 md:mt-0 md:pl-4">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-50 dark:bg-brand-500/10 border border-brand-200 dark:border-brand-500/20 mb-4">
+                        <span class="w-2 h-2 rounded-full bg-brand-500 animate-pulse"></span>
+                        <span class="text-[10px] uppercase tracking-widest font-bold text-brand-700 dark:text-brand-400">Astrophysics Researcher</span>
+                    </div>
+                    <h1 class="font-display text-4xl md:text-6xl font-bold text-zinc-900 dark:text-transparent dark:bg-clip-text dark:bg-gradient-to-r dark:from-white dark:to-zinc-400 mb-4 tracking-tight leading-tight">
                         Koothodil <br class="hidden md:block" />Abhijith Augustine
                     </h1>
-                    <p class="text-lg md:text-xl text-zinc-700 dark:text-zinc-300 mb-8 max-w-2xl leading-relaxed font-light">
-                        Ph.D. Candidate in Astronomy at National Tsing Hua University. Specialized in high-energy astrophysics, focusing on <span class="font-medium text-brand-600 dark:text-brand-400">MeV observations of Pulsars</span>.
+                    <p class="text-lg md:text-xl text-zinc-700 dark:text-zinc-400 mb-8 max-w-2xl leading-relaxed font-light">
+                        Ph.D. Candidate in Astronomy at National Tsing Hua University. Specialized in high-energy astrophysics, focusing on <span class="font-medium text-brand-600 dark:text-neon-pink drop-shadow-[0_0_8px_rgba(255,42,95,0.3)]">MeV observations of Pulsars</span>.
                     </p>
                     
                     <div class="flex flex-wrap gap-4 justify-center md:justify-start">
-                        <a href="mailto:abhijithaugustine007@gmail.com" class="inline-flex items-center gap-2 text-sm font-medium text-zinc-700 dark:text-zinc-300 hover:text-brand-600 dark:hover:text-brand-400 transition-colors bg-white/80 dark:bg-zinc-900/80 backdrop-blur-md border border-zinc-200/50 dark:border-zinc-800/50 px-5 py-2.5 rounded-full shadow-sm hover:shadow-md">
+                        <a href="mailto:abhijithaugustine007@gmail.com" class="inline-flex items-center gap-2 text-xs uppercase tracking-widest font-bold text-zinc-700 dark:text-brand-400 hover:text-brand-600 dark:hover:text-neon-pink transition-all bg-white/50 dark:bg-zinc-900/50 backdrop-blur-md border border-zinc-200/50 dark:border-brand-500/30 px-6 py-3 rounded-none shadow-sm hover:shadow-[0_0_15px_rgba(255,42,95,0.2)] dark:hover:border-neon-pink">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
                             Email
                         </a>
-                        <a href="https://www.linkedin.com/in/koothodilabhijithaugustine/" target="_blank" class="inline-flex items-center gap-2 text-sm font-medium text-zinc-700 dark:text-zinc-300 hover:text-brand-600 dark:hover:text-brand-400 transition-colors bg-white/80 dark:bg-zinc-900/80 backdrop-blur-md border border-zinc-200/50 dark:border-zinc-800/50 px-5 py-2.5 rounded-full shadow-sm hover:shadow-md">
+                        <a href="https://www.linkedin.com/in/koothodilabhijithaugustine/" target="_blank" class="inline-flex items-center gap-2 text-xs uppercase tracking-widest font-bold text-zinc-700 dark:text-brand-400 hover:text-brand-600 dark:hover:text-neon-pink transition-all bg-white/50 dark:bg-zinc-900/50 backdrop-blur-md border border-zinc-200/50 dark:border-brand-500/30 px-6 py-3 rounded-none shadow-sm hover:shadow-[0_0_15px_rgba(255,42,95,0.2)] dark:hover:border-neon-pink">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path></svg>
                             LinkedIn
                         </a>
-                        <a href="https://koothodilabhijithaugustine.github.io/assets/CV_Abhi.pdf" target="_blank" class="inline-flex items-center gap-2 text-sm font-medium text-white bg-zinc-900/90 dark:bg-zinc-100/90 dark:text-zinc-900 hover:bg-zinc-800 dark:hover:bg-white backdrop-blur-md transition-colors px-6 py-2.5 rounded-full shadow-sm hover:shadow-md">
+                        <a href="https://koothodilabhijithaugustine.github.io/assets/CV_Abhi.pdf" target="_blank" class="inline-flex items-center gap-2 text-xs uppercase tracking-widest font-bold text-white bg-brand-600 dark:bg-brand-500/20 dark:text-neon-pink hover:bg-brand-500 dark:hover:bg-brand-500/40 backdrop-blur-md border border-transparent dark:border-brand-400 transition-all px-8 py-3 rounded-none shadow-sm hover:shadow-[0_0_20px_rgba(255,42,95,0.4)]">
                             View CV
                         </a>
                     </div>
@@ -160,121 +215,122 @@
             </div>
         </section>
 
-        <section id="education" class="py-16 md:py-24 border-t border-zinc-200/30 dark:border-zinc-800/30 animate-fade-in-up delay-100">
-            <h2 class="font-serif text-2xl md:text-3xl font-bold text-zinc-900 dark:text-white mb-10 flex items-center gap-4">
-                <span class="w-8 h-[2px] bg-brand-500 rounded-full"></span>
+        <section id="education" class="py-16 md:py-24 border-t border-zinc-200/30 dark:border-brand-900/50 animate-fade-in-up delay-100">
+            <h2 class="font-display text-2xl md:text-4xl font-bold text-zinc-900 dark:text-white mb-12 flex items-center gap-4 tracking-tight">
                 Education
+                <div class="h-[1px] flex-grow bg-gradient-to-r from-zinc-200 to-transparent dark:from-brand-500/30 dark:to-transparent ml-4"></div>
             </h2>
-            <div class="relative border-l border-zinc-200 dark:border-zinc-800 ml-3 md:ml-4 space-y-12 pb-4">
+            <div class="relative border-l border-zinc-200 dark:border-brand-500/30 ml-3 md:ml-4 space-y-12 pb-4">
                 
                 <!-- PhD -->
                 <div class="relative pl-10 group">
-                    <div class="absolute w-6 h-6 bg-zinc-50 dark:bg-zinc-950 border-2 border-brand-500 rounded-full -left-[12.5px] top-0 flex items-center justify-center glow-dot shadow-brand-500/30 transition-transform duration-300 group-hover:scale-110">
-                        <div class="w-2 h-2 bg-brand-500 rounded-full"></div>
+                    <div class="absolute w-6 h-6 bg-zinc-50 dark:bg-zinc-950 border-2 border-brand-500 rounded-none transform rotate-45 -left-[12.5px] top-0 flex items-center justify-center glow-dot shadow-brand-500/50 transition-all duration-300 group-hover:scale-110 group-hover:shadow-[0_0_15px_rgba(255,42,95,0.6)]">
+                        <div class="w-2 h-2 bg-brand-500 rounded-none"></div>
                     </div>
-                    <span class="text-xs font-bold tracking-widest uppercase text-brand-600 dark:text-brand-400 mb-2 block">2023 - Present</span>
-                    <h3 class="text-xl font-bold text-zinc-900 dark:text-white mb-1">Ph.D. in Astronomy</h3>
-                    <p class="text-zinc-700 dark:text-zinc-300 font-medium mb-4">Institute of Astronomy, National Tsing Hua University, Hsinchu, Taiwan</p>
-                    <div class="glass-card rounded-xl p-5 inline-block w-full">
-                        <p class="text-sm text-zinc-600 dark:text-zinc-400 mb-2"><strong class="font-medium text-zinc-900 dark:text-zinc-100">Thesis:</strong> MeV observations of Pulsars</p>
-                        <p class="text-sm text-zinc-600 dark:text-zinc-400"><strong class="font-medium text-zinc-900 dark:text-zinc-100">Advisor:</strong> Prof. Hsiang-Kuang Chang</p>
+                    <span class="text-[10px] font-bold tracking-[0.2em] uppercase text-brand-600 dark:text-brand-400 mb-2 block">2023 - Present</span>
+                    <h3 class="font-display text-xl md:text-2xl font-bold text-zinc-900 dark:text-white mb-1">Ph.D. in Astronomy</h3>
+                    <p class="text-zinc-700 dark:text-zinc-400 font-medium mb-4 text-sm uppercase tracking-wide">Institute of Astronomy, NTHU, Taiwan</p>
+                    <div class="glass-card rounded-none p-5 md:p-6 inline-block w-full">
+                        <p class="text-sm text-zinc-600 dark:text-zinc-300 mb-2 font-light"><strong class="font-semibold text-zinc-900 dark:text-neon-pink">Thesis:</strong> MeV observations of Pulsars</p>
+                        <p class="text-sm text-zinc-600 dark:text-zinc-300 font-light"><strong class="font-semibold text-zinc-900 dark:text-neon-pink">Advisor:</strong> Prof. Hsiang-Kuang Chang</p>
                     </div>
                 </div>
 
                 <!-- MSc -->
                 <div class="relative pl-10 group">
-                    <div class="absolute w-6 h-6 bg-zinc-50 dark:bg-zinc-950 border-2 border-zinc-300 dark:border-zinc-700 rounded-full -left-[12.5px] top-0 flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:border-zinc-400 dark:group-hover:border-zinc-500">
+                    <div class="absolute w-6 h-6 bg-zinc-50 dark:bg-zinc-950 border-2 border-zinc-300 dark:border-brand-500/30 rounded-none transform rotate-45 -left-[12.5px] top-0 flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:border-brand-400 dark:group-hover:border-brand-400 group-hover:shadow-[0_0_10px_rgba(255,42,95,0.3)]">
                     </div>
-                    <span class="text-xs font-bold tracking-widest uppercase text-zinc-500 dark:text-zinc-400 mb-2 block">2021 - 2023</span>
-                    <h3 class="text-xl font-bold text-zinc-900 dark:text-white mb-1">M.Sc. in Physics</h3>
-                    <p class="text-zinc-700 dark:text-zinc-300 font-medium mb-4">Sant Longowal Institute of Engineering and Technology, Punjab, India</p>
-                    <div class="glass-card rounded-xl p-5 inline-block w-full">
-                        <p class="text-sm text-zinc-600 dark:text-zinc-400 mb-2"><strong class="font-medium text-zinc-900 dark:text-zinc-100">Thesis:</strong> Exploring the JWST PRIMER Catalog: An Investigation of Infrared Galaxies</p>
-                        <p class="text-sm text-zinc-600 dark:text-zinc-400"><strong class="font-medium text-zinc-900 dark:text-zinc-100">Advisors:</strong> Prof. S.S. Verma and Prof. Tomo Goto</p>
+                    <span class="text-[10px] font-bold tracking-[0.2em] uppercase text-zinc-500 dark:text-zinc-500 mb-2 block group-hover:text-brand-400 transition-colors">2021 - 2023</span>
+                    <h3 class="font-display text-xl md:text-2xl font-bold text-zinc-900 dark:text-white mb-1">M.Sc. in Physics</h3>
+                    <p class="text-zinc-700 dark:text-zinc-400 font-medium mb-4 text-sm uppercase tracking-wide">SLIET, Punjab, India</p>
+                    <div class="glass-card rounded-none p-5 md:p-6 inline-block w-full border-l-zinc-300 dark:border-l-zinc-700 group-hover:border-l-brand-400 transition-colors">
+                        <p class="text-sm text-zinc-600 dark:text-zinc-300 mb-2 font-light"><strong class="font-semibold text-zinc-900 dark:text-zinc-100 group-hover:text-neon-pink transition-colors">Thesis:</strong> Exploring the JWST PRIMER Catalog: An Investigation of Infrared Galaxies</p>
+                        <p class="text-sm text-zinc-600 dark:text-zinc-300 font-light"><strong class="font-semibold text-zinc-900 dark:text-zinc-100 group-hover:text-neon-pink transition-colors">Advisors:</strong> Prof. S.S. Verma and Prof. Tomo Goto</p>
                     </div>
                 </div>
 
                 <!-- BSc -->
                 <div class="relative pl-10 group">
-                    <div class="absolute w-6 h-6 bg-zinc-50 dark:bg-zinc-950 border-2 border-zinc-300 dark:border-zinc-700 rounded-full -left-[12.5px] top-0 flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:border-zinc-400 dark:group-hover:border-zinc-500">
+                    <div class="absolute w-6 h-6 bg-zinc-50 dark:bg-zinc-950 border-2 border-zinc-300 dark:border-brand-500/30 rounded-none transform rotate-45 -left-[12.5px] top-0 flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:border-brand-400 dark:group-hover:border-brand-400 group-hover:shadow-[0_0_10px_rgba(255,42,95,0.3)]">
                     </div>
-                    <span class="text-xs font-bold tracking-widest uppercase text-zinc-500 dark:text-zinc-400 mb-2 block">2018 - 2021</span>
-                    <h3 class="text-xl font-bold text-zinc-900 dark:text-white mb-1">B.Sc. in Physics</h3>
-                    <p class="text-zinc-700 dark:text-zinc-300 font-medium mb-4">University College, The University of Kerala, Kerala, India</p>
-                    <div class="glass-card rounded-xl p-5 inline-block w-full">
-                        <p class="text-sm text-zinc-600 dark:text-zinc-400 mb-2"><strong class="font-medium text-zinc-900 dark:text-zinc-100">Thesis:</strong> Effect of Solar Flux on Aerosol Absorption Coefficient</p>
-                        <p class="text-sm text-zinc-600 dark:text-zinc-400"><strong class="font-medium text-zinc-900 dark:text-zinc-100">Advisor:</strong> Prof. S. Bindu</p>
+                    <span class="text-[10px] font-bold tracking-[0.2em] uppercase text-zinc-500 dark:text-zinc-500 mb-2 block group-hover:text-brand-400 transition-colors">2018 - 2021</span>
+                    <h3 class="font-display text-xl md:text-2xl font-bold text-zinc-900 dark:text-white mb-1">B.Sc. in Physics</h3>
+                    <p class="text-zinc-700 dark:text-zinc-400 font-medium mb-4 text-sm uppercase tracking-wide">University College, Kerala, India</p>
+                    <div class="glass-card rounded-none p-5 md:p-6 inline-block w-full border-l-zinc-300 dark:border-l-zinc-700 group-hover:border-l-brand-400 transition-colors">
+                        <p class="text-sm text-zinc-600 dark:text-zinc-300 mb-2 font-light"><strong class="font-semibold text-zinc-900 dark:text-zinc-100 group-hover:text-neon-pink transition-colors">Thesis:</strong> Effect of Solar Flux on Aerosol Absorption Coefficient</p>
+                        <p class="text-sm text-zinc-600 dark:text-zinc-300 font-light"><strong class="font-semibold text-zinc-900 dark:text-zinc-100 group-hover:text-neon-pink transition-colors">Advisor:</strong> Prof. S. Bindu</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="publications" class="py-16 md:py-24 border-t border-zinc-200/30 dark:border-zinc-800/30 animate-fade-in-up delay-200">
-            <h2 class="font-serif text-2xl md:text-3xl font-bold text-zinc-900 dark:text-white mb-10 flex items-center gap-4">
-                <span class="w-8 h-[2px] bg-brand-500 rounded-full"></span>
+        <section id="publications" class="py-16 md:py-24 border-t border-zinc-200/30 dark:border-brand-900/50 animate-fade-in-up delay-200">
+            <h2 class="font-display text-2xl md:text-4xl font-bold text-zinc-900 dark:text-white mb-12 flex items-center gap-4 tracking-tight">
                 Publications
+                <div class="h-[1px] flex-grow bg-gradient-to-r from-zinc-200 to-transparent dark:from-brand-500/30 dark:to-transparent ml-4"></div>
             </h2>
             <div class="space-y-6">
                 <!-- Pub 1 -->
-                <div class="glass-card rounded-2xl p-6 md:p-8 hover:-translate-y-1 transition-all duration-300 group relative overflow-hidden">
-                    <div class="absolute top-0 left-0 w-1 h-full bg-brand-500 transform origin-top scale-y-0 group-hover:scale-y-100 transition-transform duration-300 ease-out"></div>
-                    <h3 class="font-medium text-lg md:text-xl text-zinc-900 dark:text-white mb-3 leading-snug group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">
+                <div class="glass-card rounded-none p-6 md:p-8 hover:-translate-y-1 transition-all duration-300 group relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-1 h-full bg-brand-500 transform origin-top scale-y-0 group-hover:scale-y-100 transition-transform duration-300 ease-out shadow-[0_0_10px_#ff2a5f]"></div>
+                    <div class="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-brand-500/0 group-hover:border-brand-500/50 transition-all duration-500"></div>
+                    <h3 class="font-display text-lg md:text-xl text-zinc-900 dark:text-zinc-100 mb-3 leading-snug group-hover:text-brand-600 dark:group-hover:text-neon-pink transition-colors">
                         "Anticorrelation Between Flux and Photon Index of Hard-X-Ray Emission from the Crab"
                     </h3>
-                    <p class="text-sm md:text-base text-zinc-600 dark:text-zinc-400 mb-5">
+                    <p class="text-sm md:text-base text-zinc-600 dark:text-zinc-400 mb-5 font-light">
                         K. A. Augustine and H.-K. Chang. Vol. 981, no. 2, 173, p. 173, Mar. 2025.
                     </p>
-                    <div class="flex flex-wrap gap-3 text-xs font-semibold tracking-wide">
-                        <a href="https://doi.org/10.3847/1538-4357/adb70e" target="_blank" class="px-4 py-1.5 bg-zinc-900/5 dark:bg-white/10 text-zinc-700 dark:text-zinc-200 rounded-full hover:bg-brand-500 hover:text-white dark:hover:bg-brand-500 transition-colors">DOI: 10.3847/1538-4357/adb70e</a>
-                        <a href="https://arxiv.org/abs/2408.00406" target="_blank" class="px-4 py-1.5 bg-zinc-900/5 dark:bg-white/10 text-zinc-700 dark:text-zinc-200 rounded-full hover:bg-brand-500 hover:text-white dark:hover:bg-brand-500 transition-colors">arXiv: 2408.00406</a>
+                    <div class="flex flex-wrap gap-3 text-[10px] uppercase font-bold tracking-[0.1em]">
+                        <a href="https://doi.org/10.3847/1538-4357/adb70e" target="_blank" class="px-4 py-2 border border-zinc-200 dark:border-zinc-700 bg-white/50 dark:bg-zinc-900/50 text-zinc-700 dark:text-zinc-300 hover:border-brand-500 hover:text-brand-600 dark:hover:border-neon-pink dark:hover:text-neon-pink dark:hover:bg-brand-500/10 transition-all">DOI: 10.3847/1538-4357/adb70e</a>
+                        <a href="https://arxiv.org/abs/2408.00406" target="_blank" class="px-4 py-2 border border-zinc-200 dark:border-zinc-700 bg-white/50 dark:bg-zinc-900/50 text-zinc-700 dark:text-zinc-300 hover:border-brand-500 hover:text-brand-600 dark:hover:border-neon-pink dark:hover:text-neon-pink dark:hover:bg-brand-500/10 transition-all">arXiv: 2408.00406</a>
                     </div>
                 </div>
 
                 <!-- Pub 2 -->
-                <div class="glass-card rounded-2xl p-6 md:p-8 hover:-translate-y-1 transition-all duration-300 group relative overflow-hidden">
-                    <div class="absolute top-0 left-0 w-1 h-full bg-brand-500 transform origin-top scale-y-0 group-hover:scale-y-100 transition-transform duration-300 ease-out"></div>
-                    <h3 class="font-medium text-lg md:text-xl text-zinc-900 dark:text-white mb-3 leading-snug group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">
+                <div class="glass-card rounded-none p-6 md:p-8 hover:-translate-y-1 transition-all duration-300 group relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-1 h-full bg-brand-500 transform origin-top scale-y-0 group-hover:scale-y-100 transition-transform duration-300 ease-out shadow-[0_0_10px_#ff2a5f]"></div>
+                    <div class="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-brand-500/0 group-hover:border-brand-500/50 transition-all duration-500"></div>
+                    <h3 class="font-display text-lg md:text-xl text-zinc-900 dark:text-zinc-100 mb-3 leading-snug group-hover:text-brand-600 dark:group-hover:text-neon-pink transition-colors">
                         "Investigating the Anti-Correlation between Photon Index and Flux of the Crab using RXTE and NuSTAR"
                     </h3>
-                    <p class="text-sm md:text-base text-zinc-600 dark:text-zinc-400 mb-5">
+                    <p class="text-sm md:text-base text-zinc-600 dark:text-zinc-400 mb-5 font-light">
                         D. Chatterjee, H.-K. Chang, D. Debnath, K. A. Augustine, and T.-H. Lin. Vol. 988, no. 1, 105, p. 105, Jul. 2025.
                     </p>
-                    <div class="flex flex-wrap gap-3 text-xs font-semibold tracking-wide">
-                        <a href="https://doi.org/10.3847/1538-4357/ade9bd" target="_blank" class="px-4 py-1.5 bg-zinc-900/5 dark:bg-white/10 text-zinc-700 dark:text-zinc-200 rounded-full hover:bg-brand-500 hover:text-white dark:hover:bg-brand-500 transition-colors">DOI: 10.3847/1538-4357/ade9bd</a>
-                        <a href="https://arxiv.org/abs/2506.17899" target="_blank" class="px-4 py-1.5 bg-zinc-900/5 dark:bg-white/10 text-zinc-700 dark:text-zinc-200 rounded-full hover:bg-brand-500 hover:text-white dark:hover:bg-brand-500 transition-colors">arXiv: 2506.17899</a>
+                    <div class="flex flex-wrap gap-3 text-[10px] uppercase font-bold tracking-[0.1em]">
+                        <a href="https://doi.org/10.3847/1538-4357/ade9bd" target="_blank" class="px-4 py-2 border border-zinc-200 dark:border-zinc-700 bg-white/50 dark:bg-zinc-900/50 text-zinc-700 dark:text-zinc-300 hover:border-brand-500 hover:text-brand-600 dark:hover:border-neon-pink dark:hover:text-neon-pink dark:hover:bg-brand-500/10 transition-all">DOI: 10.3847/1538-4357/ade9bd</a>
+                        <a href="https://arxiv.org/abs/2506.17899" target="_blank" class="px-4 py-2 border border-zinc-200 dark:border-zinc-700 bg-white/50 dark:bg-zinc-900/50 text-zinc-700 dark:text-zinc-300 hover:border-brand-500 hover:text-brand-600 dark:hover:border-neon-pink dark:hover:text-neon-pink dark:hover:bg-brand-500/10 transition-all">arXiv: 2506.17899</a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="expertise" class="py-16 md:py-24 border-t border-zinc-200/30 dark:border-zinc-800/30 animate-fade-in-up delay-300">
+        <section id="expertise" class="py-16 md:py-24 border-t border-zinc-200/30 dark:border-brand-900/50 animate-fade-in-up delay-300">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
                 <!-- Collaborations -->
                 <div>
-                    <h2 class="font-serif text-2xl md:text-3xl font-bold text-zinc-900 dark:text-white mb-10 flex items-center gap-4">
-                        <span class="w-8 h-[2px] bg-brand-500 rounded-full"></span>
+                    <h2 class="font-display text-2xl md:text-4xl font-bold text-zinc-900 dark:text-white mb-12 flex items-center gap-4 tracking-tight">
                         Collaborations
                     </h2>
                     <ul class="space-y-8">
                         <li class="flex gap-5 group">
-                            <div class="mt-1.5 w-2.5 h-2.5 rounded-full bg-brand-500 shrink-0 shadow-[0_0_12px_rgba(20,184,166,0.6)] group-hover:scale-125 transition-transform duration-300"></div>
+                            <div class="mt-1.5 w-2 h-2 rounded-none transform rotate-45 bg-brand-500 shrink-0 shadow-[0_0_10px_rgba(255,42,95,0.8)] group-hover:scale-150 transition-all duration-300"></div>
                             <div>
-                                <strong class="text-zinc-900 dark:text-white text-lg block mb-1">COSI <span class="font-normal text-zinc-500 text-base">(Compton Spectrometer and Imager)</span></strong>
-                                <span class="text-sm md:text-base text-zinc-700 dark:text-zinc-300 leading-relaxed block mt-2">2024-Present. Early Career Co-Lead of Galactic Science team, and Galactic Science team member working on Pulsars.</span>
+                                <strong class="font-display text-zinc-900 dark:text-white text-lg block mb-1 tracking-wide">COSI <span class="font-sans font-normal text-zinc-500 text-sm tracking-normal">(Compton Spectrometer and Imager)</span></strong>
+                                <span class="text-sm text-zinc-700 dark:text-zinc-400 font-light leading-relaxed block mt-2 border-l border-zinc-200 dark:border-zinc-800 pl-4 group-hover:border-brand-500/50 transition-colors">2024-Present. Early Career Co-Lead of Galactic Science team, and Galactic Science team member working on Pulsars.</span>
                             </div>
                         </li>
                         <li class="flex gap-5 group">
-                            <div class="mt-1.5 w-2.5 h-2.5 rounded-full bg-brand-500 shrink-0 shadow-[0_0_12px_rgba(20,184,166,0.6)] group-hover:scale-125 transition-transform duration-300"></div>
+                            <div class="mt-1.5 w-2 h-2 rounded-none transform rotate-45 bg-brand-500 shrink-0 shadow-[0_0_10px_rgba(255,42,95,0.8)] group-hover:scale-150 transition-all duration-300"></div>
                             <div>
-                                <strong class="text-zinc-900 dark:text-white text-lg block mb-1">BTO <span class="font-normal text-zinc-500 text-base">(Background and Transient Observer)</span></strong>
-                                <span class="text-sm md:text-base text-zinc-700 dark:text-zinc-300 leading-relaxed block mt-2">2025-Present. On board COSI. Software team member working on ground software analysis.</span>
+                                <strong class="font-display text-zinc-900 dark:text-white text-lg block mb-1 tracking-wide">BTO <span class="font-sans font-normal text-zinc-500 text-sm tracking-normal">(Background and Transient Observer)</span></strong>
+                                <span class="text-sm text-zinc-700 dark:text-zinc-400 font-light leading-relaxed block mt-2 border-l border-zinc-200 dark:border-zinc-800 pl-4 group-hover:border-brand-500/50 transition-colors">2025-Present. On board COSI. Software team member working on ground software analysis.</span>
                             </div>
                         </li>
                         <li class="flex gap-5 group">
-                            <div class="mt-1.5 w-2.5 h-2.5 rounded-full bg-brand-500 shrink-0 shadow-[0_0_12px_rgba(20,184,166,0.6)] group-hover:scale-125 transition-transform duration-300"></div>
+                            <div class="mt-1.5 w-2 h-2 rounded-none transform rotate-45 bg-brand-500 shrink-0 shadow-[0_0_10px_rgba(255,42,95,0.8)] group-hover:scale-150 transition-all duration-300"></div>
                             <div>
-                                <strong class="text-zinc-900 dark:text-white text-lg block mb-1">GTM <span class="font-normal text-zinc-500 text-base">(Gamma-ray Transients Monitor)</span></strong>
-                                <span class="text-sm md:text-base text-zinc-700 dark:text-zinc-300 leading-relaxed block mt-2">2025-Present. On board Formosat-8B. Science team member working on the Crab.</span>
+                                <strong class="font-display text-zinc-900 dark:text-white text-lg block mb-1 tracking-wide">GTM <span class="font-sans font-normal text-zinc-500 text-sm tracking-normal">(Gamma-ray Transients Monitor)</span></strong>
+                                <span class="text-sm text-zinc-700 dark:text-zinc-400 font-light leading-relaxed block mt-2 border-l border-zinc-200 dark:border-zinc-800 pl-4 group-hover:border-brand-500/50 transition-colors">2025-Present. On board Formosat-8B. Science team member working on the Crab.</span>
                             </div>
                         </li>
                     </ul>
@@ -282,28 +338,38 @@
 
                 <!-- Skills -->
                 <div>
-                    <h2 class="font-serif text-2xl md:text-3xl font-bold text-zinc-900 dark:text-white mb-10 flex items-center gap-4">
-                        <span class="w-8 h-[2px] bg-brand-500 rounded-full"></span>
+                    <h2 class="font-display text-2xl md:text-4xl font-bold text-zinc-900 dark:text-white mb-12 flex items-center gap-4 tracking-tight">
                         Skills & Tools
                     </h2>
                     
-                    <div class="glass-card rounded-2xl p-8 space-y-8">
+                    <div class="glass-card rounded-none p-8 space-y-8 relative overflow-hidden">
+                        <!-- Decorative tech corners -->
+                        <div class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-brand-500/50"></div>
+                        <div class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-brand-500/50"></div>
+                        
                         <div>
-                            <h4 class="text-xs uppercase tracking-widest font-bold text-zinc-500 dark:text-zinc-400 mb-4">Programming & Software</h4>
+                            <h4 class="text-[10px] uppercase tracking-[0.2em] font-bold text-zinc-500 dark:text-brand-400 mb-4 flex items-center gap-2">
+                                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                                Programming & Software
+                            </h4>
                             <div class="flex flex-wrap gap-2.5">
-                                <span class="px-4 py-2 bg-white/50 dark:bg-zinc-900/50 text-zinc-800 dark:text-zinc-200 rounded-lg text-sm font-medium border border-zinc-200/50 dark:border-zinc-700/50 shadow-sm">Python</span>
-                                <span class="px-4 py-2 bg-white/50 dark:bg-zinc-900/50 text-zinc-800 dark:text-zinc-200 rounded-lg text-sm font-medium border border-zinc-200/50 dark:border-zinc-700/50 shadow-sm">XSpec</span>
-                                <span class="px-4 py-2 bg-white/50 dark:bg-zinc-900/50 text-zinc-800 dark:text-zinc-200 rounded-lg text-sm font-medium border border-zinc-200/50 dark:border-zinc-700/50 shadow-sm">MEGAlib</span>
-                                <span class="px-4 py-2 bg-white/50 dark:bg-zinc-900/50 text-zinc-800 dark:text-zinc-200 rounded-lg text-sm font-medium border border-zinc-200/50 dark:border-zinc-700/50 shadow-sm">Fermipy</span>
-                                <span class="px-4 py-2 bg-white/50 dark:bg-zinc-900/50 text-zinc-800 dark:text-zinc-200 rounded-lg text-sm font-medium border border-zinc-200/50 dark:border-zinc-700/50 shadow-sm">Cosipy</span>
-                                <span class="px-4 py-2 bg-white/50 dark:bg-zinc-900/50 text-zinc-800 dark:text-zinc-200 rounded-lg text-sm font-medium border border-zinc-200/50 dark:border-zinc-700/50 shadow-sm">LaTeX</span>
+                                <span class="px-3 py-1.5 bg-zinc-100 dark:bg-zinc-900/80 text-zinc-800 dark:text-zinc-200 text-xs font-medium border border-zinc-200 dark:border-zinc-700 hover:border-brand-500 dark:hover:border-neon-pink dark:hover:text-neon-pink transition-colors cursor-default">Python</span>
+                                <span class="px-3 py-1.5 bg-zinc-100 dark:bg-zinc-900/80 text-zinc-800 dark:text-zinc-200 text-xs font-medium border border-zinc-200 dark:border-zinc-700 hover:border-brand-500 dark:hover:border-neon-pink dark:hover:text-neon-pink transition-colors cursor-default">XSpec</span>
+                                <span class="px-3 py-1.5 bg-zinc-100 dark:bg-zinc-900/80 text-zinc-800 dark:text-zinc-200 text-xs font-medium border border-zinc-200 dark:border-zinc-700 hover:border-brand-500 dark:hover:border-neon-pink dark:hover:text-neon-pink transition-colors cursor-default">MEGAlib</span>
+                                <span class="px-3 py-1.5 bg-zinc-100 dark:bg-zinc-900/80 text-zinc-800 dark:text-zinc-200 text-xs font-medium border border-zinc-200 dark:border-zinc-700 hover:border-brand-500 dark:hover:border-neon-pink dark:hover:text-neon-pink transition-colors cursor-default">Fermipy</span>
+                                <span class="px-3 py-1.5 bg-zinc-100 dark:bg-zinc-900/80 text-zinc-800 dark:text-zinc-200 text-xs font-medium border border-zinc-200 dark:border-zinc-700 hover:border-brand-500 dark:hover:border-neon-pink dark:hover:text-neon-pink transition-colors cursor-default">Cosipy</span>
+                                <span class="px-3 py-1.5 bg-zinc-100 dark:bg-zinc-900/80 text-zinc-800 dark:text-zinc-200 text-xs font-medium border border-zinc-200 dark:border-zinc-700 hover:border-brand-500 dark:hover:border-neon-pink dark:hover:text-neon-pink transition-colors cursor-default">LaTeX</span>
                             </div>
                         </div>
                         
                         <div>
-                            <h4 class="text-xs uppercase tracking-widest font-bold text-zinc-500 dark:text-zinc-400 mb-3">Languages</h4>
-                            <p class="text-base text-zinc-700 dark:text-zinc-300 leading-relaxed font-medium">
-                                English, Malayalam, Telugu, Hindi, <span class="text-zinc-500 dark:text-zinc-400 font-normal">and basic proficiency in</span> Tamil <span class="text-zinc-500 dark:text-zinc-400 font-normal">and</span> French.
+                            <h4 class="text-[10px] uppercase tracking-[0.2em] font-bold text-zinc-500 dark:text-brand-400 mb-4 flex items-center gap-2">
+                                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"></path></svg>
+                                Languages
+                            </h4>
+                            <p class="text-sm text-zinc-700 dark:text-zinc-300 font-light leading-relaxed border-l-2 border-zinc-200 dark:border-zinc-800 pl-4">
+                                English, Malayalam, Telugu, Hindi <br>
+                                <span class="text-zinc-500 dark:text-zinc-500 text-xs">Basic proficiency: Tamil & French</span>
                             </p>
                         </div>
                     </div>
@@ -312,73 +378,60 @@
         </section>
     </main>
 
-    <footer class="py-10 text-center text-sm text-zinc-500 border-t border-zinc-200/30 dark:border-zinc-800/30 mt-10">
-            <p>&copy; 2026 Koothodil Abhijith Augustine. All rights reserved.</p>
-        </footer>
-    </div>
+    <footer class="py-10 text-center text-xs tracking-widest uppercase font-bold text-zinc-400 dark:text-zinc-600 border-t border-zinc-200/30 dark:border-zinc-800/50 mt-10">
+        <p>&copy; 2026 Koothodil Abhijith Augustine. All rights reserved.</p>
+    </footer>
+    </div> <!-- Close content-wrapper -->
 
     <script>
-        // --- Dark Mode Logic ---
+        // Dark Mode Logic
         const themeToggleBtn = document.getElementById('themeToggle');
         const sunIcon = document.getElementById('sunIcon');
         const moonIcon = document.getElementById('moonIcon');
 
-        function updateThemeIcon() {
-            if (document.documentElement.classList.contains('dark')) {
-                sunIcon.classList.remove('hidden');
-                moonIcon.classList.add('hidden');
-            } else {
-                moonIcon.classList.remove('hidden');
-                sunIcon.classList.add('hidden');
-            }
-        }
-
         if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             document.documentElement.classList.add('dark');
+            if (sunIcon) sunIcon.classList.remove('hidden');
         } else {
             document.documentElement.classList.remove('dark');
+            if (moonIcon) moonIcon.classList.remove('hidden');
         }
-        updateThemeIcon();
 
-        themeToggleBtn.addEventListener('click', function() {
-            document.documentElement.classList.toggle('dark');
-            if (document.documentElement.classList.contains('dark')) {
-                localStorage.theme = 'dark';
-            } else {
-                localStorage.theme = 'light';
-            }
-            updateThemeIcon();
-        });
+        if (themeToggleBtn) {
+            themeToggleBtn.addEventListener('click', function() {
+                if (document.documentElement.classList.contains('dark')) {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.theme = 'light';
+                    if (sunIcon) sunIcon.classList.add('hidden');
+                    if (moonIcon) moonIcon.classList.remove('hidden');
+                } else {
+                    document.documentElement.classList.add('dark');
+                    localStorage.theme = 'dark';
+                    if (moonIcon) moonIcon.classList.add('hidden');
+                    if (sunIcon) sunIcon.classList.remove('hidden');
+                }
+            });
+        }
 
-
-        // --- Interactive Space Background Canvas Logic ---
+        // --- Interactive Space Background ---
         const canvas = document.getElementById('space-bg');
         const ctx = canvas.getContext('2d');
-        
         let width, height;
-        let mouseX = window.innerWidth / 2;
-        let mouseY = window.innerHeight / 2;
-        let targetMouseX = mouseX;
-        let targetMouseY = mouseY;
-        
-        function resizeCanvas() {
-            width = window.innerWidth;
-            height = window.innerHeight;
-            // Adjust for High DPI displays
-            const dpr = window.devicePixelRatio || 1;
-            canvas.width = width * dpr;
-            canvas.height = height * dpr;
-            ctx.scale(dpr, dpr);
+        let mouseX = 0, mouseY = 0;
+        let targetMouseX = 0, targetMouseY = 0;
+
+        function resize() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
         }
-        window.addEventListener('resize', resizeCanvas);
-        resizeCanvas();
+        window.addEventListener('resize', resize);
+        resize();
 
         window.addEventListener('mousemove', (e) => {
             targetMouseX = e.clientX;
             targetMouseY = e.clientY;
         });
 
-        // Touch support for mobile interaction
         window.addEventListener('touchmove', (e) => {
             if (e.touches.length > 0) {
                 targetMouseX = e.touches[0].clientX;
@@ -390,53 +443,49 @@
         
         function drawFermi(ctx) {
             ctx.beginPath();
-            // Main Spacecraft Bus
-            ctx.rect(-20, -10, 40, 20);
-            // LAT (Large Area Telescope) - prominent square block on top
-            ctx.rect(-15, -40, 30, 30);
-            // LAT Grid lines (detector planes)
-            ctx.moveTo(-5, -40); ctx.lineTo(-5, -10);
-            ctx.moveTo(5, -40); ctx.lineTo(5, -10);
-            ctx.moveTo(-15, -30); ctx.lineTo(15, -30);
-            ctx.moveTo(-15, -20); ctx.lineTo(15, -20);
-            // GBM (Gamma-ray Burst Monitor) - small outward pods
-            ctx.rect(-25, -5, 5, 10);
-            ctx.rect(20, -5, 5, 10);
-            // Solar panels (long and horizontal)
-            ctx.rect(-80, -5, 60, 10);
-            ctx.rect(20, -5, 60, 10);
-            // Solar panel internal segments
-            for(let p=-70; p<-20; p+=15) { ctx.moveTo(p, -5); ctx.lineTo(p, 5); }
-            for(let p=35; p<80; p+=15) { ctx.moveTo(p, -5); ctx.lineTo(p, 5); }
-            // High-gain antenna
-            ctx.moveTo(0, 10); ctx.lineTo(0, 25);
-            ctx.moveTo(-8, 25); ctx.quadraticCurveTo(0, 30, 8, 25); // Dish curve
+            // Main Box (LAT)
+            ctx.rect(-15, -15, 30, 30);
+            // LAT Tracker Grid
+            ctx.moveTo(-5, -15); ctx.lineTo(-5, 15);
+            ctx.moveTo(5, -15); ctx.lineTo(5, 15);
+            ctx.moveTo(-15, -5); ctx.lineTo(15, -5);
+            ctx.moveTo(-15, 5); ctx.lineTo(15, 5);
+            // Solar Panels (very long)
+            ctx.rect(-70, -5, 55, 10);
+            ctx.rect(15, -5, 55, 10);
+            // Solar Panel Grid Lines
+            ctx.moveTo(-50, -5); ctx.lineTo(-50, 5);
+            ctx.moveTo(-30, -5); ctx.lineTo(-30, 5);
+            ctx.moveTo(35, -5); ctx.lineTo(35, 5);
+            ctx.moveTo(55, -5); ctx.lineTo(55, 5);
+            // Spacecraft Bus (Bottom)
+            ctx.rect(-10, 15, 20, 15);
+            // GBM Pods (Side protrusions)
+            ctx.arc(-15, 20, 3, 0, Math.PI*2);
+            ctx.arc(15, 20, 3, 0, Math.PI*2);
             ctx.stroke();
         }
 
         function drawNuSTAR(ctx) {
             ctx.beginPath();
-            // Spacecraft Bus (base)
-            ctx.rect(-15, 30, 30, 25);
-            // Single asymmetric solar array (extends only to one side)
-            ctx.rect(15, 32, 50, 20);
-            // Solar array segments
-            ctx.moveTo(31, 32); ctx.lineTo(31, 52);
-            ctx.moveTo(47, 32); ctx.lineTo(47, 52);
-            // Mast (Deployable truss structure) - long and thin
-            ctx.rect(-8, -60, 16, 90);
-            // Truss zig-zag cross-bracing
-            for(let i = 30; i > -60; i -= 15) {
-                if (i - 15 >= -60) {
-                    ctx.moveTo(-8, i); ctx.lineTo(8, i - 7.5);
-                    ctx.moveTo(8, i - 7.5); ctx.lineTo(-8, i - 15);
-                }
+            // Main Spacecraft Bus (Bottom)
+            ctx.rect(-15, 25, 30, 20);
+            // Asymmetric Solar Array (Extending to one side)
+            ctx.rect(15, 30, 40, 10);
+            ctx.moveTo(35, 30); ctx.lineTo(35, 40);
+            // Deployable Mast (Truss structure)
+            ctx.moveTo(-5, -25); ctx.lineTo(-5, 25);
+            ctx.moveTo(5, -25); ctx.lineTo(5, 25);
+            // Zig-zag truss lines
+            for(let i = -20; i < 20; i += 10) {
+                ctx.moveTo(-5, i); ctx.lineTo(5, i+5);
+                ctx.moveTo(5, i+5); ctx.lineTo(-5, i+10);
             }
-            // Optics Module (at the top)
-            ctx.rect(-12, -75, 24, 15);
-            // Two mirror modules (circles)
-            ctx.moveTo(-1, -67); ctx.arc(-5, -67, 4, 0, Math.PI*2);
-            ctx.moveTo(11, -67); ctx.arc(5, -67, 4, 0, Math.PI*2);
+            // Optics Module (Top)
+            ctx.rect(-12, -35, 24, 10);
+            // The two grazing incidence mirror modules
+            ctx.arc(-5, -35, 4, Math.PI, 0);
+            ctx.arc(5, -35, 4, Math.PI, 0);
             ctx.stroke();
         }
 
@@ -467,90 +516,155 @@
             ctx.stroke();
         }
 
-        // --- Particle Engine ---
         const entities = [];
-        const numSatellites = 12; // Mix of all three
-        const numStars = 60; // Parallax background dots
+        const numActiveSatellites = 35; // Greatly increased active satellites
+        const numGraveyardSatellites = 55; // Dead satellites resting at the bottom
+        const numStars = 100; // Increased stars for depth
         
         // Generate Stars
         for (let i = 0; i < numStars; i++) {
             entities.push({
                 type: 'star',
-                x: Math.random(), // percentage of screen
+                x: Math.random(),
                 y: Math.random(),
-                z: Math.random() * 0.5 + 0.1, // Depth/Parallax factor
-                size: Math.random() * 2 + 0.5,
-                opacity: Math.random() * 0.5 + 0.1
+                z: Math.random() * 0.8 + 0.1, 
+                size: Math.random() * 1.5 + 0.5,
+                opacity: Math.random() * 0.7 + 0.1
             });
         }
 
-        // Generate Satellites
+        // Generate Active Satellites
         const types = ['fermi', 'nustar', 'swift'];
-        for (let i = 0; i < numSatellites; i++) {
+        for (let i = 0; i < numActiveSatellites; i++) {
             entities.push({
                 type: types[i % types.length],
+                isGraveyard: false,
                 x: Math.random(), 
                 y: Math.random(),
-                z: Math.random() * 1.5 + 0.5, // Depth for parallax and scale
-                rot: Math.random() * Math.PI * 2, // Initial rotation
-                vRot: (Math.random() - 0.5) * 0.005, // Rotation speed
-                vx: (Math.random() - 0.5) * 0.0005, // Drift velocity X
-                vy: (Math.random() - 0.5) * 0.0005, // Drift velocity Y
+                z: Math.random() * 1.5 + 0.5, 
+                rot: Math.random() * Math.PI * 2,
+                vRot: (Math.random() - 0.5) * 0.003, 
+                vx: (Math.random() - 0.5) * 0.0003, 
+                vy: (Math.random() - 0.5) * 0.0003, 
+            });
+        }
+
+        // Generate Graveyard Satellites (Debris at the bottom of the page)
+        for (let i = 0; i < numGraveyardSatellites; i++) {
+            entities.push({
+                type: types[i % types.length],
+                isGraveyard: true,
+                x: Math.random(), 
+                // Spread randomly across the bottom 350px of the document
+                bottomOffset: Math.random() * 350 - 30, 
+                z: Math.random() * 1.5 + 0.5, 
+                rot: Math.random() * Math.PI * 2, // Haphazardly tilted
+                vx: 0,
+                vy: 0,
+                vRot: 0
             });
         }
 
         function animate() {
-            // Smooth mouse interpolation
             mouseX += (targetMouseX - mouseX) * 0.05;
             mouseY += (targetMouseY - mouseY) * 0.05;
             
-            // Mouse offset from center (-1 to 1)
             const mouseOffsetX = (mouseX / width) - 0.5;
             const mouseOffsetY = (mouseY / height) - 0.5;
 
             ctx.clearRect(0, 0, width, height);
 
-            // Determine Theme Colors
             const isDark = document.documentElement.classList.contains('dark');
-            const brandColor = 'rgba(20, 184, 166, 0.6)'; // Teal
-            const starColor = isDark ? 'rgba(255, 255, 255, ' : 'rgba(15, 23, 42, ';
-            const satColor = isDark ? 'rgba(255, 255, 255, 0.25)' : 'rgba(15, 23, 42, 0.15)';
-            const accentSatColor = isDark ? 'rgba(20, 184, 166, 0.8)' : 'rgba(13, 148, 136, 0.6)';
+            const starColor = isDark ? 'rgba(255, 42, 95, ' : 'rgba(225, 29, 72, '; 
+            const satColor = isDark ? 'rgba(255, 42, 95, 0.2)' : 'rgba(225, 29, 72, 0.15)';
+            const accentSatColor = isDark ? 'rgba(255, 42, 95, 0.9)' : 'rgba(244, 63, 94, 0.8)';
+            const purpleSatColor = isDark ? 'rgba(139, 92, 246, 0.7)' : 'rgba(139, 92, 246, 0.5)';
+            const graveyardColor = isDark ? 'rgba(80, 80, 95, 0.3)' : 'rgba(180, 180, 190, 0.4)'; // Dead, offline appearance
             
             ctx.lineJoin = 'round';
             ctx.lineCap = 'round';
+            
+            // Track document scroll to calculate absolute bottom for the graveyard
+            const scrollY = window.scrollY;
+            const docHeight = Math.max(
+                document.body.scrollHeight, document.documentElement.scrollHeight,
+                document.body.offsetHeight, document.documentElement.offsetHeight,
+                document.body.clientHeight, document.documentElement.clientHeight
+            );
+
+            // --- Holographic Data Network ---
+            if (isDark) {
+                ctx.lineWidth = 0.5;
+                for (let i = 0; i < entities.length; i++) {
+                    for (let j = i + 1; j < entities.length; j++) {
+                        const e1 = entities[i];
+                        const e2 = entities[j];
+                        
+                        // Do not connect stars, and do NOT connect dead graveyard satellites
+                        if (e1.type === 'star' && e2.type === 'star') continue; 
+                        if (e1.isGraveyard || e2.isGraveyard) continue; 
+                        
+                        const dx = e1.x - e2.x;
+                        const dy = e1.y - e2.y;
+                        const dist = Math.sqrt(dx*dx + dy*dy);
+                        
+                        if (dist < 0.12) { 
+                            const pX1 = (e1.x * width) - (mouseOffsetX * width * e1.z * 0.25);
+                            const pY1 = (e1.y * height) - (mouseOffsetY * height * e1.z * 0.25);
+                            const pX2 = (e2.x * width) - (mouseOffsetX * width * e2.z * 0.25);
+                            const pY2 = (e2.y * height) - (mouseOffsetY * height * e2.z * 0.25);
+                            
+                            ctx.beginPath();
+                            ctx.moveTo(pX1, pY1);
+                            ctx.lineTo(pX2, pY2);
+                            const lineOpacity = 0.15 - (dist / 0.12) * 0.15;
+                            ctx.strokeStyle = `rgba(255, 42, 95, ${lineOpacity})`;
+                            ctx.stroke();
+                        }
+                    }
+                }
+            }
 
             entities.forEach((ent, index) => {
-                // Background Drift
-                if (ent.type !== 'star') {
+                let drawX, drawY;
+
+                // Update physics for active satellites
+                if (ent.type !== 'star' && !ent.isGraveyard) {
                     ent.x += ent.vx;
                     ent.y += ent.vy;
                     ent.rot += ent.vRot;
                     
-                    // Wrap around edges seamlessly
                     if (ent.x > 1.2) ent.x = -0.2;
                     if (ent.x < -0.2) ent.x = 1.2;
                     if (ent.y > 1.2) ent.y = -0.2;
                     if (ent.y < -0.2) ent.y = 1.2;
                 }
 
-                // Parallax Calculation
-                // Far objects move less with mouse, close objects move more
                 const parallaxX = mouseOffsetX * width * ent.z * 0.25;
                 const parallaxY = mouseOffsetY * height * ent.z * 0.25;
                 
-                const drawX = (ent.x * width) - parallaxX;
-                const drawY = (ent.y * height) - parallaxY;
+                // Position calculations
+                if (ent.isGraveyard) {
+                    drawX = (ent.x * width) - parallaxX;
+                    // Pin to the absolute bottom of the document, adjusting for current scroll
+                    const absoluteY = docHeight - ent.bottomOffset;
+                    drawY = absoluteY - scrollY - parallaxY;
+                } else {
+                    drawX = (ent.x * width) - parallaxX;
+                    drawY = (ent.y * height) - parallaxY;
+                }
+
+                // Optimization: Skip rendering if completely off screen vertically
+                if (drawY < -150 || drawY > height + 150) return;
 
                 if (ent.type === 'star') {
                     ctx.beginPath();
                     ctx.arc(drawX, drawY, ent.size, 0, Math.PI * 2);
                     ctx.fillStyle = starColor + ent.opacity + ')';
                     
-                    // Subtle star glow in dark mode
                     if (isDark) {
-                        ctx.shadowBlur = 4;
-                        ctx.shadowColor = 'rgba(255,255,255,0.5)';
+                        ctx.shadowBlur = 6;
+                        ctx.shadowColor = 'rgba(255, 42, 95, 0.8)';
                     } else {
                         ctx.shadowBlur = 0;
                     }
@@ -559,22 +673,35 @@
                     ctx.save();
                     ctx.translate(drawX, drawY);
                     
-                    // Scale based on z (depth)
                     const scaleFactor = 0.3 + (ent.z * 0.2);
                     ctx.scale(scaleFactor, scaleFactor);
                     ctx.rotate(ent.rot);
                     
-                    ctx.lineWidth = 2.0 / scaleFactor; // Slightly thicker lines for modern look
+                    ctx.lineWidth = 1.5 / scaleFactor;
                     
-                    // Modern Neon/Glow Effect for Satellites
-                    if (isDark) {
-                        ctx.shadowBlur = 12;
-                        ctx.shadowColor = (index % 4 === 0) ? accentSatColor : 'rgba(255,255,255,0.3)';
-                    } else {
+                    if (ent.isGraveyard) {
+                        // Dead satellites have no glow and a dim color
                         ctx.shadowBlur = 0;
+                        ctx.strokeStyle = graveyardColor;
+                    } else {
+                        // Intense Neon Glow for active satellites
+                        if (isDark) {
+                            ctx.shadowBlur = 15;
+                            if (index % 5 === 0) {
+                                ctx.shadowColor = 'rgba(139, 92, 246, 0.9)'; // Neon purple
+                                ctx.strokeStyle = purpleSatColor;
+                            } else if (index % 3 === 0) {
+                                ctx.shadowColor = 'rgba(255, 42, 95, 0.9)'; // Cyber pink
+                                ctx.strokeStyle = accentSatColor;
+                            } else {
+                                ctx.shadowColor = 'rgba(255, 42, 95, 0.4)';
+                                ctx.strokeStyle = satColor;
+                            }
+                        } else {
+                            ctx.shadowBlur = 0;
+                            ctx.strokeStyle = (index % 3 === 0) ? accentSatColor : satColor;
+                        }
                     }
-                    
-                    ctx.strokeStyle = (index % 4 === 0) ? accentSatColor : satColor;
 
                     if (ent.type === 'fermi') drawFermi(ctx);
                     else if (ent.type === 'nustar') drawNuSTAR(ctx);
